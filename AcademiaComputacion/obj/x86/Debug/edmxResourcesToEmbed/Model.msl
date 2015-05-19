@@ -1,0 +1,379 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="AcademyEntities">
+    <EntitySetMapping Name="detailgroups">
+      <EntityTypeMapping TypeName="Model.detailgroup">
+        <MappingFragment StoreEntitySet="detailgroups">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employees">
+      <EntityTypeMapping TypeName="Model.employee">
+        <MappingFragment StoreEntitySet="employees">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="firs_name" ColumnName="firs_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="addres" ColumnName="addres" />
+          <ScalarProperty Name="working_day" ColumnName="working_day" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="extra_payments">
+      <EntityTypeMapping TypeName="Model.extra_payments">
+        <MappingFragment StoreEntitySet="extra_payments">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="balance" ColumnName="balance" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="groups">
+      <EntityTypeMapping TypeName="Model.group">
+        <MappingFragment StoreEntitySet="groups">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="day" ColumnName="day" />
+          <ScalarProperty Name="schedule" ColumnName="schedule" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inscripcions">
+      <EntityTypeMapping TypeName="Model.inscripcion">
+        <MappingFragment StoreEntitySet="inscripcions">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="laboratories">
+      <EntityTypeMapping TypeName="Model.laboratory">
+        <MappingFragment StoreEntitySet="laboratories">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="computers" ColumnName="computers" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="passwordresets">
+      <EntityTypeMapping TypeName="Model.passwordreset">
+        <MappingFragment StoreEntitySet="passwordresets">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="token" ColumnName="token" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="payment_types">
+      <EntityTypeMapping TypeName="Model.payment_types">
+        <MappingFragment StoreEntitySet="payment_types">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="payments">
+      <EntityTypeMapping TypeName="Model.payment">
+        <MappingFragment StoreEntitySet="payments">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="no_document" ColumnName="no_document" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="programs">
+      <EntityTypeMapping TypeName="Model.program">
+        <MappingFragment StoreEntitySet="programs">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="shelf_life" ColumnName="shelf_life" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="schedules_practice">
+      <EntityTypeMapping TypeName="Model.schedules_practice">
+        <MappingFragment StoreEntitySet="schedules_practice">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shares">
+      <EntityTypeMapping TypeName="Model.share">
+        <MappingFragment StoreEntitySet="shares">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="date_share" ColumnName="date_share" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="balance" ColumnName="balance" />
+          <ScalarProperty Name="mora" ColumnName="mora" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="students">
+      <EntityTypeMapping TypeName="Model.student">
+        <MappingFragment StoreEntitySet="students">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="firs_name" ColumnName="firs_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="addres" ColumnName="addres" />
+          <ScalarProperty Name="date_of_birth" ColumnName="date_of_birth" />
+          <ScalarProperty Name="in_charge" ColumnName="in_charge" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="typeemployees">
+      <EntityTypeMapping TypeName="Model.typeemployee">
+        <MappingFragment StoreEntitySet="typeemployees">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="Model.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="remember_token" ColumnName="remember_token" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="fk_id_group_detail" TypeName="Model.fk_id_group_detail" StoreEntitySet="detailgroups">
+      <EndProperty Name="groups">
+        <ScalarProperty Name="id" ColumnName="id_group" />
+      </EndProperty>
+      <EndProperty Name="detailgroups">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="id_group" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="fk_id_students" TypeName="Model.fk_id_students" StoreEntitySet="detailgroups">
+      <EndProperty Name="students">
+        <ScalarProperty Name="id" ColumnName="id_student" />
+      </EndProperty>
+      <EndProperty Name="detailgroups">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="id_student" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="fk_id_employe" TypeName="Model.fk_id_employe" StoreEntitySet="inscripcions">
+      <EndProperty Name="employees">
+        <ScalarProperty Name="id" ColumnName="id_employee" />
+      </EndProperty>
+      <EndProperty Name="inscripcions">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="id_employee" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="fk_id_employee" TypeName="Model.fk_id_employee" StoreEntitySet="groups">
+      <EndProperty Name="employees">
+        <ScalarProperty Name="id" ColumnName="id_employee" />
+      </EndProperty>
+      <EndProperty Name="groups">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="id_employee" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="fk_id_type_employee" TypeName="Model.fk_id_type_employee" StoreEntitySet="employees">
+      <EndProperty Name="typeemployees">
+        <ScalarProperty Name="id" ColumnName="id_type_employee" />
+      </EndProperty>
+      <EndProperty Name="employees">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="id_type_employee" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="fk_idemployee" TypeName="Model.fk_idemployee" StoreEntitySet="users">
+      <EndProperty Name="employees">
+        <ScalarProperty Name="id" ColumnName="id_employee" />
+      </EndProperty>
+      <EndProperty Name="users">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="id_employee" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="fk_id_payment_extra" TypeName="Model.fk_id_payment_extra" StoreEntitySet="extra_payments">
+      <EndProperty Name="payments">
+        <ScalarProperty Name="id" ColumnName="id_payment" />
+      </EndProperty>
+      <EndProperty Name="extra_payments">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="id_payment" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="fk_id_students_extra" TypeName="Model.fk_id_students_extra" StoreEntitySet="extra_payments">
+      <EndProperty Name="students">
+        <ScalarProperty Name="id" ColumnName="id_student" />
+      </EndProperty>
+      <EndProperty Name="extra_payments">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="id_student" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="fk_id_type_payment_extra" TypeName="Model.fk_id_type_payment_extra" StoreEntitySet="extra_payments">
+      <EndProperty Name="payment_types">
+        <ScalarProperty Name="id" ColumnName="id_type_payment" />
+      </EndProperty>
+      <EndProperty Name="extra_payments">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="id_type_payment" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="fk_id_group" TypeName="Model.fk_id_group" StoreEntitySet="inscripcions">
+      <EndProperty Name="groups">
+        <ScalarProperty Name="id" ColumnName="id_group" />
+      </EndProperty>
+      <EndProperty Name="inscripcions">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="id_group" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="fk_id_laboratories" TypeName="Model.fk_id_laboratories" StoreEntitySet="groups">
+      <EndProperty Name="laboratories">
+        <ScalarProperty Name="id" ColumnName="id_laboratorie" />
+      </EndProperty>
+      <EndProperty Name="groups">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="id_laboratorie" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="fk_id_program" TypeName="Model.fk_id_program" StoreEntitySet="groups">
+      <EndProperty Name="programs">
+        <ScalarProperty Name="id" ColumnName="id_program" />
+      </EndProperty>
+      <EndProperty Name="groups">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="id_program" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="fk_id_time_practice" TypeName="Model.fk_id_time_practice" StoreEntitySet="groups">
+      <EndProperty Name="schedules_practice">
+        <ScalarProperty Name="id" ColumnName="time_practice" />
+      </EndProperty>
+      <EndProperty Name="groups">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="time_practice" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="fk_id_user" TypeName="Model.fk_id_user" StoreEntitySet="groups">
+      <EndProperty Name="users">
+        <ScalarProperty Name="id" ColumnName="id_user" />
+      </EndProperty>
+      <EndProperty Name="groups">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="id_user" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="fk_id_inscripcion" TypeName="Model.fk_id_inscripcion" StoreEntitySet="shares">
+      <EndProperty Name="inscripcions">
+        <ScalarProperty Name="id" ColumnName="id_inscripcion" />
+      </EndProperty>
+      <EndProperty Name="shares">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="id_inscripcion" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="fk_id_payment" TypeName="Model.fk_id_payment" StoreEntitySet="inscripcions">
+      <EndProperty Name="payments">
+        <ScalarProperty Name="id" ColumnName="id_payment" />
+      </EndProperty>
+      <EndProperty Name="inscripcions">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="id_payment" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="fk_id_student" TypeName="Model.fk_id_student" StoreEntitySet="inscripcions">
+      <EndProperty Name="students">
+        <ScalarProperty Name="id" ColumnName="id_student" />
+      </EndProperty>
+      <EndProperty Name="inscripcions">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="id_student" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="fk_iduser" TypeName="Model.fk_iduser" StoreEntitySet="payment_types">
+      <EndProperty Name="users">
+        <ScalarProperty Name="id" ColumnName="iduser" />
+      </EndProperty>
+      <EndProperty Name="payment_types">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="iduser" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="fk_type" TypeName="Model.fk_type" StoreEntitySet="payments">
+      <EndProperty Name="payment_types">
+        <ScalarProperty Name="id" ColumnName="type" />
+      </EndProperty>
+      <EndProperty Name="payments">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="type" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="fk_id_payment_shares" TypeName="Model.fk_id_payment_shares" StoreEntitySet="shares">
+      <EndProperty Name="payments">
+        <ScalarProperty Name="id" ColumnName="id_payment" />
+      </EndProperty>
+      <EndProperty Name="shares">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="id_payment" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="fk_id_user_payments" TypeName="Model.fk_id_user_payments" StoreEntitySet="payments">
+      <EndProperty Name="users">
+        <ScalarProperty Name="id" ColumnName="id_user" />
+      </EndProperty>
+      <EndProperty Name="payments">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="id_user" />
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

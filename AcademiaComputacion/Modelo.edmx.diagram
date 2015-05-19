@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e964699f0cae42048b68dccdc7f8bf2c" Name="Diagram1">
+        <EntityTypeShape EntityType="AcademiaModel.detailgroup" Width="1.5" PointX="12.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AcademiaModel.employee" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AcademiaModel.extra_payments" Width="1.5" PointX="9.75" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AcademiaModel.group" Width="1.5" PointX="7.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AcademiaModel.inscripcion" Width="1.5" PointX="9.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="AcademiaModel.laboratory" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AcademiaModel.passwordreset" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AcademiaModel.payment_types" Width="1.5" PointX="7.5" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AcademiaModel.payment" Width="1.5" PointX="12.75" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AcademiaModel.program" Width="1.5" PointX="5.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="AcademiaModel.schedules_practice" Width="1.5" PointX="5.25" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AcademiaModel.share" Width="1.5" PointX="15" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AcademiaModel.student" Width="1.5" PointX="7.5" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AcademiaModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AcademiaModel.typeemployee" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <AssociationConnector Association="AcademiaModel.fk_id_group_detail" ManuallyRouted="false" />
+        <AssociationConnector Association="AcademiaModel.fk_id_students" ManuallyRouted="false" />
+        <AssociationConnector Association="AcademiaModel.fk_id_employe" ManuallyRouted="false" />
+        <AssociationConnector Association="AcademiaModel.fk_id_employee" ManuallyRouted="false" />
+        <AssociationConnector Association="AcademiaModel.fk_id_type_employee" ManuallyRouted="false" />
+        <AssociationConnector Association="AcademiaModel.fk_id_payment_extra" ManuallyRouted="false" />
+        <AssociationConnector Association="AcademiaModel.fk_id_students_extra" ManuallyRouted="false" />
+        <AssociationConnector Association="AcademiaModel.fk_id_type_payment_extra" ManuallyRouted="false" />
+        <AssociationConnector Association="AcademiaModel.fk_id_group" ManuallyRouted="false" />
+        <AssociationConnector Association="AcademiaModel.fk_id_laboratories" ManuallyRouted="false" />
+        <AssociationConnector Association="AcademiaModel.fk_id_program" ManuallyRouted="false" />
+        <AssociationConnector Association="AcademiaModel.fk_id_time_practice" ManuallyRouted="false" />
+        <AssociationConnector Association="AcademiaModel.fk_id_inscripcion" ManuallyRouted="false" />
+        <AssociationConnector Association="AcademiaModel.fk_id_payment" ManuallyRouted="false" />
+        <AssociationConnector Association="AcademiaModel.fk_id_student" ManuallyRouted="false" />
+        <AssociationConnector Association="AcademiaModel.fk_type" ManuallyRouted="false" />
+        <AssociationConnector Association="AcademiaModel.fk_id_payment_shares" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AcademiaModel.user" Width="1.5" PointX="5.25" PointY="5.625" />
+        <AssociationConnector Association="AcademiaModel.fk_idemployee" />
+        <AssociationConnector Association="AcademiaModel.fk_id_user" />
+        <AssociationConnector Association="AcademiaModel.fk_iduser" />
+        <AssociationConnector Association="AcademiaModel.fk_id_user_payments" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

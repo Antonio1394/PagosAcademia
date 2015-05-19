@@ -1,0 +1,1394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AcademiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="detailgroups">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_group" Type="int" />
+          <Property Name="id_student" Type="int" />
+          <Property Name="state" Type="varchar" MaxLength="50" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="employees">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firs_name" Type="varchar" MaxLength="50" />
+          <Property Name="last_name" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="12" />
+          <Property Name="addres" Type="varchar" MaxLength="50" />
+          <Property Name="id_type_employee" Type="int" />
+          <Property Name="working_day" Type="varchar" MaxLength="50" />
+          <Property Name="state" Type="varchar" MaxLength="50" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="extra_payments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_student" Type="int" />
+          <Property Name="id_payment" Type="int" />
+          <Property Name="id_type_payment" Type="int" />
+          <Property Name="amount" Type="int" />
+          <Property Name="balance" Type="int" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="groups">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_program" Type="int" />
+          <Property Name="id_laboratorie" Type="int" />
+          <Property Name="id_employee" Type="int" />
+          <Property Name="time_practice" Type="int" />
+          <Property Name="id_user" Type="int" />
+          <Property Name="day" Type="varchar" MaxLength="255" />
+          <Property Name="schedule" Type="varchar" MaxLength="255" />
+          <Property Name="state" Type="varchar" MaxLength="50" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="inscripcions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_student" Type="int" />
+          <Property Name="id_employee" Type="int" />
+          <Property Name="id_payment" Type="int" />
+          <Property Name="id_group" Type="int" />
+          <Property Name="type" Type="varchar" MaxLength="25" />
+          <Property Name="state" Type="varchar" MaxLength="25" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="laboratories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="255" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+          <Property Name="computers" Type="int" />
+          <Property Name="state" Type="varchar" MaxLength="50" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="passwordresets">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="255" />
+          <Property Name="token" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="payment_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+          <Property Name="amount" Type="int" />
+          <Property Name="iduser" Type="int" />
+          <Property Name="state" Type="varchar" MaxLength="50" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="payments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_user" Type="int" />
+          <Property Name="description" Type="text" />
+          <Property Name="amount" Type="int" />
+          <Property Name="no_document" Type="varchar" MaxLength="25" />
+          <Property Name="state" Type="varchar" MaxLength="50" />
+          <Property Name="type" Type="int" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="programs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+          <Property Name="shelf_life" Type="int" />
+          <Property Name="state" Type="varchar" MaxLength="50" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="schedules_practice">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="time" Type="varchar" MaxLength="255" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="state" Type="varchar" MaxLength="50" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="shares">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_inscripcion" Type="int" />
+          <Property Name="id_payment" Type="int" />
+          <Property Name="date_share" Type="date" />
+          <Property Name="amount" Type="int" />
+          <Property Name="balance" Type="int" />
+          <Property Name="mora" Type="int" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="students">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firs_name" Type="varchar" MaxLength="50" />
+          <Property Name="last_name" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="12" />
+          <Property Name="addres" Type="varchar" MaxLength="50" />
+          <Property Name="date_of_birth" Type="date" />
+          <Property Name="in_charge" Type="varchar" MaxLength="50" />
+          <Property Name="state" Type="varchar" MaxLength="50" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="typeemployees">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="25" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="255" />
+          <Property Name="remember_token" Type="varchar" MaxLength="100" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="id_employee" Type="int" />
+          <Property Name="state" Type="varchar" MaxLength="50" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+          <Property Name="password" Type="varbinary" MaxLength="50" />
+        </EntityType>
+        <Association Name="fk_id_employee">
+          <End Role="employees" Type="Self.employees" Multiplicity="0..1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employees">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="id_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_group">
+          <End Role="groups" Type="Self.groups" Multiplicity="0..1" />
+          <End Role="inscripcions" Type="Self.inscripcions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="inscripcions">
+              <PropertyRef Name="id_group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_group_detail">
+          <End Role="groups" Type="Self.groups" Multiplicity="0..1" />
+          <End Role="detailgroups" Type="Self.detailgroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detailgroups">
+              <PropertyRef Name="id_group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_inscripcion">
+          <End Role="inscripcions" Type="Self.inscripcions" Multiplicity="0..1" />
+          <End Role="shares" Type="Self.shares" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="inscripcions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="shares">
+              <PropertyRef Name="id_inscripcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_laboratories">
+          <End Role="laboratories" Type="Self.laboratories" Multiplicity="0..1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="laboratories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="id_laboratorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_payment">
+          <End Role="payments" Type="Self.payments" Multiplicity="0..1" />
+          <End Role="inscripcions" Type="Self.inscripcions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payments">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="inscripcions">
+              <PropertyRef Name="id_payment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_payment_extra">
+          <End Role="payments" Type="Self.payments" Multiplicity="0..1" />
+          <End Role="extra_payments" Type="Self.extra_payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payments">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="extra_payments">
+              <PropertyRef Name="id_payment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_payment_shares">
+          <End Role="payments" Type="Self.payments" Multiplicity="0..1" />
+          <End Role="shares" Type="Self.shares" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payments">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="shares">
+              <PropertyRef Name="id_payment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_program">
+          <End Role="programs" Type="Self.programs" Multiplicity="0..1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="programs">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="id_program" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_student">
+          <End Role="students" Type="Self.students" Multiplicity="0..1" />
+          <End Role="inscripcions" Type="Self.inscripcions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="inscripcions">
+              <PropertyRef Name="id_student" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_students">
+          <End Role="students" Type="Self.students" Multiplicity="0..1" />
+          <End Role="detailgroups" Type="Self.detailgroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detailgroups">
+              <PropertyRef Name="id_student" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_students_extra">
+          <End Role="students" Type="Self.students" Multiplicity="0..1" />
+          <End Role="extra_payments" Type="Self.extra_payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="extra_payments">
+              <PropertyRef Name="id_student" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_time_practice">
+          <End Role="schedules_practice" Type="Self.schedules_practice" Multiplicity="0..1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="schedules_practice">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="time_practice" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_type_employee">
+          <End Role="typeemployees" Type="Self.typeemployees" Multiplicity="0..1" />
+          <End Role="employees" Type="Self.employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="typeemployees">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="employees">
+              <PropertyRef Name="id_type_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_type_payment_extra">
+          <End Role="payment_types" Type="Self.payment_types" Multiplicity="0..1" />
+          <End Role="extra_payments" Type="Self.extra_payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payment_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="extra_payments">
+              <PropertyRef Name="id_type_payment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_user">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_user_payments">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="payments" Type="Self.payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="payments">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_idemployee">
+          <End Role="employees" Type="Self.employees" Multiplicity="0..1" />
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employees">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="id_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_iduser">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="payment_types" Type="Self.payment_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="payment_types">
+              <PropertyRef Name="iduser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_type">
+          <End Role="payment_types" Type="Self.payment_types" Multiplicity="0..1" />
+          <End Role="payments" Type="Self.payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payment_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="payments">
+              <PropertyRef Name="type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AcademiaModelStoreContainer">
+          <EntitySet Name="detailgroups" EntityType="Self.detailgroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employees" EntityType="Self.employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="extra_payments" EntityType="Self.extra_payments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="groups" EntityType="Self.groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="inscripcions" EntityType="Self.inscripcions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="laboratories" EntityType="Self.laboratories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="passwordresets" EntityType="Self.passwordresets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="payment_types" EntityType="Self.payment_types" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="payments" EntityType="Self.payments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="programs" EntityType="Self.programs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="schedules_practice" EntityType="Self.schedules_practice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="shares" EntityType="Self.shares" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="students" EntityType="Self.students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="typeemployees" EntityType="Self.typeemployees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_id_employee" Association="Self.fk_id_employee">
+            <End Role="employees" EntitySet="employees" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_group" Association="Self.fk_id_group">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="inscripcions" EntitySet="inscripcions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_group_detail" Association="Self.fk_id_group_detail">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="detailgroups" EntitySet="detailgroups" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_inscripcion" Association="Self.fk_id_inscripcion">
+            <End Role="inscripcions" EntitySet="inscripcions" />
+            <End Role="shares" EntitySet="shares" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_laboratories" Association="Self.fk_id_laboratories">
+            <End Role="laboratories" EntitySet="laboratories" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_payment" Association="Self.fk_id_payment">
+            <End Role="payments" EntitySet="payments" />
+            <End Role="inscripcions" EntitySet="inscripcions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_payment_extra" Association="Self.fk_id_payment_extra">
+            <End Role="payments" EntitySet="payments" />
+            <End Role="extra_payments" EntitySet="extra_payments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_payment_shares" Association="Self.fk_id_payment_shares">
+            <End Role="payments" EntitySet="payments" />
+            <End Role="shares" EntitySet="shares" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_program" Association="Self.fk_id_program">
+            <End Role="programs" EntitySet="programs" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_student" Association="Self.fk_id_student">
+            <End Role="students" EntitySet="students" />
+            <End Role="inscripcions" EntitySet="inscripcions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_students" Association="Self.fk_id_students">
+            <End Role="students" EntitySet="students" />
+            <End Role="detailgroups" EntitySet="detailgroups" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_students_extra" Association="Self.fk_id_students_extra">
+            <End Role="students" EntitySet="students" />
+            <End Role="extra_payments" EntitySet="extra_payments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_time_practice" Association="Self.fk_id_time_practice">
+            <End Role="schedules_practice" EntitySet="schedules_practice" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_type_employee" Association="Self.fk_id_type_employee">
+            <End Role="typeemployees" EntitySet="typeemployees" />
+            <End Role="employees" EntitySet="employees" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_type_payment_extra" Association="Self.fk_id_type_payment_extra">
+            <End Role="payment_types" EntitySet="payment_types" />
+            <End Role="extra_payments" EntitySet="extra_payments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_user" Association="Self.fk_id_user">
+            <End Role="users" EntitySet="users" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_user_payments" Association="Self.fk_id_user_payments">
+            <End Role="users" EntitySet="users" />
+            <End Role="payments" EntitySet="payments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_idemployee" Association="Self.fk_idemployee">
+            <End Role="employees" EntitySet="employees" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="fk_iduser" Association="Self.fk_iduser">
+            <End Role="users" EntitySet="users" />
+            <End Role="payment_types" EntitySet="payment_types" />
+          </AssociationSet>
+          <AssociationSet Name="fk_type" Association="Self.fk_type">
+            <End Role="payment_types" EntitySet="payment_types" />
+            <End Role="payments" EntitySet="payments" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AcademiaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityType Name="detailgroup">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_group" Type="Int32" />
+          <Property Name="id_student" Type="Int32" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="group" Relationship="Self.fk_id_group_detail" FromRole="detailgroups" ToRole="groups" />
+          <NavigationProperty Name="student" Relationship="Self.fk_id_students" FromRole="detailgroups" ToRole="students" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firs_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="addres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_type_employee" Type="Int32" />
+          <Property Name="working_day" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="inscripcions" Relationship="Self.fk_id_employe" FromRole="employees" ToRole="inscripcions" />
+          <NavigationProperty Name="groups" Relationship="Self.fk_id_employee" FromRole="employees" ToRole="groups" />
+          <NavigationProperty Name="typeemployee" Relationship="Self.fk_id_type_employee" FromRole="employees" ToRole="typeemployees" />
+          <NavigationProperty Name="users" Relationship="AcademiaModel.fk_idemployee" FromRole="employee" ToRole="user" />
+        </EntityType>
+        <EntityType Name="extra_payments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_student" Type="Int32" />
+          <Property Name="id_payment" Type="Int32" />
+          <Property Name="id_type_payment" Type="Int32" />
+          <Property Name="amount" Type="Int32" />
+          <Property Name="balance" Type="Int32" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="payment" Relationship="Self.fk_id_payment_extra" FromRole="extra_payments" ToRole="payments" />
+          <NavigationProperty Name="student" Relationship="Self.fk_id_students_extra" FromRole="extra_payments" ToRole="students" />
+          <NavigationProperty Name="payment_types" Relationship="Self.fk_id_type_payment_extra" FromRole="extra_payments" ToRole="payment_types" />
+        </EntityType>
+        <EntityType Name="group">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_program" Type="Int32" />
+          <Property Name="id_laboratorie" Type="Int32" />
+          <Property Name="id_employee" Type="Int32" />
+          <Property Name="time_practice" Type="Int32" />
+          <Property Name="id_user" Type="Int32" />
+          <Property Name="day" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="schedule" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="detailgroups" Relationship="Self.fk_id_group_detail" FromRole="groups" ToRole="detailgroups" />
+          <NavigationProperty Name="employee" Relationship="Self.fk_id_employee" FromRole="groups" ToRole="employees" />
+          <NavigationProperty Name="inscripcions" Relationship="Self.fk_id_group" FromRole="groups" ToRole="inscripcions" />
+          <NavigationProperty Name="laboratory" Relationship="Self.fk_id_laboratories" FromRole="groups" ToRole="laboratories" />
+          <NavigationProperty Name="program" Relationship="Self.fk_id_program" FromRole="groups" ToRole="programs" />
+          <NavigationProperty Name="schedules_practice" Relationship="Self.fk_id_time_practice" FromRole="groups" ToRole="schedules_practice" />
+          <NavigationProperty Name="user" Relationship="AcademiaModel.fk_id_user" FromRole="group" ToRole="user" />
+        </EntityType>
+        <EntityType Name="inscripcion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_student" Type="Int32" />
+          <Property Name="id_employee" Type="Int32" />
+          <Property Name="id_payment" Type="Int32" />
+          <Property Name="id_group" Type="Int32" />
+          <Property Name="type" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="employee" Relationship="Self.fk_id_employe" FromRole="inscripcions" ToRole="employees" />
+          <NavigationProperty Name="group" Relationship="Self.fk_id_group" FromRole="inscripcions" ToRole="groups" />
+          <NavigationProperty Name="shares" Relationship="Self.fk_id_inscripcion" FromRole="inscripcions" ToRole="shares" />
+          <NavigationProperty Name="payment" Relationship="Self.fk_id_payment" FromRole="inscripcions" ToRole="payments" />
+          <NavigationProperty Name="student" Relationship="Self.fk_id_student" FromRole="inscripcions" ToRole="students" />
+        </EntityType>
+        <EntityType Name="laboratory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="computers" Type="Int32" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="groups" Relationship="Self.fk_id_laboratories" FromRole="laboratories" ToRole="groups" />
+        </EntityType>
+        <EntityType Name="passwordreset">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="token" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="payment_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="amount" Type="Int32" />
+          <Property Name="iduser" Type="Int32" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="extra_payments" Relationship="Self.fk_id_type_payment_extra" FromRole="payment_types" ToRole="extra_payments" />
+          <NavigationProperty Name="payments" Relationship="Self.fk_type" FromRole="payment_types" ToRole="payments" />
+          <NavigationProperty Name="user" Relationship="AcademiaModel.fk_iduser" FromRole="payment_types" ToRole="user" />
+        </EntityType>
+        <EntityType Name="payment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_user" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="amount" Type="Int32" />
+          <Property Name="no_document" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="Int32" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="extra_payments" Relationship="Self.fk_id_payment_extra" FromRole="payments" ToRole="extra_payments" />
+          <NavigationProperty Name="inscripcions" Relationship="Self.fk_id_payment" FromRole="payments" ToRole="inscripcions" />
+          <NavigationProperty Name="payment_types" Relationship="Self.fk_type" FromRole="payments" ToRole="payment_types" />
+          <NavigationProperty Name="shares" Relationship="Self.fk_id_payment_shares" FromRole="payments" ToRole="shares" />
+          <NavigationProperty Name="user" Relationship="AcademiaModel.fk_id_user_payments" FromRole="payment" ToRole="user" />
+        </EntityType>
+        <EntityType Name="program">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="shelf_life" Type="Int32" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="groups" Relationship="Self.fk_id_program" FromRole="programs" ToRole="groups" />
+        </EntityType>
+        <EntityType Name="schedules_practice">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="groups" Relationship="Self.fk_id_time_practice" FromRole="schedules_practice" ToRole="groups" />
+        </EntityType>
+        <EntityType Name="share">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_inscripcion" Type="Int32" />
+          <Property Name="id_payment" Type="Int32" />
+          <Property Name="date_share" Type="DateTime" Precision="0" />
+          <Property Name="amount" Type="Int32" />
+          <Property Name="balance" Type="Int32" />
+          <Property Name="mora" Type="Int32" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="inscripcion" Relationship="Self.fk_id_inscripcion" FromRole="shares" ToRole="inscripcions" />
+          <NavigationProperty Name="payment" Relationship="Self.fk_id_payment_shares" FromRole="shares" ToRole="payments" />
+        </EntityType>
+        <EntityType Name="student">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firs_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="addres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="date_of_birth" Type="DateTime" Precision="0" />
+          <Property Name="in_charge" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="detailgroups" Relationship="Self.fk_id_students" FromRole="students" ToRole="detailgroups" />
+          <NavigationProperty Name="extra_payments" Relationship="Self.fk_id_students_extra" FromRole="students" ToRole="extra_payments" />
+          <NavigationProperty Name="inscripcions" Relationship="Self.fk_id_student" FromRole="students" ToRole="inscripcions" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="typeemployee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="employees" Relationship="Self.fk_id_type_employee" FromRole="typeemployees" ToRole="employees" />
+        </EntityType>
+        <Association Name="fk_id_group_detail">
+          <End Role="groups" Type="Self.group" Multiplicity="0..1" />
+          <End Role="detailgroups" Type="Self.detailgroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detailgroups">
+              <PropertyRef Name="id_group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_students">
+          <End Role="students" Type="Self.student" Multiplicity="0..1" />
+          <End Role="detailgroups" Type="Self.detailgroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detailgroups">
+              <PropertyRef Name="id_student" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_employe">
+          <End Role="employees" Type="Self.employee" Multiplicity="0..1" />
+          <End Role="inscripcions" Type="Self.inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employees">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="inscripcions">
+              <PropertyRef Name="id_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_employee">
+          <End Role="employees" Type="Self.employee" Multiplicity="0..1" />
+          <End Role="groups" Type="Self.group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employees">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="id_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_type_employee">
+          <End Role="typeemployees" Type="Self.typeemployee" Multiplicity="0..1" />
+          <End Role="employees" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="typeemployees">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="employees">
+              <PropertyRef Name="id_type_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_payment_extra">
+          <End Role="payments" Type="Self.payment" Multiplicity="0..1" />
+          <End Role="extra_payments" Type="Self.extra_payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payments">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="extra_payments">
+              <PropertyRef Name="id_payment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_students_extra">
+          <End Role="students" Type="Self.student" Multiplicity="0..1" />
+          <End Role="extra_payments" Type="Self.extra_payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="extra_payments">
+              <PropertyRef Name="id_student" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_type_payment_extra">
+          <End Role="payment_types" Type="Self.payment_types" Multiplicity="0..1" />
+          <End Role="extra_payments" Type="Self.extra_payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payment_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="extra_payments">
+              <PropertyRef Name="id_type_payment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_group">
+          <End Role="groups" Type="Self.group" Multiplicity="0..1" />
+          <End Role="inscripcions" Type="Self.inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="inscripcions">
+              <PropertyRef Name="id_group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_laboratories">
+          <End Role="laboratories" Type="Self.laboratory" Multiplicity="0..1" />
+          <End Role="groups" Type="Self.group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="laboratories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="id_laboratorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_program">
+          <End Role="programs" Type="Self.program" Multiplicity="0..1" />
+          <End Role="groups" Type="Self.group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="programs">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="id_program" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_time_practice">
+          <End Role="schedules_practice" Type="Self.schedules_practice" Multiplicity="0..1" />
+          <End Role="groups" Type="Self.group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="schedules_practice">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="time_practice" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_inscripcion">
+          <End Role="inscripcions" Type="Self.inscripcion" Multiplicity="0..1" />
+          <End Role="shares" Type="Self.share" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="inscripcions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="shares">
+              <PropertyRef Name="id_inscripcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_payment">
+          <End Role="payments" Type="Self.payment" Multiplicity="0..1" />
+          <End Role="inscripcions" Type="Self.inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payments">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="inscripcions">
+              <PropertyRef Name="id_payment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_student">
+          <End Role="students" Type="Self.student" Multiplicity="0..1" />
+          <End Role="inscripcions" Type="Self.inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="inscripcions">
+              <PropertyRef Name="id_student" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_type">
+          <End Role="payment_types" Type="Self.payment_types" Multiplicity="0..1" />
+          <End Role="payments" Type="Self.payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payment_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="payments">
+              <PropertyRef Name="type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_payment_shares">
+          <End Role="payments" Type="Self.payment" Multiplicity="0..1" />
+          <End Role="shares" Type="Self.share" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payments">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="shares">
+              <PropertyRef Name="id_payment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AcademiaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="detailgroups" EntityType="Self.detailgroup" />
+          <EntitySet Name="employees" EntityType="Self.employee" />
+          <EntitySet Name="extra_payments" EntityType="Self.extra_payments" />
+          <EntitySet Name="groups" EntityType="Self.group" />
+          <EntitySet Name="inscripcions" EntityType="Self.inscripcion" />
+          <EntitySet Name="laboratories" EntityType="Self.laboratory" />
+          <EntitySet Name="passwordresets" EntityType="Self.passwordreset" />
+          <EntitySet Name="payment_types" EntityType="Self.payment_types" />
+          <EntitySet Name="payments" EntityType="Self.payment" />
+          <EntitySet Name="programs" EntityType="Self.program" />
+          <EntitySet Name="schedules_practice" EntityType="Self.schedules_practice" />
+          <EntitySet Name="shares" EntityType="Self.share" />
+          <EntitySet Name="students" EntityType="Self.student" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="typeemployees" EntityType="Self.typeemployee" />
+          <AssociationSet Name="fk_id_group_detail" Association="Self.fk_id_group_detail">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="detailgroups" EntitySet="detailgroups" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_students" Association="Self.fk_id_students">
+            <End Role="students" EntitySet="students" />
+            <End Role="detailgroups" EntitySet="detailgroups" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_employe" Association="Self.fk_id_employe">
+            <End Role="employees" EntitySet="employees" />
+            <End Role="inscripcions" EntitySet="inscripcions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_employee" Association="Self.fk_id_employee">
+            <End Role="employees" EntitySet="employees" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_type_employee" Association="Self.fk_id_type_employee">
+            <End Role="typeemployees" EntitySet="typeemployees" />
+            <End Role="employees" EntitySet="employees" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_payment_extra" Association="Self.fk_id_payment_extra">
+            <End Role="payments" EntitySet="payments" />
+            <End Role="extra_payments" EntitySet="extra_payments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_students_extra" Association="Self.fk_id_students_extra">
+            <End Role="students" EntitySet="students" />
+            <End Role="extra_payments" EntitySet="extra_payments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_type_payment_extra" Association="Self.fk_id_type_payment_extra">
+            <End Role="payment_types" EntitySet="payment_types" />
+            <End Role="extra_payments" EntitySet="extra_payments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_group" Association="Self.fk_id_group">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="inscripcions" EntitySet="inscripcions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_laboratories" Association="Self.fk_id_laboratories">
+            <End Role="laboratories" EntitySet="laboratories" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_program" Association="Self.fk_id_program">
+            <End Role="programs" EntitySet="programs" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_time_practice" Association="Self.fk_id_time_practice">
+            <End Role="schedules_practice" EntitySet="schedules_practice" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_inscripcion" Association="Self.fk_id_inscripcion">
+            <End Role="inscripcions" EntitySet="inscripcions" />
+            <End Role="shares" EntitySet="shares" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_payment" Association="Self.fk_id_payment">
+            <End Role="payments" EntitySet="payments" />
+            <End Role="inscripcions" EntitySet="inscripcions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_student" Association="Self.fk_id_student">
+            <End Role="students" EntitySet="students" />
+            <End Role="inscripcions" EntitySet="inscripcions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_type" Association="Self.fk_type">
+            <End Role="payment_types" EntitySet="payment_types" />
+            <End Role="payments" EntitySet="payments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_payment_shares" Association="Self.fk_id_payment_shares">
+            <End Role="payments" EntitySet="payments" />
+            <End Role="shares" EntitySet="shares" />
+          </AssociationSet>
+          <EntitySet Name="users" EntityType="AcademiaModel.user" />
+          <AssociationSet Name="fk_idemployee" Association="AcademiaModel.fk_idemployee">
+            <End Role="employee" EntitySet="employees" />
+            <End Role="user" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_user" Association="AcademiaModel.fk_id_user">
+            <End Role="user" EntitySet="users" />
+            <End Role="group" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="fk_iduser" Association="AcademiaModel.fk_iduser">
+            <End Role="user" EntitySet="users" />
+            <End Role="payment_types" EntitySet="payment_types" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_user_payments" Association="AcademiaModel.fk_id_user_payments">
+            <End Role="user" EntitySet="users" />
+            <End Role="payment" EntitySet="payments" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="remember_token" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_employee" Type="Int32" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <Property Name="password" Type="Binary" MaxLength="50" FixedLength="false" />
+          <NavigationProperty Name="employee" Relationship="AcademiaModel.fk_idemployee" FromRole="user" ToRole="employee" />
+          <NavigationProperty Name="groups" Relationship="AcademiaModel.fk_id_user" FromRole="user" ToRole="group" />
+          <NavigationProperty Name="payment_types" Relationship="AcademiaModel.fk_iduser" FromRole="user" ToRole="payment_types" />
+          <NavigationProperty Name="payments" Relationship="AcademiaModel.fk_id_user_payments" FromRole="user" ToRole="payment" />
+        </EntityType>
+        <Association Name="fk_idemployee">
+          <End Type="AcademiaModel.employee" Role="employee" Multiplicity="0..1" />
+          <End Type="AcademiaModel.user" Role="user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="id_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_user">
+          <End Type="AcademiaModel.user" Role="user" Multiplicity="0..1" />
+          <End Type="AcademiaModel.group" Role="group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="group">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_iduser">
+          <End Type="AcademiaModel.user" Role="user" Multiplicity="0..1" />
+          <End Type="AcademiaModel.payment_types" Role="payment_types" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="payment_types">
+              <PropertyRef Name="iduser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_user_payments">
+          <End Type="AcademiaModel.user" Role="user" Multiplicity="0..1" />
+          <End Type="AcademiaModel.payment" Role="payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="payment">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AcademiaModelStoreContainer" CdmEntityContainer="AcademiaEntities">
+          <EntitySetMapping Name="detailgroups">
+            <EntityTypeMapping TypeName="AcademiaModel.detailgroup">
+              <MappingFragment StoreEntitySet="detailgroups">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_group" ColumnName="id_group" />
+                <ScalarProperty Name="id_student" ColumnName="id_student" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employees">
+            <EntityTypeMapping TypeName="AcademiaModel.employee">
+              <MappingFragment StoreEntitySet="employees">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="firs_name" ColumnName="firs_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="addres" ColumnName="addres" />
+                <ScalarProperty Name="id_type_employee" ColumnName="id_type_employee" />
+                <ScalarProperty Name="working_day" ColumnName="working_day" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="extra_payments">
+            <EntityTypeMapping TypeName="AcademiaModel.extra_payments">
+              <MappingFragment StoreEntitySet="extra_payments">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_student" ColumnName="id_student" />
+                <ScalarProperty Name="id_payment" ColumnName="id_payment" />
+                <ScalarProperty Name="id_type_payment" ColumnName="id_type_payment" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="balance" ColumnName="balance" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="groups">
+            <EntityTypeMapping TypeName="AcademiaModel.group">
+              <MappingFragment StoreEntitySet="groups">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_program" ColumnName="id_program" />
+                <ScalarProperty Name="id_laboratorie" ColumnName="id_laboratorie" />
+                <ScalarProperty Name="id_employee" ColumnName="id_employee" />
+                <ScalarProperty Name="time_practice" ColumnName="time_practice" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="day" ColumnName="day" />
+                <ScalarProperty Name="schedule" ColumnName="schedule" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inscripcions">
+            <EntityTypeMapping TypeName="AcademiaModel.inscripcion">
+              <MappingFragment StoreEntitySet="inscripcions">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_student" ColumnName="id_student" />
+                <ScalarProperty Name="id_employee" ColumnName="id_employee" />
+                <ScalarProperty Name="id_payment" ColumnName="id_payment" />
+                <ScalarProperty Name="id_group" ColumnName="id_group" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="laboratories">
+            <EntityTypeMapping TypeName="AcademiaModel.laboratory">
+              <MappingFragment StoreEntitySet="laboratories">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="computers" ColumnName="computers" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="passwordresets">
+            <EntityTypeMapping TypeName="AcademiaModel.passwordreset">
+              <MappingFragment StoreEntitySet="passwordresets">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="token" ColumnName="token" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="payment_types">
+            <EntityTypeMapping TypeName="AcademiaModel.payment_types">
+              <MappingFragment StoreEntitySet="payment_types">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="iduser" ColumnName="iduser" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="payments">
+            <EntityTypeMapping TypeName="AcademiaModel.payment">
+              <MappingFragment StoreEntitySet="payments">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="no_document" ColumnName="no_document" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="programs">
+            <EntityTypeMapping TypeName="AcademiaModel.program">
+              <MappingFragment StoreEntitySet="programs">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="shelf_life" ColumnName="shelf_life" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="schedules_practice">
+            <EntityTypeMapping TypeName="AcademiaModel.schedules_practice">
+              <MappingFragment StoreEntitySet="schedules_practice">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shares">
+            <EntityTypeMapping TypeName="AcademiaModel.share">
+              <MappingFragment StoreEntitySet="shares">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_inscripcion" ColumnName="id_inscripcion" />
+                <ScalarProperty Name="id_payment" ColumnName="id_payment" />
+                <ScalarProperty Name="date_share" ColumnName="date_share" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="balance" ColumnName="balance" />
+                <ScalarProperty Name="mora" ColumnName="mora" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="students">
+            <EntityTypeMapping TypeName="AcademiaModel.student">
+              <MappingFragment StoreEntitySet="students">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="firs_name" ColumnName="firs_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="addres" ColumnName="addres" />
+                <ScalarProperty Name="date_of_birth" ColumnName="date_of_birth" />
+                <ScalarProperty Name="in_charge" ColumnName="in_charge" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="AcademiaModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="typeemployees">
+            <EntityTypeMapping TypeName="AcademiaModel.typeemployee">
+              <MappingFragment StoreEntitySet="typeemployees">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="AcademiaModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="id_employee" ColumnName="id_employee" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="remember_token" ColumnName="remember_token" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
