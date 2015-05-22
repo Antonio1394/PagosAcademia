@@ -537,13 +537,12 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="remember_token" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="id_employee" Type="Int32" />
     <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="created_at" Type="DateTime" Precision="3" />
     <Property Name="updated_at" Type="DateTime" Precision="3" />
-    <Property Name="password" Type="Binary" MaxLength="50" FixedLength="false" />
+    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="employee" Relationship="AcademiaModel.fk_idemployee" FromRole="user" ToRole="employee" />
     <NavigationProperty Name="groups" Relationship="AcademiaModel.fk_id_user" FromRole="user" ToRole="group" />
     <NavigationProperty Name="payment_types" Relationship="AcademiaModel.fk_iduser" FromRole="user" ToRole="payment_types" />

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="AcademiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+<Schema Namespace="AcademiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityType Name="detailgroups">
     <Key>
       <PropertyRef Name="id" />
@@ -193,14 +193,25 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="username" Type="varchar" MaxLength="255" />
-    <Property Name="remember_token" Type="varchar" MaxLength="100" />
     <Property Name="type" Type="varchar" MaxLength="50" />
     <Property Name="id_employee" Type="int" />
     <Property Name="state" Type="varchar" MaxLength="50" />
     <Property Name="created_at" Type="datetime" />
     <Property Name="updated_at" Type="datetime" />
-    <Property Name="password" Type="varbinary" MaxLength="50" />
+    <Property Name="password" Type="varchar" MaxLength="100" />
   </EntityType>
+  <Association Name="fk_id_employe">
+    <End Role="employees" Type="Self.employees" Multiplicity="0..1" />
+    <End Role="inscripcions" Type="Self.inscripcions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employees">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="inscripcions">
+        <PropertyRef Name="id_employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="fk_id_employee">
     <End Role="employees" Type="Self.employees" Multiplicity="0..1" />
     <End Role="groups" Type="Self.groups" Multiplicity="*" />
@@ -458,6 +469,10 @@
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="typeemployees" EntityType="Self.typeemployees" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_id_employe" Association="Self.fk_id_employe">
+      <End Role="employees" EntitySet="employees" />
+      <End Role="inscripcions" EntitySet="inscripcions" />
+    </AssociationSet>
     <AssociationSet Name="fk_id_employee" Association="Self.fk_id_employee">
       <End Role="employees" EntitySet="employees" />
       <End Role="groups" EntitySet="groups" />

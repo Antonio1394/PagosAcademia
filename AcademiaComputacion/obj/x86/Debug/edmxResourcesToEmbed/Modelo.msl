@@ -212,7 +212,6 @@
           <ScalarProperty Name="state" ColumnName="state" />
           <ScalarProperty Name="id_employee" ColumnName="id_employee" />
           <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="remember_token" ColumnName="remember_token" />
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>

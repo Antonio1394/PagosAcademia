@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="AcademiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="AcademiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityType Name="detailgroups">
           <Key>
             <PropertyRef Name="id" />
@@ -198,14 +198,25 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="username" Type="varchar" MaxLength="255" />
-          <Property Name="remember_token" Type="varchar" MaxLength="100" />
           <Property Name="type" Type="varchar" MaxLength="50" />
           <Property Name="id_employee" Type="int" />
           <Property Name="state" Type="varchar" MaxLength="50" />
           <Property Name="created_at" Type="datetime" />
           <Property Name="updated_at" Type="datetime" />
-          <Property Name="password" Type="varbinary" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="100" />
         </EntityType>
+        <Association Name="fk_id_employe">
+          <End Role="employees" Type="Self.employees" Multiplicity="0..1" />
+          <End Role="inscripcions" Type="Self.inscripcions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employees">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="inscripcions">
+              <PropertyRef Name="id_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_id_employee">
           <End Role="employees" Type="Self.employees" Multiplicity="0..1" />
           <End Role="groups" Type="Self.groups" Multiplicity="*" />
@@ -463,6 +474,10 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="typeemployees" EntityType="Self.typeemployees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_id_employe" Association="Self.fk_id_employe">
+            <End Role="employees" EntitySet="employees" />
+            <End Role="inscripcions" EntitySet="inscripcions" />
+          </AssociationSet>
           <AssociationSet Name="fk_id_employee" Association="Self.fk_id_employee">
             <End Role="employees" EntitySet="employees" />
             <End Role="groups" EntitySet="groups" />
@@ -1078,20 +1093,19 @@
             <End Role="user" EntitySet="users" />
             <End Role="payment" EntitySet="payments" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="user">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="remember_token" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="id_employee" Type="Int32" />
           <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="created_at" Type="DateTime" Precision="3" />
           <Property Name="updated_at" Type="DateTime" Precision="3" />
-          <Property Name="password" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="employee" Relationship="AcademiaModel.fk_idemployee" FromRole="user" ToRole="employee" />
           <NavigationProperty Name="groups" Relationship="AcademiaModel.fk_id_user" FromRole="user" ToRole="group" />
           <NavigationProperty Name="payment_types" Relationship="AcademiaModel.fk_iduser" FromRole="user" ToRole="payment_types" />
@@ -1145,7 +1159,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1362,7 +1376,6 @@
                 <ScalarProperty Name="state" ColumnName="state" />
                 <ScalarProperty Name="id_employee" ColumnName="id_employee" />
                 <ScalarProperty Name="type" ColumnName="type" />
-                <ScalarProperty Name="remember_token" ColumnName="remember_token" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
