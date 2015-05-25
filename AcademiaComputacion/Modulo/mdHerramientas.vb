@@ -2,10 +2,11 @@
 Imports System.Data.EntityClient
 Module mdHerramientas
 
-    Dim servidor As String = "WIN-UGPBN4AEOBC\SQLEXPRESS"
+    Dim servidor As String = "ANTONIO\SQLEXPRESS"
+
     Dim baseDatos As String = "academia"
     Dim usuario As String = "sa"
-    Dim password As String = "prueba2015"
+    Dim password As String = "Umg2015"
     Dim dirModelo As String = "Modelo"
     Public modelo As AcademiaEntities
     Public usuarioLogueado As user
