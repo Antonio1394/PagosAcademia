@@ -29,6 +29,7 @@
         If estadoUsuario Then
             MessageBox.Show("Hay una operacion en proceso !! ", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
+
             If Me.tblListadoUsuarios.Columns(e.ColumnIndex).Name.Equals("eliminar") And e.RowIndex >= 0 Then
                 estadoUsuario = True
                 Dim resultado As DialogResult
@@ -42,21 +43,40 @@
                             Dim modificarUsuario As user = (From x In modelo.users Where x.id = codigoUsuario Select x).FirstOrDefault
                             modificarUsuario.state = "baja"
                             modelo.SaveChanges()
-                            MessageBox.Show("Laboratorio Eliminado Exitosamente", "Eliminacion Laboratorio", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                            MessageBox.Show("Usuario Eliminado Exitosamente", "Eliminacion Laboratorio", MessageBoxButtons.OK, MessageBoxIcon.Information)
                             MostrarUsuario()
                         Else
-                            modelo.laboratories.Remove(eliminarUsuario)
+                            modelo.users.Remove(eliminarUsuario)
                             modelo.SaveChanges()
                             MessageBox.Show("Usuario Eliminado Exitosamente", "Eliminacion Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                            MostrarLaboratorios()
+                            MostrarUsuario()
                         End If
 
                     Catch ex As Exception
                         MessageBox.Show(ex.Message)
                     End Try
                 End If
-                estadoLaboratorio = False
+                estadoUsuario = False
             End If
+        End If
+
+
+        If Me.tblListadoUsuarios.Columns(e.ColumnIndex).Name.Equals("modificar") And e.RowIndex >= 0 Then
+            Try
+                estadoUsuario = True
+                codigoUsuario = CInt(tblListadoUsuarios.Rows(e.RowIndex).Cells("codigo").Value)
+                txtUser.Text = CStr(tblListadoUsuarios.Rows(e.RowIndex).Cells("usuario").Value)
+                cboTipoUsuario.Text = CStr(tblListadoUsuarios.Rows(e.RowIndex).Cells("permisos").Value)
+                txtPassword.Enabled = False
+                txtPassword.NullText = "Solo el Usuario puede cambiar la contraseña"
+                cboEmpleado.Enabled = False
+                btnGuardar.Text = "Modificar"
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+            End Try
+        End If
+
+
     End Sub
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
@@ -134,7 +154,20 @@
 
     ''Modificar Usario-*******-*-*
     Public Sub ModificarUsuario()
-
+        If validacionUsario() Then
+            Dim modificarUsuario As user = (From x In modelo.users Where x.id = codigoUsuario Select x).FirstOrDefault
+            modificarUsuario.username = txtUser.Text.Trim
+            modificarUsuario.type = cboTipoUsuario.Text
+            modelo.SaveChanges()
+            MessageBox.Show("Modificacion Exitosa", "Modificar Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            limpiarUsuario()
+            btnGuardar.Text = "Guardar"
+            txtPassword.Enabled = True
+            cboEmpleado.Enabled = True
+            txtPassword.NullText = "Contraseña para el Usuario"
+            MostrarUsuario()
+            estadoUsuario = False
+        End If
     End Sub
 
     Public Function validacionUsario()
