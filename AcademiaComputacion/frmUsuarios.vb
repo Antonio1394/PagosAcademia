@@ -11,6 +11,7 @@
     Dim codigoUsuario As Integer
     Dim dt As New DataTable
     Dim incriptar As New Incriptacion '' instancio la clase de incriptar
+    Dim Modificar As Boolean = False
 
 
 #End Region
@@ -63,6 +64,7 @@
 
         If Me.tblListadoUsuarios.Columns(e.ColumnIndex).Name.Equals("modificar") And e.RowIndex >= 0 Then
             Try
+                Modificar = True
                 estadoUsuario = True
                 codigoUsuario = CInt(tblListadoUsuarios.Rows(e.RowIndex).Cells("codigo").Value)
                 txtUser.Text = CStr(tblListadoUsuarios.Rows(e.RowIndex).Cells("usuario").Value)
@@ -78,19 +80,18 @@
 
 
     End Sub
-
+    'evento del boton********************************************************************'
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
-        If validacionUsario() Then
-            If estadoUsuario Then
-                ModificarUsuario()
-            Else
-                GuardarUsuario()
-
-            End If
+        If Modificar Then
+            ModificarUsuario()
         Else
-            MessageBox.Show("Todos los campos son necesarios", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End If
 
+            If validacionUsario() Then
+                GuardarUsuario()
+            Else
+                MessageBox.Show("Todos los campos son necesarios", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        End If
     End Sub
 #End Region
 
@@ -130,6 +131,7 @@
 
     Public Sub GuardarUsuario()
         Try
+
             usuario = txtUser.Text.Trim
             password = txtPassword.Text.Trim
             tipo = cboTipoUsuario.Text
@@ -154,24 +156,25 @@
 
     ''Modificar Usario-*******-*-*
     Public Sub ModificarUsuario()
-        If validacionUsario() Then
-            Dim modificarUsuario As user = (From x In modelo.users Where x.id = codigoUsuario Select x).FirstOrDefault
-            modificarUsuario.username = txtUser.Text.Trim
-            modificarUsuario.type = cboTipoUsuario.Text
-            modelo.SaveChanges()
-            MessageBox.Show("Modificacion Exitosa", "Modificar Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            limpiarUsuario()
-            btnGuardar.Text = "Guardar"
-            txtPassword.Enabled = True
-            cboEmpleado.Enabled = True
-            txtPassword.NullText = "Contraseña para el Usuario"
-            MostrarUsuario()
-            estadoUsuario = False
-        End If
+
+        Dim modificarUsuario As user = (From x In modelo.users Where x.id = codigoUsuario Select x).FirstOrDefault
+        modificarUsuario.username = txtUser.Text.Trim
+        modificarUsuario.type = cboTipoUsuario.Text
+        modelo.SaveChanges()
+        MessageBox.Show("Modificacion Exitosa", "Modificar Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Modificar = False
+        limpiarUsuario()
+        btnGuardar.Text = "Guardar"
+        txtPassword.Enabled = True
+        cboEmpleado.Enabled = True
+        txtPassword.NullText = "Contraseña para el Usuario"
+        MostrarUsuario()
+        estadoUsuario = False
+       
     End Sub
 
     Public Function validacionUsario()
-        If txtPassword.Text.Trim.Length = 0 Or txtUser.Text.Trim.Length = 0 Or cboEmpleado.Text.Trim.Length = 0 Or cboTipoUsuario.Text.Trim.Length Then
+        If txtPassword.Text.Trim.Length = 0 Or txtUser.Text.Trim.Length = 0 Or cboEmpleado.Text.Trim.Length = 0 Or cboTipoUsuario.Text.Trim.Length = 0 Then
             Return False
         Else
             Return True

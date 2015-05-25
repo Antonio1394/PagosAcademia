@@ -42,6 +42,7 @@ Partial Class FrmPrincipal
         Me.RadButtonElement10 = New Telerik.WinControls.UI.RadButtonElement()
         Me.RadMenuItem1 = New Telerik.WinControls.UI.RadMenuItem()
         Me.RadMenuItem2 = New Telerik.WinControls.UI.RadMenuItem()
+        Me.RadMenuItem3 = New Telerik.WinControls.UI.RadMenuItem()
         Me.RadRibbonFormBehavior1 = New Telerik.WinControls.UI.RadRibbonFormBehavior()
         Me.TelerikMetroTheme1 = New Telerik.WinControls.Themes.TelerikMetroTheme()
         CType(Me.RadRibbonBar1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -53,9 +54,9 @@ Partial Class FrmPrincipal
         Me.RadRibbonBar1.CommandTabs.AddRange(New Telerik.WinControls.RadItem() {Me.RibbonTab1, Me.RibbonTab2})
         Me.RadRibbonBar1.Location = New System.Drawing.Point(0, 4)
         Me.RadRibbonBar1.Name = "RadRibbonBar1"
-        Me.RadRibbonBar1.Size = New System.Drawing.Size(1308, 154)
+        Me.RadRibbonBar1.Size = New System.Drawing.Size(1308, 153)
         Me.RadRibbonBar1.StartButtonImage = CType(resources.GetObject("RadRibbonBar1.StartButtonImage"), System.Drawing.Image)
-        Me.RadRibbonBar1.StartMenuItems.AddRange(New Telerik.WinControls.RadItem() {Me.RadMenuItem1, Me.RadMenuItem2})
+        Me.RadRibbonBar1.StartMenuItems.AddRange(New Telerik.WinControls.RadItem() {Me.RadMenuItem1, Me.RadMenuItem2, Me.RadMenuItem3})
         Me.RadRibbonBar1.TabIndex = 0
         Me.RadRibbonBar1.Text = "Gestor de Academia"
         Me.RadRibbonBar1.ThemeName = "TelerikMetro"
@@ -64,7 +65,7 @@ Partial Class FrmPrincipal
         '
         Me.RibbonTab1.AccessibleDescription = "Inicio"
         Me.RibbonTab1.AccessibleName = "Inicio"
-        Me.RibbonTab1.IsSelected = False
+        Me.RibbonTab1.IsSelected = True
         Me.RibbonTab1.Items.AddRange(New Telerik.WinControls.RadItem() {Me.RadRibbonBarGroup1})
         Me.RibbonTab1.Name = "RibbonTab1"
         Me.RibbonTab1.Text = "Inicio"
@@ -107,7 +108,7 @@ Partial Class FrmPrincipal
         '
         Me.RibbonTab2.AccessibleDescription = "Mantenimientos"
         Me.RibbonTab2.AccessibleName = "Mantenimientos"
-        Me.RibbonTab2.IsSelected = True
+        Me.RibbonTab2.IsSelected = False
         Me.RibbonTab2.Items.AddRange(New Telerik.WinControls.RadItem() {Me.RadRibbonBarGroup2, Me.RadRibbonBarGroup3})
         Me.RibbonTab2.Name = "RibbonTab2"
         Me.RibbonTab2.Text = "Mantenimientos"
@@ -235,6 +236,15 @@ Partial Class FrmPrincipal
         Me.RadMenuItem2.Text = "Cerrar Sesion"
         Me.RadMenuItem2.Visibility = Telerik.WinControls.ElementVisibility.Visible
         '
+        'RadMenuItem3
+        '
+        Me.RadMenuItem3.AccessibleDescription = "Restablecer Contraseña"
+        Me.RadMenuItem3.AccessibleName = "Restablecer Contraseña"
+        Me.RadMenuItem3.Image = Global.AcademiaComputacion.My.Resources.Resources.password9
+        Me.RadMenuItem3.Name = "RadMenuItem3"
+        Me.RadMenuItem3.Text = "Restablecer Contraseña"
+        Me.RadMenuItem3.Visibility = Telerik.WinControls.ElementVisibility.Visible
+        '
         'RadRibbonFormBehavior1
         '
         Me.RadRibbonFormBehavior1.Form = Me
@@ -285,5 +295,6 @@ Partial Class FrmPrincipal
     Friend WithEvents RadButtonElement9 As Telerik.WinControls.UI.RadButtonElement
     Friend WithEvents RadButtonElement10 As Telerik.WinControls.UI.RadButtonElement
     Friend WithEvents RadButtonElement11 As Telerik.WinControls.UI.RadButtonElement
+    Friend WithEvents RadMenuItem3 As Telerik.WinControls.UI.RadMenuItem
 End Class
 
