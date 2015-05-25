@@ -28,13 +28,15 @@ Partial Class FrmIncripcion
         Dim RadListDataItem2 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem3 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem4 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem5 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem6 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Me.wizarInscripcion = New Telerik.WinControls.UI.RadWizard()
         Me.WizardCompletionPage1 = New Telerik.WinControls.UI.WizardCompletionPage()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.btnAtras = New Telerik.WinControls.UI.RadButton()
         Me.btnSiguiente = New Telerik.WinControls.UI.RadButton()
         Me.panelEstudiante = New System.Windows.Forms.Panel()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.FechaNacimiento = New System.Windows.Forms.DateTimePicker()
         Me.RadLabel1 = New Telerik.WinControls.UI.RadLabel()
         Me.txtEncargado = New Telerik.WinControls.UI.RadTextBox()
         Me.cboSexo = New Telerik.WinControls.UI.RadDropDownList()
@@ -49,11 +51,15 @@ Partial Class FrmIncripcion
         Me.txtapellido = New Telerik.WinControls.UI.RadTextBox()
         Me.txtNombre = New Telerik.WinControls.UI.RadTextBox()
         Me.panelGrupo = New System.Windows.Forms.Panel()
+        Me.cboTipoPago = New Telerik.WinControls.UI.RadDropDownList()
+        Me.txtMonto = New Telerik.WinControls.UI.RadTextBox()
+        Me.RadLabel12 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel11 = New Telerik.WinControls.UI.RadLabel()
         Me.cboGrupo = New Telerik.WinControls.UI.RadDropDownList()
         Me.RadLabel10 = New Telerik.WinControls.UI.RadLabel()
         Me.cboPromotor = New Telerik.WinControls.UI.RadDropDownList()
         Me.RadLabel8 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadDropDownList1 = New Telerik.WinControls.UI.RadDropDownList()
+        Me.cboTipoInscripcion = New Telerik.WinControls.UI.RadDropDownList()
         Me.RadLabel2 = New Telerik.WinControls.UI.RadLabel()
         Me.WizardWelcomePage1 = New Telerik.WinControls.UI.WizardWelcomePage()
         Me.WizardPage1 = New Telerik.WinControls.UI.WizardPage()
@@ -78,11 +84,15 @@ Partial Class FrmIncripcion
         CType(Me.txtapellido, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtNombre, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelGrupo.SuspendLayout()
+        CType(Me.cboTipoPago, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtMonto, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel12, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel11, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboGrupo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel10, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboPromotor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadDropDownList1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboTipoInscripcion, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.alertaError, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -112,7 +122,9 @@ Partial Class FrmIncripcion
         'WizardCompletionPage1
         '
         Me.WizardCompletionPage1.ContentArea = Me.Panel3
+        Me.WizardCompletionPage1.Header = "Page header"
         Me.WizardCompletionPage1.Name = "WizardCompletionPage1"
+        Me.WizardCompletionPage1.Title = "Page title"
         Me.WizardCompletionPage1.Visibility = Telerik.WinControls.ElementVisibility.Visible
         '
         'Panel3
@@ -144,7 +156,7 @@ Partial Class FrmIncripcion
         'panelEstudiante
         '
         Me.panelEstudiante.BackColor = System.Drawing.Color.White
-        Me.panelEstudiante.Controls.Add(Me.DateTimePicker1)
+        Me.panelEstudiante.Controls.Add(Me.FechaNacimiento)
         Me.panelEstudiante.Controls.Add(Me.RadLabel1)
         Me.panelEstudiante.Controls.Add(Me.txtEncargado)
         Me.panelEstudiante.Controls.Add(Me.cboSexo)
@@ -163,14 +175,14 @@ Partial Class FrmIncripcion
         Me.panelEstudiante.Size = New System.Drawing.Size(517, 311)
         Me.panelEstudiante.TabIndex = 0
         '
-        'DateTimePicker1
+        'FechaNacimiento
         '
-        Me.DateTimePicker1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker1.Location = New System.Drawing.Point(173, 264)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(290, 22)
-        Me.DateTimePicker1.TabIndex = 52
+        Me.FechaNacimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.FechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.FechaNacimiento.Location = New System.Drawing.Point(173, 264)
+        Me.FechaNacimiento.Name = "FechaNacimiento"
+        Me.FechaNacimiento.Size = New System.Drawing.Size(290, 22)
+        Me.FechaNacimiento.TabIndex = 52
         '
         'RadLabel1
         '
@@ -294,32 +306,78 @@ Partial Class FrmIncripcion
         'panelGrupo
         '
         Me.panelGrupo.BackColor = System.Drawing.Color.White
+        Me.panelGrupo.Controls.Add(Me.cboTipoPago)
+        Me.panelGrupo.Controls.Add(Me.txtMonto)
+        Me.panelGrupo.Controls.Add(Me.RadLabel12)
+        Me.panelGrupo.Controls.Add(Me.RadLabel11)
         Me.panelGrupo.Controls.Add(Me.cboGrupo)
         Me.panelGrupo.Controls.Add(Me.RadLabel10)
         Me.panelGrupo.Controls.Add(Me.cboPromotor)
         Me.panelGrupo.Controls.Add(Me.RadLabel8)
-        Me.panelGrupo.Controls.Add(Me.RadDropDownList1)
+        Me.panelGrupo.Controls.Add(Me.cboTipoInscripcion)
         Me.panelGrupo.Controls.Add(Me.RadLabel2)
         Me.panelGrupo.Location = New System.Drawing.Point(0, 77)
         Me.panelGrupo.Name = "panelGrupo"
         Me.panelGrupo.Size = New System.Drawing.Size(667, 303)
         Me.panelGrupo.TabIndex = 1
         '
+        'cboTipoPago
+        '
+        Me.cboTipoPago.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
+        Me.cboTipoPago.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        RadListDataItem3.Text = "Normal"
+        RadListDataItem3.TextWrap = True
+        RadListDataItem4.Text = "Personalizada"
+        RadListDataItem4.TextWrap = True
+        Me.cboTipoPago.Items.Add(RadListDataItem3)
+        Me.cboTipoPago.Items.Add(RadListDataItem4)
+        Me.cboTipoPago.Location = New System.Drawing.Point(269, 186)
+        Me.cboTipoPago.Name = "cboTipoPago"
+        Me.cboTipoPago.Size = New System.Drawing.Size(274, 27)
+        Me.cboTipoPago.TabIndex = 8
+        Me.cboTipoPago.Text = "Elija una opcion"
+        '
+        'txtMonto
+        '
+        Me.txtMonto.Enabled = False
+        Me.txtMonto.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtMonto.Location = New System.Drawing.Point(269, 236)
+        Me.txtMonto.Name = "txtMonto"
+        Me.txtMonto.Size = New System.Drawing.Size(274, 27)
+        Me.txtMonto.TabIndex = 7
+        '
+        'RadLabel12
+        '
+        Me.RadLabel12.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RadLabel12.Location = New System.Drawing.Point(160, 236)
+        Me.RadLabel12.Name = "RadLabel12"
+        Me.RadLabel12.Size = New System.Drawing.Size(60, 25)
+        Me.RadLabel12.TabIndex = 6
+        Me.RadLabel12.Text = "Monto:"
+        '
+        'RadLabel11
+        '
+        Me.RadLabel11.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RadLabel11.Location = New System.Drawing.Point(135, 188)
+        Me.RadLabel11.Name = "RadLabel11"
+        Me.RadLabel11.Size = New System.Drawing.Size(85, 25)
+        Me.RadLabel11.TabIndex = 4
+        Me.RadLabel11.Text = "Tipo Pago:"
+        '
         'cboGrupo
         '
         Me.cboGrupo.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
         Me.cboGrupo.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cboGrupo.Location = New System.Drawing.Point(269, 158)
+        Me.cboGrupo.Location = New System.Drawing.Point(269, 140)
         Me.cboGrupo.Name = "cboGrupo"
         Me.cboGrupo.Size = New System.Drawing.Size(274, 27)
         Me.cboGrupo.TabIndex = 3
-        Me.cboGrupo.Text = "RadDropDownList2"
         Me.cboGrupo.ThemeName = "VisualStudio2012Light"
         '
         'RadLabel10
         '
         Me.RadLabel10.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadLabel10.Location = New System.Drawing.Point(163, 160)
+        Me.RadLabel10.Location = New System.Drawing.Point(163, 142)
         Me.RadLabel10.Name = "RadLabel10"
         Me.RadLabel10.Size = New System.Drawing.Size(57, 25)
         Me.RadLabel10.TabIndex = 2
@@ -329,7 +387,7 @@ Partial Class FrmIncripcion
         '
         Me.cboPromotor.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
         Me.cboPromotor.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cboPromotor.Location = New System.Drawing.Point(269, 103)
+        Me.cboPromotor.Location = New System.Drawing.Point(269, 85)
         Me.cboPromotor.Name = "cboPromotor"
         Me.cboPromotor.Size = New System.Drawing.Size(274, 27)
         Me.cboPromotor.TabIndex = 2
@@ -339,33 +397,33 @@ Partial Class FrmIncripcion
         'RadLabel8
         '
         Me.RadLabel8.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadLabel8.Location = New System.Drawing.Point(139, 103)
+        Me.RadLabel8.Location = New System.Drawing.Point(139, 85)
         Me.RadLabel8.Name = "RadLabel8"
         Me.RadLabel8.Size = New System.Drawing.Size(81, 25)
         Me.RadLabel8.TabIndex = 1
         Me.RadLabel8.Text = "Promotor:"
         '
-        'RadDropDownList1
+        'cboTipoInscripcion
         '
-        Me.RadDropDownList1.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
-        Me.RadDropDownList1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        RadListDataItem3.Text = "Personal"
-        RadListDataItem3.TextWrap = True
-        RadListDataItem4.Text = "Promotor"
-        RadListDataItem4.TextWrap = True
-        Me.RadDropDownList1.Items.Add(RadListDataItem3)
-        Me.RadDropDownList1.Items.Add(RadListDataItem4)
-        Me.RadDropDownList1.Location = New System.Drawing.Point(269, 56)
-        Me.RadDropDownList1.Name = "RadDropDownList1"
-        Me.RadDropDownList1.Size = New System.Drawing.Size(274, 27)
-        Me.RadDropDownList1.TabIndex = 1
-        Me.RadDropDownList1.Text = "Personal"
-        Me.RadDropDownList1.ThemeName = "VisualStudio2012Light"
+        Me.cboTipoInscripcion.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
+        Me.cboTipoInscripcion.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        RadListDataItem5.Text = "Personal"
+        RadListDataItem5.TextWrap = True
+        RadListDataItem6.Text = "Promotor"
+        RadListDataItem6.TextWrap = True
+        Me.cboTipoInscripcion.Items.Add(RadListDataItem5)
+        Me.cboTipoInscripcion.Items.Add(RadListDataItem6)
+        Me.cboTipoInscripcion.Location = New System.Drawing.Point(269, 38)
+        Me.cboTipoInscripcion.Name = "cboTipoInscripcion"
+        Me.cboTipoInscripcion.Size = New System.Drawing.Size(274, 27)
+        Me.cboTipoInscripcion.TabIndex = 1
+        Me.cboTipoInscripcion.Text = "Elija una opcion"
+        Me.cboTipoInscripcion.ThemeName = "VisualStudio2012Light"
         '
         'RadLabel2
         '
         Me.RadLabel2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadLabel2.Location = New System.Drawing.Point(71, 58)
+        Me.RadLabel2.Location = New System.Drawing.Point(71, 40)
         Me.RadLabel2.Name = "RadLabel2"
         Me.RadLabel2.Size = New System.Drawing.Size(149, 25)
         Me.RadLabel2.TabIndex = 0
@@ -375,6 +433,7 @@ Partial Class FrmIncripcion
         '
         Me.WizardWelcomePage1.ContentArea = Me.panelEstudiante
         Me.WizardWelcomePage1.CustomizePageHeader = False
+        Me.WizardWelcomePage1.Header = "Page header"
         Me.WizardWelcomePage1.HeaderVisibility = Telerik.WinControls.ElementVisibility.Visible
         Me.WizardWelcomePage1.Name = "WizardWelcomePage1"
         Me.WizardWelcomePage1.Title = "Incripcion de Alumnos"
@@ -428,11 +487,15 @@ Partial Class FrmIncripcion
         CType(Me.txtNombre, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelGrupo.ResumeLayout(False)
         Me.panelGrupo.PerformLayout()
+        CType(Me.cboTipoPago, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtMonto, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel12, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel11, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboGrupo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel10, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboPromotor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadDropDownList1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboTipoInscripcion, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.alertaError, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
@@ -463,12 +526,16 @@ Partial Class FrmIncripcion
     Friend WithEvents txtapellido As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents txtNombre As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents alertaError As System.Windows.Forms.ErrorProvider
-    Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
+    Friend WithEvents FechaNacimiento As System.Windows.Forms.DateTimePicker
     Friend WithEvents cboGrupo As Telerik.WinControls.UI.RadDropDownList
     Friend WithEvents RadLabel10 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents cboPromotor As Telerik.WinControls.UI.RadDropDownList
     Friend WithEvents RadLabel8 As Telerik.WinControls.UI.RadLabel
-    Friend WithEvents RadDropDownList1 As Telerik.WinControls.UI.RadDropDownList
+    Friend WithEvents cboTipoInscripcion As Telerik.WinControls.UI.RadDropDownList
     Friend WithEvents RadLabel2 As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents RadLabel11 As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents txtMonto As Telerik.WinControls.UI.RadTextBox
+    Friend WithEvents RadLabel12 As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents cboTipoPago As Telerik.WinControls.UI.RadDropDownList
 End Class
 

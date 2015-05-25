@@ -343,9 +343,6 @@ C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\AcademiaComputac
 C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\AcademiaComputacionJulianPrueba\AcademiaComputacion\obj\x86\Debug\es\AcademiaComputacion.resources.dll
 C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\AcademiaComputacionJulianPrueba\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmIncripcion.resources
 C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\bin\Debug\AcademiaComputacion.exe.config
-C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.exe
-C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.xml
-C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.pdb
 C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\bin\Debug\AcademiaComputacion.exe
 C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\bin\Debug\AcademiaComputacion.pdb
 C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\bin\Debug\AcademiaComputacion.xml
@@ -416,3 +413,6 @@ C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\Ac
 C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.vbproj.GenerateResource.Cache
 C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\es-GT\AcademiaComputacion.resources.dll
 C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\es\AcademiaComputacion.resources.dll
+C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.exe
+C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.xml
+C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.pdb
