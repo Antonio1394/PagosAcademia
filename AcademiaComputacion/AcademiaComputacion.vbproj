@@ -289,6 +289,12 @@
     <Compile Include="frmTipoEmpleado.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmUsuarios.Designer.vb">
+      <DependentUpon>frmUsuarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmUsuarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="group.vb">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
@@ -299,6 +305,8 @@
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Logica\FnLoguear.vb" />
+    <Compile Include="Logica\Incriptacion.vb" />
+    <Compile Include="Logica\IngresarUsuario.vb" />
     <Compile Include="Modelo.Context.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -397,6 +405,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTipoEmpleado.resx">
       <DependentUpon>frmTipoEmpleado.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUsuarios.resx">
+      <DependentUpon>frmUsuarios.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

@@ -44,4 +44,11 @@
         grupos.Show()
 
     End Sub
+
+    Private Sub RadButtonElement10_Click(sender As Object, e As EventArgs) Handles RadButtonElement10.Click
+        Dim usuarios As New FrmUsuarios
+        usuarios.MdiParent = Me
+        usuarios.Show()
+
+    End Sub
 End Class

@@ -17,8 +17,9 @@ Partial Public Class AcademiaEntities
     Public Sub New()
         MyBase.New("name=AcademiaEntities")
     End Sub
-    Public Sub New(ByVal conexion As String)
-        MyBase.New(conexion)
+
+    Public Sub New(Conexion As String)
+        MyBase.New(Conexion)
     End Sub
 
     Protected Overrides Sub OnModelCreating(modelBuilder As DbModelBuilder)

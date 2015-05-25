@@ -37,7 +37,7 @@
         <AssociationConnector Association="AcademiaModel.fk_id_student" ManuallyRouted="false" />
         <AssociationConnector Association="AcademiaModel.fk_type" ManuallyRouted="false" />
         <AssociationConnector Association="AcademiaModel.fk_id_payment_shares" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="AcademiaModel.user" Width="1.5" PointX="5.25" PointY="5.625" />
+        <EntityTypeShape EntityType="AcademiaModel.user" Width="1.5" PointX="5.25" PointY="5.75" />
         <AssociationConnector Association="AcademiaModel.fk_idemployee" />
         <AssociationConnector Association="AcademiaModel.fk_id_user" />
         <AssociationConnector Association="AcademiaModel.fk_iduser" />

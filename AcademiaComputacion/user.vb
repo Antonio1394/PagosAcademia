@@ -13,13 +13,12 @@ Imports System.Collections.Generic
 Partial Public Class user
     Public Property id As Integer
     Public Property username As String
-    Public Property remember_token As String
     Public Property type As String
     Public Property id_employee As Nullable(Of Integer)
     Public Property state As String
     Public Property created_at As Nullable(Of Date)
     Public Property updated_at As Nullable(Of Date)
-    Public Property password As Byte()
+    Public Property password As String
 
     Public Overridable Property employee As employee
     Public Overridable Property groups As ICollection(Of group) = New HashSet(Of group)
