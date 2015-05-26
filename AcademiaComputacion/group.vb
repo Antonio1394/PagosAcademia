@@ -16,7 +16,6 @@ Partial Public Class group
     Public Property id_laboratorie As Nullable(Of Integer)
     Public Property id_employee As Nullable(Of Integer)
     Public Property time_practice As Nullable(Of Integer)
-    Public Property id_user As Nullable(Of Integer)
     Public Property day As String
     Public Property schedule As String
     Public Property state As String
@@ -29,6 +28,5 @@ Partial Public Class group
     Public Overridable Property laboratory As laboratory
     Public Overridable Property program As program
     Public Overridable Property schedules_practice As schedules_practice
-    Public Overridable Property user As user
 
 End Class

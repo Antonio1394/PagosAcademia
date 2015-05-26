@@ -14,13 +14,11 @@ Partial Public Class payment_types
     Public Property id As Integer
     Public Property description As String
     Public Property amount As Nullable(Of Integer)
-    Public Property iduser As Nullable(Of Integer)
     Public Property state As String
     Public Property created_at As Nullable(Of Date)
     Public Property updated_at As Nullable(Of Date)
 
     Public Overridable Property extra_payments As ICollection(Of extra_payments) = New HashSet(Of extra_payments)
     Public Overridable Property payments As ICollection(Of payment) = New HashSet(Of payment)
-    Public Overridable Property user As user
 
 End Class

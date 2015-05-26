@@ -11,15 +11,15 @@ Imports System
 Imports System.Data.Entity
 Imports System.Data.Entity.Infrastructure
 
-Partial Public Class AcademiaEntities
+Partial Public Class AcademiaEntities1
     Inherits DbContext
 
     Public Sub New()
-        MyBase.New("name=AcademiaEntities")
+        MyBase.New("name=AcademiaEntities1")
     End Sub
 
-    Public Sub New(Conexion As String)
-        MyBase.New(Conexion)
+    Public Sub New(conexion As String)
+        MyBase.New(conexion)
     End Sub
 
     Protected Overrides Sub OnModelCreating(modelBuilder As DbModelBuilder)
@@ -39,7 +39,7 @@ Partial Public Class AcademiaEntities
     Public Property schedules_practice() As DbSet(Of schedules_practice)
     Public Property shares() As DbSet(Of share)
     Public Property students() As DbSet(Of student)
-    Public Property sysdiagrams() As DbSet(Of sysdiagram)
+    Public Property tics() As DbSet(Of tic)
     Public Property typeemployees() As DbSet(Of typeemployee)
     Public Property users() As DbSet(Of user)
 

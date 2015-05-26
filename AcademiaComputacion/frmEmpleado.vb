@@ -120,7 +120,7 @@
 
             Dim empleado = (From x In modelo.employees Where x.state = "activo" Select x).ToList
             For Each empleados As employee In empleado
-                tblListadoEmpleados.Rows.Add({empleados.id, empleados.firs_name, empleados.last_name, empleados.phone, empleados.addres, empleados.typeemployee.description, empleados.working_day})
+                tblListadoEmpleados.Rows.Add({empleados.id, empleados.first_name, empleados.last_name, empleados.phone, empleados.addres, empleados.typeemployee.description, empleados.working_day})
 
             Next
             tblListadoEmpleados.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
@@ -141,7 +141,7 @@
             tipo = cboTipoEmpleado.SelectedValue
             jornada = cboJornada.Text
             Dim nuevoEmpleado As New employee
-            nuevoEmpleado.firs_name = nombre
+            nuevoEmpleado.first_name = nombre
             nuevoEmpleado.last_name = apellido
             nuevoEmpleado.phone = telefono
             nuevoEmpleado.addres = direccion
@@ -167,7 +167,7 @@
     Public Sub modificarEmpleado()
         If validacionEmpleado() Then
             Dim modificarempleado As employee = (From x In modelo.employees Where x.id = codigoEmpleado Select x).FirstOrDefault
-            modificarempleado.firs_name = txtNombre.Text.Trim
+            modificarempleado.first_name = txtNombre.Text.Trim
             modificarempleado.last_name = txtApellido.Text.Trim
             modificarempleado.phone = txtTelefono.Text.Trim
             modificarempleado.addres = txtDireccion.Text.Trim

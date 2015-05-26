@@ -12,7 +12,7 @@ Imports System.Collections.Generic
 
 Partial Public Class employee
     Public Property id As Integer
-    Public Property firs_name As String
+    Public Property first_name As String
     Public Property last_name As String
     Public Property phone As String
     Public Property addres As String
@@ -22,8 +22,8 @@ Partial Public Class employee
     Public Property created_at As Nullable(Of Date)
     Public Property updated_at As Nullable(Of Date)
 
-    Public Overridable Property inscripcions As ICollection(Of inscripcion) = New HashSet(Of inscripcion)
     Public Overridable Property groups As ICollection(Of group) = New HashSet(Of group)
+    Public Overridable Property inscripcions As ICollection(Of inscripcion) = New HashSet(Of inscripcion)
     Public Overridable Property typeemployee As typeemployee
     Public Overridable Property users As ICollection(Of user) = New HashSet(Of user)
 

@@ -67,6 +67,10 @@ AcademiaComputacion
 	<summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
+</member><member name="P:AcademiaComputacion.My.Resources.Resources.password9">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
 </member><member name="P:AcademiaComputacion.My.Resources.Resources.payment7">
 	<summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.

@@ -28,7 +28,10 @@ Public Class FrmIncripcion
         mdHerramientas.conexion()
         cargarPromotor()
         cargarGrupos()
+
+
         MontoInscripcion = (From x In modelo.payment_types Where x.id = 1 Select x.amount).FirstOrDefault
+
         mensualidad = (From x In modelo.payment_types Where x.id = 2 Select x.amount).FirstOrDefault
         txtMonto.Text = MontoInscripcion
 
@@ -113,7 +116,7 @@ Public Class FrmIncripcion
         Return False
     End Function
     Public Sub cargarPromotor()
-        Dim promotores = (From x In modelo.employees Where x.id_type_employee = 4 And x.state = "activo" Select x.id, FullName = x.firs_name & " " & x.last_name).ToList
+        Dim promotores = (From x In modelo.employees Where x.id_type_employee = 4 And x.state = "activo" Select x.id, FullName = x.first_name & " " & x.last_name).ToList
         With cboPromotor
             .ValueMember = "id"
             .DisplayMember = "FullName"
@@ -132,7 +135,7 @@ Public Class FrmIncripcion
         Using transaction As New TransactionScope()
             Try
                 Dim nuevoAlumno As New student
-                nuevoAlumno.firs_name = txtNombre.Text
+                nuevoAlumno.first_name = txtNombre.Text
                 nuevoAlumno.last_name = txtapellido.Text
                 nuevoAlumno.phone = txtTelefono.Text
                 nuevoAlumno.addres = txtDireccion.Text

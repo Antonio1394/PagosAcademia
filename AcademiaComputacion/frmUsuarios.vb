@@ -40,7 +40,7 @@
                         codigoUsuario = CInt(tblListadoUsuarios.Rows(e.RowIndex).Cells("codigo").Value)
                         Dim eliminarUsuario As user = (From x In modelo.users Where x.id = codigoUsuario Select x).FirstOrDefault
 
-                        If eliminarUsuario.groups.Count > 0 Or eliminarUsuario.payments.Count > 0 Then
+                        If eliminarUsuario.payments.Count > 0 Then
                             Dim modificarUsuario As user = (From x In modelo.users Where x.id = codigoUsuario Select x).FirstOrDefault
                             modificarUsuario.state = "baja"
                             modelo.SaveChanges()
@@ -99,11 +99,12 @@
     'Funcion que llena el combo de empleados'
     Public Sub cargarDatos()
         Try
-            Dim query = (From empleado In modelo.employees Select empleado.id, FullName = empleado.firs_name & " " & empleado.last_name).ToList
+            Dim query = (From empleado In modelo.employees Select empleado.id, FullName = empleado.first_name & " " & empleado.last_name).ToList
             With cboEmpleado
                 .ValueMember = "id"
                 .DisplayMember = "FullName"
                 .DataSource = query
+
             End With
         Catch ex As Exception
         End Try
@@ -120,7 +121,7 @@
             Dim usuario = (From x In modelo.users Where x.state = "activo" Select x).ToList
 
             For Each usuarios As user In usuario
-                tblListadoUsuarios.Rows.Add({"", "", usuarios.id, usuarios.username, usuarios.type, usuarios.employee.firs_name & " " & usuarios.employee.last_name, usuarios.state})
+                tblListadoUsuarios.Rows.Add({"", "", usuarios.id, usuarios.username, usuarios.type, usuarios.employee.first_name & " " & usuarios.employee.last_name, usuarios.state})
             Next
             tblListadoUsuarios.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
 

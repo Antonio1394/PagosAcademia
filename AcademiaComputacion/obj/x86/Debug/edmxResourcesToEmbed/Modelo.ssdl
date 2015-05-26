@@ -16,7 +16,7 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="firs_name" Type="varchar" MaxLength="50" />
+    <Property Name="first_name" Type="varchar" MaxLength="50" />
     <Property Name="last_name" Type="varchar" MaxLength="50" />
     <Property Name="phone" Type="varchar" MaxLength="12" />
     <Property Name="addres" Type="varchar" MaxLength="50" />
@@ -48,7 +48,6 @@
     <Property Name="id_laboratorie" Type="int" />
     <Property Name="id_employee" Type="int" />
     <Property Name="time_practice" Type="int" />
-    <Property Name="id_user" Type="int" />
     <Property Name="day" Type="varchar" MaxLength="255" />
     <Property Name="schedule" Type="varchar" MaxLength="255" />
     <Property Name="state" Type="varchar" MaxLength="50" />
@@ -61,6 +60,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="id_student" Type="int" />
+    <Property Name="id_user" Type="int" />
     <Property Name="id_employee" Type="int" />
     <Property Name="id_payment" Type="int" />
     <Property Name="id_group" Type="int" />
@@ -98,7 +98,6 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="description" Type="varchar" MaxLength="255" />
     <Property Name="amount" Type="int" />
-    <Property Name="iduser" Type="int" />
     <Property Name="state" Type="varchar" MaxLength="50" />
     <Property Name="created_at" Type="datetime" />
     <Property Name="updated_at" Type="datetime" />
@@ -158,7 +157,7 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="firs_name" Type="varchar" MaxLength="50" />
+    <Property Name="first_name" Type="varchar" MaxLength="50" />
     <Property Name="last_name" Type="varchar" MaxLength="50" />
     <Property Name="phone" Type="varchar" MaxLength="12" />
     <Property Name="addres" Type="varchar" MaxLength="50" />
@@ -168,15 +167,17 @@
     <Property Name="created_at" Type="datetime" />
     <Property Name="updated_at" Type="datetime" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
+  <EntityType Name="tics">
     <Key>
-      <PropertyRef Name="diagram_id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_student" Type="int" />
+    <Property Name="degree" Type="varchar" MaxLength="50" />
+    <Property Name="personal_codes" Type="varchar" MaxLength="20" />
+    <Property Name="establishment" Type="varchar" MaxLength="200" />
+    <Property Name="property_address" Type="varchar" MaxLength="200" />
+    <Property Name="director_name" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="typeemployees">
     <Key>
@@ -193,25 +194,14 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="username" Type="varchar" MaxLength="255" />
+    <Property Name="password" Type="varchar" MaxLength="60" />
+    <Property Name="remember_token" Type="varchar" MaxLength="100" />
     <Property Name="type" Type="varchar" MaxLength="50" />
     <Property Name="id_employee" Type="int" />
     <Property Name="state" Type="varchar" MaxLength="50" />
     <Property Name="created_at" Type="datetime" />
     <Property Name="updated_at" Type="datetime" />
-    <Property Name="password" Type="varchar" MaxLength="100" />
   </EntityType>
-  <Association Name="fk_id_employe">
-    <End Role="employees" Type="Self.employees" Multiplicity="0..1" />
-    <End Role="inscripcions" Type="Self.inscripcions" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="employees">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="inscripcions">
-        <PropertyRef Name="id_employee" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="fk_id_employee">
     <End Role="employees" Type="Self.employees" Multiplicity="0..1" />
     <End Role="groups" Type="Self.groups" Multiplicity="*" />
@@ -220,6 +210,18 @@
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="groups">
+        <PropertyRef Name="id_employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_id_employee_inscripcion">
+    <End Role="employees" Type="Self.employees" Multiplicity="0..1" />
+    <End Role="inscripcions" Type="Self.inscripcions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employees">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="inscripcions">
         <PropertyRef Name="id_employee" />
       </Dependent>
     </ReferentialConstraint>
@@ -332,6 +334,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="fk_id_student_tics">
+    <End Role="students" Type="Self.students" Multiplicity="0..1" />
+    <End Role="tics" Type="Self.tics" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="students">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tics">
+        <PropertyRef Name="id_student" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="fk_id_students">
     <End Role="students" Type="Self.students" Multiplicity="0..1" />
     <End Role="detailgroups" Type="Self.detailgroups" Multiplicity="*" />
@@ -394,12 +408,12 @@
   </Association>
   <Association Name="fk_id_user">
     <End Role="users" Type="Self.users" Multiplicity="0..1" />
-    <End Role="groups" Type="Self.groups" Multiplicity="*" />
+    <End Role="inscripcions" Type="Self.inscripcions" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="users">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="groups">
+      <Dependent Role="inscripcions">
         <PropertyRef Name="id_user" />
       </Dependent>
     </ReferentialConstraint>
@@ -425,18 +439,6 @@
       </Principal>
       <Dependent Role="users">
         <PropertyRef Name="id_employee" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="fk_iduser">
-    <End Role="users" Type="Self.users" Multiplicity="0..1" />
-    <End Role="payment_types" Type="Self.payment_types" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="users">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="payment_types">
-        <PropertyRef Name="iduser" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -466,16 +468,16 @@
     <EntitySet Name="schedules_practice" EntityType="Self.schedules_practice" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="shares" EntityType="Self.shares" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="students" EntityType="Self.students" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tics" EntityType="Self.tics" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="typeemployees" EntityType="Self.typeemployees" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="fk_id_employe" Association="Self.fk_id_employe">
-      <End Role="employees" EntitySet="employees" />
-      <End Role="inscripcions" EntitySet="inscripcions" />
-    </AssociationSet>
     <AssociationSet Name="fk_id_employee" Association="Self.fk_id_employee">
       <End Role="employees" EntitySet="employees" />
       <End Role="groups" EntitySet="groups" />
+    </AssociationSet>
+    <AssociationSet Name="fk_id_employee_inscripcion" Association="Self.fk_id_employee_inscripcion">
+      <End Role="employees" EntitySet="employees" />
+      <End Role="inscripcions" EntitySet="inscripcions" />
     </AssociationSet>
     <AssociationSet Name="fk_id_group" Association="Self.fk_id_group">
       <End Role="groups" EntitySet="groups" />
@@ -513,6 +515,10 @@
       <End Role="students" EntitySet="students" />
       <End Role="inscripcions" EntitySet="inscripcions" />
     </AssociationSet>
+    <AssociationSet Name="fk_id_student_tics" Association="Self.fk_id_student_tics">
+      <End Role="students" EntitySet="students" />
+      <End Role="tics" EntitySet="tics" />
+    </AssociationSet>
     <AssociationSet Name="fk_id_students" Association="Self.fk_id_students">
       <End Role="students" EntitySet="students" />
       <End Role="detailgroups" EntitySet="detailgroups" />
@@ -535,7 +541,7 @@
     </AssociationSet>
     <AssociationSet Name="fk_id_user" Association="Self.fk_id_user">
       <End Role="users" EntitySet="users" />
-      <End Role="groups" EntitySet="groups" />
+      <End Role="inscripcions" EntitySet="inscripcions" />
     </AssociationSet>
     <AssociationSet Name="fk_id_user_payments" Association="Self.fk_id_user_payments">
       <End Role="users" EntitySet="users" />
@@ -544,10 +550,6 @@
     <AssociationSet Name="fk_idemployee" Association="Self.fk_idemployee">
       <End Role="employees" EntitySet="employees" />
       <End Role="users" EntitySet="users" />
-    </AssociationSet>
-    <AssociationSet Name="fk_iduser" Association="Self.fk_iduser">
-      <End Role="users" EntitySet="users" />
-      <End Role="payment_types" EntitySet="payment_types" />
     </AssociationSet>
     <AssociationSet Name="fk_type" Association="Self.fk_type">
       <End Role="payment_types" EntitySet="payment_types" />

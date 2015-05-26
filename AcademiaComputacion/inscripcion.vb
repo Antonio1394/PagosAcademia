@@ -13,6 +13,7 @@ Imports System.Collections.Generic
 Partial Public Class inscripcion
     Public Property id As Integer
     Public Property id_student As Nullable(Of Integer)
+    Public Property id_user As Nullable(Of Integer)
     Public Property id_employee As Nullable(Of Integer)
     Public Property id_payment As Nullable(Of Integer)
     Public Property id_group As Nullable(Of Integer)
@@ -26,5 +27,6 @@ Partial Public Class inscripcion
     Public Overridable Property shares As ICollection(Of share) = New HashSet(Of share)
     Public Overridable Property payment As payment
     Public Overridable Property student As student
+    Public Overridable Property user As user
 
 End Class

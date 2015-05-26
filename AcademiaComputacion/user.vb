@@ -13,16 +13,16 @@ Imports System.Collections.Generic
 Partial Public Class user
     Public Property id As Integer
     Public Property username As String
+    Public Property password As String
+    Public Property remember_token As String
     Public Property type As String
     Public Property id_employee As Nullable(Of Integer)
     Public Property state As String
     Public Property created_at As Nullable(Of Date)
     Public Property updated_at As Nullable(Of Date)
-    Public Property password As String
 
     Public Overridable Property employee As employee
-    Public Overridable Property groups As ICollection(Of group) = New HashSet(Of group)
-    Public Overridable Property payment_types As ICollection(Of payment_types) = New HashSet(Of payment_types)
+    Public Overridable Property inscripcions As ICollection(Of inscripcion) = New HashSet(Of inscripcion)
     Public Overridable Property payments As ICollection(Of payment) = New HashSet(Of payment)
 
 End Class

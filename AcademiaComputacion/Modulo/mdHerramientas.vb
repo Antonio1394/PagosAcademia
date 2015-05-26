@@ -2,13 +2,13 @@
 Imports System.Data.EntityClient
 Module mdHerramientas
 
-    Dim servidor As String = "ANTONIO\SQLEXPRESS"
+    Dim servidor As String = "ANTONIO"
 
     Dim baseDatos As String = "academia"
     Dim usuario As String = "sa"
     Dim password As String = "Umg2015"
     Dim dirModelo As String = "Modelo"
-    Public modelo As AcademiaEntities
+    Public modelo As AcademiaEntities1
     Public usuarioLogueado As user
 
     Public Function conexion() As Boolean
@@ -48,7 +48,7 @@ Module mdHerramientas
         Using conn As New EntityConnection(entityBuilder.ToString())
             conn.Open()
             Console.WriteLine("Just testing the connection.")
-            modelo = New AcademiaEntities(entityBuilder.ConnectionString)
+            modelo = New AcademiaEntities1(entityBuilder.ConnectionString)
 
             conn.Close()
             Return True

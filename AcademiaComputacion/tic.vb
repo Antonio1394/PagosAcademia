@@ -10,11 +10,15 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class sysdiagram
-    Public Property name As String
-    Public Property principal_id As Integer
-    Public Property diagram_id As Integer
-    Public Property version As Nullable(Of Integer)
-    Public Property definition As Byte()
+Partial Public Class tic
+    Public Property id As Integer
+    Public Property id_student As Nullable(Of Integer)
+    Public Property degree As String
+    Public Property personal_codes As String
+    Public Property establishment As String
+    Public Property property_address As String
+    Public Property director_name As String
+
+    Public Overridable Property student As student
 
 End Class

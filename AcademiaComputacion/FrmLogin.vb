@@ -3,6 +3,10 @@ Public Class FrmLogin
 #Region "Variables"
     Dim user As String = ""
     Dim password As String = ""
+    Dim passObtenida As String
+    Dim passDesincriptada As String
+    Public codigoLogeado As Integer
+
 #End Region
 #Region "Eventos"
     Private Sub FrmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -29,18 +33,23 @@ Public Class FrmLogin
     Public Sub verificar()
         Try
             'obtengo los valores de los cuadros de texto'
+            Dim funcion As New Incriptacion
+
             user = txtUser.Text.Trim
             password = txtPass.Text.Trim
     
-            Dim fnValidar As New FnLoguear
-            Dim resultado = fnValidar.ValidarUsuario(user, password)
-            If resultado = 1 Then
+            Dim obtenerUsuario = (From x In modelo.users Where x.username = user).FirstOrDefault
+            passObtenida = obtenerUsuario.password
+            passDesincriptada = funcion.Desencriptar(passObtenida)
+
+            If (passDesincriptada.Equals(password)) Then
                 usuarioLogueado = (From x In modelo.users Where x.username = user).FirstOrDefault
-                Me.Dispose()
+                Me.Hide()
+                FrmPrincipal.Show()
             Else
+                MessageBox.Show("Datos Incorrectos, Intente de Nuevo")
                 limpiar()
             End If
-
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try

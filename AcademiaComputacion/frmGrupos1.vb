@@ -113,7 +113,7 @@
         For x = LBound(getMaestrosGrupos) To UBound(getMaestrosGrupos)
             listaMaestros.Add(getMaestrosGrupos(x).id_employee)
         Next
-        Dim getMaestros = (From x In modelo.employees Where Not listaMaestros.Contains(x.id) Select x.id, FullName = x.firs_name & " " & x.last_name).ToList
+        Dim getMaestros = (From x In modelo.employees Where Not listaMaestros.Contains(x.id) Select x.id, FullName = x.first_name & " " & x.last_name).ToList
 
         With cboCatedratico
             .ValueMember = "id"
@@ -160,7 +160,7 @@
         Dim getGrupos = (From x In modelo.groups Where x.state = "activo" Select x).ToList
 
         For Each grupos As group In getGrupos
-            tblGrupos.Rows.Add(grupos.id, grupos.day, grupos.schedules_practice.time, grupos.program.description, grupos.employee.firs_name, grupos.user.employee.firs_name)
+            tblGrupos.Rows.Add(grupos.id, grupos.day, grupos.schedules_practice.time, grupos.program.description, grupos.employee.first_name)
         Next
         tblGrupos.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
     End Sub
@@ -178,8 +178,6 @@
             nuevoGrupo.id_laboratorie = cboLaboratorio.SelectedValue
             nuevoGrupo.id_employee = cboCatedratico.SelectedValue
             nuevoGrupo.time_practice = cboHorarioPractica.SelectedValue
-            'nuevoGrupo.id_user = usuarioLogueado.id
-            nuevoGrupo.id_user = 1
             nuevoGrupo.day = cboDia.Text
             nuevoGrupo.schedule = txtHorario.Text
             nuevoGrupo.created_at = Date.Now
