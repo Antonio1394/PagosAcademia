@@ -3,13 +3,15 @@ Imports System.Data.EntityClient
 Module mdHerramientas
 
     Dim servidor As String = "ANTONIO"
-
     Dim baseDatos As String = "academia"
     Dim usuario As String = "sa"
     Dim password As String = "Umg2015"
     Dim dirModelo As String = "Modelo"
     Public modelo As AcademiaEntities1
     Public usuarioLogueado As user
+    Public mora As Boolean = False
+    Public recibo As Boolean = True
+
 
     Public Function conexion() As Boolean
         Dim providerName As String = "System.Data.SqlClient"

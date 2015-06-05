@@ -29,6 +29,7 @@ Partial Class FrmUsuarios
         Dim GridViewTextBoxColumn3 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
         Dim GridViewTextBoxColumn4 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
         Dim GridViewTextBoxColumn5 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewCommandColumn3 As Telerik.WinControls.UI.GridViewCommandColumn = New Telerik.WinControls.UI.GridViewCommandColumn()
         Dim RadListDataItem1 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem2 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem3 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
@@ -83,7 +84,7 @@ Partial Class FrmUsuarios
         Me.RadGroupBox6.RootElement.Margin = New System.Windows.Forms.Padding(0)
         Me.RadGroupBox6.RootElement.Text = Nothing
         Me.RadGroupBox6.RootElement.TextOrientation = System.Windows.Forms.Orientation.Horizontal
-        Me.RadGroupBox6.Size = New System.Drawing.Size(803, 212)
+        Me.RadGroupBox6.Size = New System.Drawing.Size(766, 212)
         Me.RadGroupBox6.TabIndex = 12
         Me.RadGroupBox6.ThemeName = "VisualStudio2012Light"
         '
@@ -133,7 +134,13 @@ Partial Class FrmUsuarios
         GridViewTextBoxColumn5.EnableExpressionEditor = False
         GridViewTextBoxColumn5.HeaderText = "Estado"
         GridViewTextBoxColumn5.Name = "estado"
-        Me.tblListadoUsuarios.MasterTemplate.Columns.AddRange(New Telerik.WinControls.UI.GridViewDataColumn() {GridViewCommandColumn1, GridViewCommandColumn2, GridViewTextBoxColumn1, GridViewTextBoxColumn2, GridViewTextBoxColumn3, GridViewTextBoxColumn4, GridViewTextBoxColumn5})
+        GridViewCommandColumn3.DefaultText = "Restablecer"
+        GridViewCommandColumn3.EnableExpressionEditor = False
+        GridViewCommandColumn3.HeaderText = "Restablecer "
+        GridViewCommandColumn3.Name = "restablecer"
+        GridViewCommandColumn3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        GridViewCommandColumn3.UseDefaultText = True
+        Me.tblListadoUsuarios.MasterTemplate.Columns.AddRange(New Telerik.WinControls.UI.GridViewDataColumn() {GridViewCommandColumn1, GridViewCommandColumn2, GridViewTextBoxColumn1, GridViewTextBoxColumn2, GridViewTextBoxColumn3, GridViewTextBoxColumn4, GridViewTextBoxColumn5, GridViewCommandColumn3})
         Me.tblListadoUsuarios.MasterTemplate.EnableFiltering = True
         Me.tblListadoUsuarios.Name = "tblListadoUsuarios"
         Me.tblListadoUsuarios.ReadOnly = True
@@ -149,7 +156,7 @@ Partial Class FrmUsuarios
         Me.tblListadoUsuarios.RootElement.Margin = New System.Windows.Forms.Padding(0)
         Me.tblListadoUsuarios.RootElement.Text = Nothing
         Me.tblListadoUsuarios.RootElement.TextOrientation = System.Windows.Forms.Orientation.Horizontal
-        Me.tblListadoUsuarios.Size = New System.Drawing.Size(799, 192)
+        Me.tblListadoUsuarios.Size = New System.Drawing.Size(762, 192)
         Me.tblListadoUsuarios.TabIndex = 0
         Me.tblListadoUsuarios.Text = "RadGridView1"
         Me.tblListadoUsuarios.ThemeName = "VisualStudio2012Light"
@@ -181,7 +188,7 @@ Partial Class FrmUsuarios
         Me.RadGroupBox5.RootElement.Margin = New System.Windows.Forms.Padding(0)
         Me.RadGroupBox5.RootElement.Text = Nothing
         Me.RadGroupBox5.RootElement.TextOrientation = System.Windows.Forms.Orientation.Horizontal
-        Me.RadGroupBox5.Size = New System.Drawing.Size(803, 222)
+        Me.RadGroupBox5.Size = New System.Drawing.Size(766, 222)
         Me.RadGroupBox5.TabIndex = 11
         Me.RadGroupBox5.Text = "Nuevo Usario"
         Me.RadGroupBox5.ThemeName = "VisualStudio2012Light"
@@ -367,7 +374,7 @@ Partial Class FrmUsuarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(862, 480)
+        Me.ClientSize = New System.Drawing.Size(827, 480)
         Me.Controls.Add(Me.RadGroupBox6)
         Me.Controls.Add(Me.RadGroupBox5)
         Me.Name = "FrmUsuarios"

@@ -9,8 +9,6 @@
     Dim jornada As String
     Dim estadoEmpleado As Boolean = False
     Dim codigoEmpleado As Integer
-
-
 #End Region
 
 #Region "Eventos"
@@ -19,8 +17,6 @@
         mdHerramientas.conexion()
         MostrarEmpleado()
         cargarDatos()
-
-
     End Sub
 
     ''clic en el boton Guardar
@@ -30,7 +26,6 @@
                 modificarEmpleado()
             Else
                 GuardarEmpleado()
-
             End If
         Else
             MessageBox.Show("Todos los campos son necesarios", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -112,8 +107,6 @@
         Catch ex As Exception
         End Try
     End Sub
-
-
     Public Sub MostrarEmpleado()
         Try
             tblListadoEmpleados.Rows.Clear()
@@ -129,7 +122,6 @@
             MessageBox.Show(ex.Message)
         End Try
     End Sub
-
 
     Public Sub GuardarEmpleado()
         Try
@@ -157,8 +149,6 @@
             MostrarEmpleado()
             operacionEmpleados = False
 
-
-
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
@@ -181,9 +171,7 @@
             estadoEmpleado = False
             operacionEmpleados = False
 
-
         Else
-
             MessageBox.Show("Todos los campos son necesarios", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
     End Sub
@@ -195,10 +183,7 @@
         txtTelefono.Clear()
         cboJornada.Text = ""
         cboTipoEmpleado.Text = ""
-
-
     End Sub
-
 
     Public Function validacionEmpleado()
         If txtApellido.Text.Trim.Length = 0 Or txtDireccion.Text.Trim.Length = 0 Or txtNombre.Text.Trim.Length = 0 Or cboJornada.Text.Trim.Length = 0 Or cboTipoEmpleado.Text.Trim.Length = 0 Then
@@ -208,8 +193,5 @@
         End If
     End Function
 #End Region
-
-
-
 
 End Class

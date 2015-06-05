@@ -26,15 +26,25 @@ Public Class FrmIncripcion
 #Region "Eventos"
     Private Sub FrmIncripcion_Load(sender As Object, e As EventArgs) Handles Me.Load
         mdHerramientas.conexion()
+        If recibo Then
+            MessageBox.Show("true")
+            txtRecibo.Visible = False
+            lblRecibo.Visible = False
+            txtRecibo.Enabled = False
+            lblRecibo.Enabled = False
+        Else
+            txtRecibo.Visible = True
+            lblRecibo.Visible = True
+            txtRecibo.Enabled = True
+            lblRecibo.Enabled = True
+            MessageBox.Show("false")
+        End If
+
         cargarPromotor()
         cargarGrupos()
-
-
         MontoInscripcion = (From x In modelo.payment_types Where x.id = 1 Select x.amount).FirstOrDefault
-
         mensualidad = (From x In modelo.payment_types Where x.id = 2 Select x.amount).FirstOrDefault
         txtMonto.Text = MontoInscripcion
-
     End Sub
     Private Sub btnSiguiente_Click(sender As Object, e As EventArgs) Handles btnSiguiente.Click
 
@@ -153,14 +163,13 @@ Public Class FrmIncripcion
                 nuevoPago.id_user = 2
                 nuevoPago.description = "Inscripcion"
                 nuevoPago.amount = txtMonto.Text
-                nuevoPago.no_document = "dsf5454"
+                nuevoPago.no_document = txtRecibo.Text
                 nuevoPago.state = "activo"
                 nuevoPago.type = 1
                 nuevoPago.created_at = Date.Now
                 nuevoPago.updated_at = Date.Now
                 modelo.payments.Add(nuevoPago)
                 modelo.SaveChanges()
-
                 Dim idPago = nuevoPago.id
 
                 Dim nuevaInscripcion As New inscripcion

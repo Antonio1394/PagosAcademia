@@ -65,6 +65,8 @@ Partial Class FrmIncripcion
         Me.WizardPage1 = New Telerik.WinControls.UI.WizardPage()
         Me.TelerikMetroTheme1 = New Telerik.WinControls.Themes.TelerikMetroTheme()
         Me.alertaError = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.txtRecibo = New Telerik.WinControls.UI.RadTextBox()
+        Me.lblRecibo = New Telerik.WinControls.UI.RadLabel()
         CType(Me.wizarInscripcion, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.wizarInscripcion.SuspendLayout()
         CType(Me.btnAtras, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -95,6 +97,8 @@ Partial Class FrmIncripcion
         CType(Me.cboTipoInscripcion, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.alertaError, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtRecibo, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.lblRecibo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -306,6 +310,8 @@ Partial Class FrmIncripcion
         'panelGrupo
         '
         Me.panelGrupo.BackColor = System.Drawing.Color.White
+        Me.panelGrupo.Controls.Add(Me.txtRecibo)
+        Me.panelGrupo.Controls.Add(Me.lblRecibo)
         Me.panelGrupo.Controls.Add(Me.cboTipoPago)
         Me.panelGrupo.Controls.Add(Me.txtMonto)
         Me.panelGrupo.Controls.Add(Me.RadLabel12)
@@ -331,7 +337,7 @@ Partial Class FrmIncripcion
         RadListDataItem4.TextWrap = True
         Me.cboTipoPago.Items.Add(RadListDataItem3)
         Me.cboTipoPago.Items.Add(RadListDataItem4)
-        Me.cboTipoPago.Location = New System.Drawing.Point(269, 186)
+        Me.cboTipoPago.Location = New System.Drawing.Point(269, 165)
         Me.cboTipoPago.Name = "cboTipoPago"
         Me.cboTipoPago.Size = New System.Drawing.Size(274, 27)
         Me.cboTipoPago.TabIndex = 8
@@ -341,7 +347,7 @@ Partial Class FrmIncripcion
         '
         Me.txtMonto.Enabled = False
         Me.txtMonto.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMonto.Location = New System.Drawing.Point(269, 236)
+        Me.txtMonto.Location = New System.Drawing.Point(269, 215)
         Me.txtMonto.Name = "txtMonto"
         Me.txtMonto.Size = New System.Drawing.Size(274, 27)
         Me.txtMonto.TabIndex = 7
@@ -349,7 +355,7 @@ Partial Class FrmIncripcion
         'RadLabel12
         '
         Me.RadLabel12.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadLabel12.Location = New System.Drawing.Point(160, 236)
+        Me.RadLabel12.Location = New System.Drawing.Point(160, 215)
         Me.RadLabel12.Name = "RadLabel12"
         Me.RadLabel12.Size = New System.Drawing.Size(60, 25)
         Me.RadLabel12.TabIndex = 6
@@ -358,7 +364,7 @@ Partial Class FrmIncripcion
         'RadLabel11
         '
         Me.RadLabel11.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadLabel11.Location = New System.Drawing.Point(135, 188)
+        Me.RadLabel11.Location = New System.Drawing.Point(135, 167)
         Me.RadLabel11.Name = "RadLabel11"
         Me.RadLabel11.Size = New System.Drawing.Size(85, 25)
         Me.RadLabel11.TabIndex = 4
@@ -368,7 +374,7 @@ Partial Class FrmIncripcion
         '
         Me.cboGrupo.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
         Me.cboGrupo.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cboGrupo.Location = New System.Drawing.Point(269, 140)
+        Me.cboGrupo.Location = New System.Drawing.Point(269, 119)
         Me.cboGrupo.Name = "cboGrupo"
         Me.cboGrupo.Size = New System.Drawing.Size(274, 27)
         Me.cboGrupo.TabIndex = 3
@@ -377,7 +383,7 @@ Partial Class FrmIncripcion
         'RadLabel10
         '
         Me.RadLabel10.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadLabel10.Location = New System.Drawing.Point(163, 142)
+        Me.RadLabel10.Location = New System.Drawing.Point(163, 121)
         Me.RadLabel10.Name = "RadLabel10"
         Me.RadLabel10.Size = New System.Drawing.Size(57, 25)
         Me.RadLabel10.TabIndex = 2
@@ -387,7 +393,7 @@ Partial Class FrmIncripcion
         '
         Me.cboPromotor.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
         Me.cboPromotor.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cboPromotor.Location = New System.Drawing.Point(269, 85)
+        Me.cboPromotor.Location = New System.Drawing.Point(269, 64)
         Me.cboPromotor.Name = "cboPromotor"
         Me.cboPromotor.Size = New System.Drawing.Size(274, 27)
         Me.cboPromotor.TabIndex = 2
@@ -397,7 +403,7 @@ Partial Class FrmIncripcion
         'RadLabel8
         '
         Me.RadLabel8.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadLabel8.Location = New System.Drawing.Point(139, 85)
+        Me.RadLabel8.Location = New System.Drawing.Point(139, 64)
         Me.RadLabel8.Name = "RadLabel8"
         Me.RadLabel8.Size = New System.Drawing.Size(81, 25)
         Me.RadLabel8.TabIndex = 1
@@ -413,7 +419,7 @@ Partial Class FrmIncripcion
         RadListDataItem6.TextWrap = True
         Me.cboTipoInscripcion.Items.Add(RadListDataItem5)
         Me.cboTipoInscripcion.Items.Add(RadListDataItem6)
-        Me.cboTipoInscripcion.Location = New System.Drawing.Point(269, 38)
+        Me.cboTipoInscripcion.Location = New System.Drawing.Point(269, 17)
         Me.cboTipoInscripcion.Name = "cboTipoInscripcion"
         Me.cboTipoInscripcion.Size = New System.Drawing.Size(274, 27)
         Me.cboTipoInscripcion.TabIndex = 1
@@ -423,7 +429,7 @@ Partial Class FrmIncripcion
         'RadLabel2
         '
         Me.RadLabel2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadLabel2.Location = New System.Drawing.Point(71, 40)
+        Me.RadLabel2.Location = New System.Drawing.Point(71, 19)
         Me.RadLabel2.Name = "RadLabel2"
         Me.RadLabel2.Size = New System.Drawing.Size(149, 25)
         Me.RadLabel2.TabIndex = 0
@@ -452,6 +458,24 @@ Partial Class FrmIncripcion
         'alertaError
         '
         Me.alertaError.ContainerControl = Me
+        '
+        'txtRecibo
+        '
+        Me.txtRecibo.Enabled = False
+        Me.txtRecibo.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtRecibo.Location = New System.Drawing.Point(269, 257)
+        Me.txtRecibo.Name = "txtRecibo"
+        Me.txtRecibo.Size = New System.Drawing.Size(274, 27)
+        Me.txtRecibo.TabIndex = 9
+        '
+        'lblRecibo
+        '
+        Me.lblRecibo.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblRecibo.Location = New System.Drawing.Point(160, 257)
+        Me.lblRecibo.Name = "lblRecibo"
+        Me.lblRecibo.Size = New System.Drawing.Size(87, 25)
+        Me.lblRecibo.TabIndex = 8
+        Me.lblRecibo.Text = "No Recibo:"
         '
         'FrmIncripcion
         '
@@ -498,6 +522,8 @@ Partial Class FrmIncripcion
         CType(Me.cboTipoInscripcion, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.alertaError, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtRecibo, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lblRecibo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -537,5 +563,7 @@ Partial Class FrmIncripcion
     Friend WithEvents txtMonto As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents RadLabel12 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents cboTipoPago As Telerik.WinControls.UI.RadDropDownList
+    Friend WithEvents txtRecibo As Telerik.WinControls.UI.RadTextBox
+    Friend WithEvents lblRecibo As Telerik.WinControls.UI.RadLabel
 End Class
 

@@ -12,6 +12,8 @@
     Dim dt As New DataTable
     Dim incriptar As New Incriptacion '' instancio la clase de incriptar
     Dim Modificar As Boolean = False
+    Dim funcion As New Incriptacion
+    Dim miValor As String
 
 
 #End Region
@@ -78,20 +80,48 @@
             End Try
         End If
 
+        If Me.tblListadoUsuarios.Columns(e.ColumnIndex).Name.Equals("restablecer") And e.RowIndex >= 0 Then
+            estadoUsuario = True
+            Dim UsuarioRestablecer As String = CStr(tblListadoUsuarios.Rows(e.RowIndex).Cells("usuario").Value)
+            codigoUsuario = CInt(tblListadoUsuarios.Rows(e.RowIndex).Cells("codigo").Value)
+            Dim resultado As DialogResult
+            resultado = MessageBox.Show("Comfirma Restablecer la Contraseña de: " & UsuarioRestablecer, "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If resultado = DialogResult.Yes Then
+                miValor = InputBox("Escriba la nueva Contrase;a", "Restablecer")
+                Dim modificarUsuario As user = (From x In modelo.users Where x.id = codigoUsuario Select x).FirstOrDefault
+                modificarUsuario.password = funcion.Encriptar(miValor)
+                modelo.SaveChanges()
+                MessageBox.Show("Contraseña Restablecida Correctamente", "Laboratorio", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                MessageBox.Show("Dijo no")
+            End If
+            estadoUsuario = False
+        End If
 
     End Sub
     'evento del boton********************************************************************'
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
-        If Modificar Then
-            ModificarUsuario()
-        Else
 
-            If validacionUsario() Then
-                GuardarUsuario()
+        If UsuarioDisponible() Then
+            MessageBox.Show("Este Usuario no esta Disponible", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        Else
+            If Modificar Then
+                ModificarUsuario()
             Else
-                MessageBox.Show("Todos los campos son necesarios", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+                If validacionUsario() Then
+                    GuardarUsuario()
+                Else
+                    MessageBox.Show("Todos los campos son necesarios", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
             End If
+
         End If
+
+        
+
+
+
     End Sub
 #End Region
 
@@ -99,11 +129,14 @@
     'Funcion que llena el combo de empleados'
     Public Sub cargarDatos()
         Try
-            Dim query = (From empleado In modelo.employees Select empleado.id, FullName = empleado.first_name & " " & empleado.last_name).ToList
+            Dim funcion As New IngresarUsuario
+
+
+
             With cboEmpleado
                 .ValueMember = "id"
-                .DisplayMember = "FullName"
-                .DataSource = query
+                .DisplayMember = "nombre"
+                .DataSource = funcion.MostrarEmpleado
 
             End With
         Catch ex As Exception
@@ -138,7 +171,8 @@
             tipo = cboTipoUsuario.Text
             empleado = cboEmpleado.SelectedValue
             passwordIncriptada = incriptar.Encriptar(password)
-
+            '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+            '''''''''''''''''''''''''''''
             Dim funcion As New IngresarUsuario
             funcion.insertar(usuario, passwordIncriptada, tipo, empleado)
             If funcion.resultadp > 0 Then
@@ -187,6 +221,29 @@
         cboEmpleado.Text = ""
 
     End Sub
+
+    Public Function UsuarioDisponible()
+        Try
+            Dim UsuarioTexto As String = txtUser.Text.Trim
+            Dim usuario = (From x In modelo.users Select x).ToList
+
+            For Each Usuarios As user In usuario
+                If Usuarios.username.Equals(UsuarioTexto) Then
+                    Return True
+                    Exit For
+
+                Else
+                    Return False
+                    Exit For
+
+                End If
+            Next
+
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+    End Function
     '*******************************************fin de la region de funciones*********************************************'
 #End Region
 
@@ -194,4 +251,9 @@
 
     
     
+    Private Sub txtUser_Leave(sender As Object, e As EventArgs) Handles txtUser.Leave
+        If UsuarioDisponible() Then
+            MessageBox.Show("Este Usuario no esta Disponible", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        End If
+    End Sub
 End Class

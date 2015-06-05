@@ -283,6 +283,12 @@
     <Compile Include="frmProgramas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmTipoPagos.Designer.vb">
+      <DependentUpon>frmTipoPagos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTipoPagos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmTipoEmpleado.Designer.vb">
       <DependentUpon>frmTipoEmpleado.vb</DependentUpon>
     </Compile>
@@ -402,6 +408,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmProgramas.resx">
       <DependentUpon>frmProgramas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTipoPagos.resx">
+      <DependentUpon>frmTipoPagos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTipoEmpleado.resx">
       <DependentUpon>frmTipoEmpleado.vb</DependentUpon>

@@ -4,7 +4,8 @@ Public Class IngresarUsuario
 #Region "Variables"
     Inherits Conexion
     Dim cmd As New SqlCommand
-    Public resultadp As Integer
+    Public resultadp As String
+    Dim dsdata As New DataSet
 #End Region
 
 #Region "Funciones"
@@ -21,6 +22,26 @@ Public Class IngresarUsuario
             cmd.Connection = cnn
             resultadp = cmd.ExecuteNonQuery
             Return resultadp
+
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+            Return Nothing
+        Finally
+            desconectar()
+
+        End Try
+    End Function
+
+
+    Public Function MostrarEmpleado()
+        Try
+            conectado()
+            cmd = New SqlCommand("CargarEmpleado")
+
+
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = cnn
 
 
         Catch ex As Exception

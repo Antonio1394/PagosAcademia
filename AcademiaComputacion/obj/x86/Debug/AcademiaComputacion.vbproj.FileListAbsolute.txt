@@ -494,3 +494,4 @@ C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaCom
 C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\es\AcademiaComputacion.resources.dll
 C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmUsuarios.resources
 >>>>>>> d76c3f798dd4acd8235e8c8f2f779507ab18bf3b
+C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmTipoPagos.resources
