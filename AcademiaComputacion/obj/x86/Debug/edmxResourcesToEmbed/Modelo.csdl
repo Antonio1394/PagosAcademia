@@ -28,7 +28,7 @@
     <Property Name="created_at" Type="DateTime" Precision="3" />
     <Property Name="updated_at" Type="DateTime" Precision="3" />
     <NavigationProperty Name="groups" Relationship="Self.fk_id_employee" FromRole="employees" ToRole="groups" />
-    <NavigationProperty Name="inscripcions" Relationship="Self.fk_id_employee_inscripcion" FromRole="employees" ToRole="inscripcions" />
+    <NavigationProperty Name="inscripcions" Relationship="Self.fk_id_employees" FromRole="employees" ToRole="inscripcions" />
     <NavigationProperty Name="typeemployee" Relationship="Self.fk_id_type_employee" FromRole="employees" ToRole="typeemployees" />
     <NavigationProperty Name="users" Relationship="Self.fk_idemployee" FromRole="employees" ToRole="users" />
   </EntityType>
@@ -83,7 +83,7 @@
     <Property Name="state" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="created_at" Type="DateTime" Precision="3" />
     <Property Name="updated_at" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="employee" Relationship="Self.fk_id_employee_inscripcion" FromRole="inscripcions" ToRole="employees" />
+    <NavigationProperty Name="employee" Relationship="Self.fk_id_employees" FromRole="inscripcions" ToRole="employees" />
     <NavigationProperty Name="group" Relationship="Self.fk_id_group" FromRole="inscripcions" ToRole="groups" />
     <NavigationProperty Name="shares" Relationship="Self.fk_id_inscripcion" FromRole="inscripcions" ToRole="shares" />
     <NavigationProperty Name="payment" Relationship="Self.fk_id_payment" FromRole="inscripcions" ToRole="payments" />
@@ -204,6 +204,16 @@
     <NavigationProperty Name="inscripcions" Relationship="Self.fk_id_student" FromRole="students" ToRole="inscripcions" />
     <NavigationProperty Name="tics" Relationship="Self.fk_id_student_tics" FromRole="students" ToRole="tics" />
   </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
   <EntityType Name="tic">
     <Key>
       <PropertyRef Name="id" />
@@ -280,7 +290,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_id_employee_inscripcion">
+  <Association Name="fk_id_employees">
     <End Role="employees" Type="Self.employee" Multiplicity="0..1" />
     <End Role="inscripcions" Type="Self.inscripcion" Multiplicity="*" />
     <ReferentialConstraint>
@@ -496,7 +506,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="AcademiaEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="AcademiaEntities3" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="detailgroups" EntityType="Self.detailgroup" />
     <EntitySet Name="employees" EntityType="Self.employee" />
     <EntitySet Name="extra_payments" EntityType="Self.extra_payments" />
@@ -510,6 +520,7 @@
     <EntitySet Name="schedules_practice" EntityType="Self.schedules_practice" />
     <EntitySet Name="shares" EntityType="Self.share" />
     <EntitySet Name="students" EntityType="Self.student" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="tics" EntityType="Self.tic" />
     <EntitySet Name="typeemployees" EntityType="Self.typeemployee" />
     <EntitySet Name="users" EntityType="Self.user" />
@@ -525,7 +536,7 @@
       <End Role="employees" EntitySet="employees" />
       <End Role="groups" EntitySet="groups" />
     </AssociationSet>
-    <AssociationSet Name="fk_id_employee_inscripcion" Association="Self.fk_id_employee_inscripcion">
+    <AssociationSet Name="fk_id_employees" Association="Self.fk_id_employees">
       <End Role="employees" EntitySet="employees" />
       <End Role="inscripcions" EntitySet="inscripcions" />
     </AssociationSet>
@@ -597,5 +608,19 @@
       <End Role="students" EntitySet="students" />
       <End Role="tics" EntitySet="tics" />
     </AssociationSet>
+    <FunctionImport Name="prueba" ReturnType="Collection(String)">
+      <Parameter Name="idInscripcion" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spIncripcion" ReturnType="Collection(AcademiaModel.spIncripcion_Result)">
+      <Parameter Name="idInscripcion" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="spIncripcion_Result">
+    <Property Type="String" Name="NombreAlumno" Nullable="false" MaxLength="101" />
+    <Property Type="String" Name="description" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="amount" Nullable="true" />
+    <Property Type="String" Name="no_document" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="schedule" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="day" Nullable="true" MaxLength="255" />
+  </ComplexType>
 </Schema>

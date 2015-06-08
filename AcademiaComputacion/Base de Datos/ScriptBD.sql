@@ -81,7 +81,6 @@ create table users(
 id int identity,
 username varchar(255),
 password varchar(60),
-remember_token varchar(100),
 type varchar(50),
 id_employee int,
 state varchar(50) default 'activo',
@@ -100,7 +99,6 @@ state varchar(50) default 'aceptado',
 created_at datetime,
 updated_at datetime
 constraint pk_id_payment_types primary key(id)
-
 )
 
 create table groups(
@@ -154,8 +152,8 @@ constraint pk_id_inscripcions primary key(id),
 constraint fk_id_student foreign key(id_student) references students(id),
 constraint fk_id_user foreign key(id_user) references users(id),
 constraint fk_id_payment foreign key(id_payment) references payments(id),
-constraint fk_id_group foreign key(id_group) references groups(id)
-constraint fk_id_employee foreign key(id_employee) references employees(id)
+constraint fk_id_group foreign key(id_group) references groups(id),
+constraint fk_id_employees foreign key(id_employee) references employees(id)
 )
 
 create table detailgroups(
@@ -203,11 +201,11 @@ constraint fk_id_type_payment_extra foreign key(id_type_payment) references paym
 create table tics(
 id int identity,
 id_student int,
-degree string(50),
-personal_codes string(20),
-establishment string(200),
-property_address string	(200),
-director_name string(50),
+degree varchar(50),
+personal_codes varchar(20),
+establishment varchar(200),
+property_address varchar(200),
+director_name varchar(50),
 constraint pk_id_tics primary key(id),
 constraint fk_id_student_tics foreign key(id_student) references students(id)
 )

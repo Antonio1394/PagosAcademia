@@ -7,7 +7,7 @@ Module mdHerramientas
     Dim usuario As String = "sa"
     Dim password As String = "Umg2015"
     Dim dirModelo As String = "Modelo"
-    Public modelo As AcademiaEntities1
+    Public modelo As AcademiaEntities3
     Public usuarioLogueado As user
     Public mora As Boolean = False
     Public recibo As Boolean = True
@@ -50,7 +50,7 @@ Module mdHerramientas
         Using conn As New EntityConnection(entityBuilder.ToString())
             conn.Open()
             Console.WriteLine("Just testing the connection.")
-            modelo = New AcademiaEntities1(entityBuilder.ConnectionString)
+            modelo = New AcademiaEntities3(entityBuilder.ConnectionString)
 
             conn.Close()
             Return True
@@ -61,5 +61,36 @@ Module mdHerramientas
         conexion()
         usuarioLogueado = (From x In modelo.users Where x.id = usuarioLogueado.id).FirstOrDefault
     End Sub
+
+    Public Function EQToDataTable(ByVal parIList As System.Collections.IEnumerable) As System.Data.DataTable
+        Dim ret As New System.Data.DataTable()
+        Try
+            Dim ppi As System.Reflection.PropertyInfo() = Nothing
+            If parIList Is Nothing Then Return ret
+            For Each itm In parIList
+                If ppi Is Nothing Then
+                    ppi = DirectCast(itm.[GetType](), System.Type).GetProperties()
+                    For Each pi As System.Reflection.PropertyInfo In ppi
+                        Dim colType As System.Type = pi.PropertyType
+                        If (colType.IsGenericType) AndAlso
+                           (colType.GetGenericTypeDefinition() Is GetType(System.Nullable(Of ))) Then colType = colType.GetGenericArguments()(0)
+                        ret.Columns.Add(New System.Data.DataColumn(pi.Name, colType))
+                    Next
+                End If
+                Dim dr As System.Data.DataRow = ret.NewRow
+                For Each pi As System.Reflection.PropertyInfo In ppi
+                    dr(pi.Name) = If(pi.GetValue(itm, Nothing) Is Nothing, DBNull.Value, pi.GetValue(itm, Nothing))
+                Next
+                ret.Rows.Add(dr)
+            Next
+            For Each c As System.Data.DataColumn In ret.Columns
+                c.ColumnName = c.ColumnName.Replace("_", " ")
+            Next
+        Catch ex As Exception
+            ret = New System.Data.DataTable()
+        End Try
+        Return ret
+    End Function
+
 
 End Module

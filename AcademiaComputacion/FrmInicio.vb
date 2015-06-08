@@ -184,7 +184,6 @@
     Private Sub PaginaLaboratorios_Paint(sender As Object, e As PaintEventArgs) Handles PaginaLaboratorios.Paint
         mdHerramientas.conexion()
         MostrarLaboratorios()
-
     End Sub
 
     'guardar Laboratorios'

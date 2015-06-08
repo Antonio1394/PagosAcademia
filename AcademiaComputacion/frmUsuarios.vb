@@ -14,7 +14,7 @@
     Dim Modificar As Boolean = False
     Dim funcion As New Incriptacion
     Dim miValor As String
-
+    Dim listadoEmpleados As New List(Of Integer)
 
 #End Region
 
@@ -126,18 +126,19 @@
 #End Region
 
 #Region "Funciones"
-    'Funcion que llena el combo de empleados'
     Public Sub cargarDatos()
         Try
-            Dim funcion As New IngresarUsuario
+            listadoEmpleados.Clear()
+            Dim extraerEmpleados = (From x In modelo.users Where x.state = "activo" Select x.id_employee Group By id_employee Into total = Count(id_employee)).ToArray
 
-
-
+            For x = LBound(extraerEmpleados) To UBound(extraerEmpleados)
+                listadoEmpleados.Add(extraerEmpleados(x).id_employee)
+            Next
+            Dim extraerEmpleadosDos = (From x In modelo.employees Where Not listadoEmpleados.Contains(x.id) And x.state = "activo" Select x.id, FullName = x.first_name & " " & x.last_name).ToList
             With cboEmpleado
                 .ValueMember = "id"
-                .DisplayMember = "nombre"
-                .DataSource = funcion.MostrarEmpleado
-
+                .DisplayMember = "FullName"
+                .DataSource = extraerEmpleadosDos
             End With
         Catch ex As Exception
         End Try
@@ -145,11 +146,6 @@
 
     Public Sub MostrarUsuario()
         Try
-            'Dim func As New crudController
-            'dt = func.mostrarUsuarios
-            'DataGridView1.DataSource = dt
-            ''tblListadoUsuarios.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
-
             tblListadoUsuarios.Rows.Clear()
             Dim usuario = (From x In modelo.users Where x.state = "activo" Select x).ToList
 
@@ -179,6 +175,7 @@
                 MessageBox.Show("Registro Guardado Exitosamente", "Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 MostrarUsuario()
                 limpiarUsuario()
+                cargarDatos()
 
             Else
                 MessageBox.Show("Ocurrio un error", "Usuario", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -231,20 +228,18 @@
                 If Usuarios.username.Equals(UsuarioTexto) Then
                     Return True
                     Exit For
-
                 Else
                     Return False
                     Exit For
 
                 End If
             Next
-
-
         Catch ex As Exception
             MessageBox.Show(ex.Message)
+            Return False
         End Try
     End Function
-    '*******************************************fin de la region de funciones*********************************************'
+
 #End Region
 
    
@@ -256,4 +251,5 @@
             MessageBox.Show("Este Usuario no esta Disponible", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If
     End Sub
+
 End Class

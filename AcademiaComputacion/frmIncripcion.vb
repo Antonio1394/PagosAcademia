@@ -1,4 +1,6 @@
-﻿Imports System
+﻿Imports CrystalDecisions.CrystalReports.Engine
+Imports CrystalDecisions.Shared
+Imports System
 Imports System.Linq
 Imports System.Data
 Imports System.Data.Objects
@@ -18,16 +20,16 @@ Public Class FrmIncripcion
     Dim mensualidad As Integer
     Dim fechaPago As DateTime
     Dim mes As String
+    Dim pagina2 = 1
     Dim validarMonto = True
-
+    'Variables para reporte
+    Dim idInscripcion As Integer
 #End Region
-
-
 #Region "Eventos"
     Private Sub FrmIncripcion_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Me.FormBorderStyle = Windows.Forms.FormBorderStyle.SizableToolWindow
         mdHerramientas.conexion()
         If recibo Then
-            MessageBox.Show("true")
             txtRecibo.Visible = False
             lblRecibo.Visible = False
             txtRecibo.Enabled = False
@@ -37,17 +39,13 @@ Public Class FrmIncripcion
             lblRecibo.Visible = True
             txtRecibo.Enabled = True
             lblRecibo.Enabled = True
-            MessageBox.Show("false")
         End If
-
         cargarPromotor()
         cargarGrupos()
         MontoInscripcion = (From x In modelo.payment_types Where x.id = 1 Select x.amount).FirstOrDefault
-        mensualidad = (From x In modelo.payment_types Where x.id = 2 Select x.amount).FirstOrDefault
         txtMonto.Text = MontoInscripcion
     End Sub
     Private Sub btnSiguiente_Click(sender As Object, e As EventArgs) Handles btnSiguiente.Click
-
         verificarPagina()
         If paginaSeleccionada = 1 Then
             If validacion() Then
@@ -59,14 +57,15 @@ Public Class FrmIncripcion
             If validacionDos() Then
                 btnSiguiente.Enabled = False
                 btnAtras.Enabled = False
+                btnCancelar.Enabled = False
                 transaccionInscripcion()
+                mostrarReporte(idInscripcion)
                 Me.wizarInscripcion.SelectedPage = Me.WizardCompletionPage1
             Else
                 MessageBox.Show("Verificar Datos", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         End If
     End Sub
-
     Private Sub cboTipoPago_SelectedIndexChanged_1(sender As Object, e As Telerik.WinControls.UI.Data.PositionChangedEventArgs) Handles cboTipoPago.SelectedIndexChanged
         If cboTipoPago.Text = "Normal" Then
             txtMonto.Text = MontoInscripcion
@@ -76,7 +75,6 @@ Public Class FrmIncripcion
             txtMonto.Enabled = True
         End If
     End Sub
-
     Private Sub txtMonto_KeyDown(sender As Object, e As KeyEventArgs) Handles txtMonto.KeyDown
         If Not ((e.KeyValue >= 48 And e.KeyValue <= 57) OrElse (e.KeyValue >= 96 And e.KeyValue <= 105) OrElse (e.KeyValue = 8)) Then
             e.Handled = True
@@ -85,9 +83,25 @@ Public Class FrmIncripcion
             validarMonto = True
         End If
     End Sub
-
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        cancelar()
+    End Sub
+    Private Sub btnAtras_Click(sender As Object, e As EventArgs) Handles btnAtras.Click
+        If Me.wizarInscripcion.SelectedPage.Name.Equals("WizardWelcomePage1") Then
+            pagina2 = 1
+        ElseIf Me.wizarInscripcion.SelectedPage.Name.Equals("WizardPage1") Then
+            pagina2 = 2
+        ElseIf Me.wizarInscripcion.SelectedPage.Name.Equals("WizardCompletionPage1") Then
+            pagina2 = 3
+        End If
+        If pagina2 = 2 Then
+            Me.wizarInscripcion.SelectedPage = Me.WizardWelcomePage1
+        ElseIf pagina2 = 3 Then
+            Me.wizarInscripcion.SelectedPage = Me.WizardPage1
+            btnSiguiente.Visible = True
+        End If
+    End Sub
 #End Region
-
 #Region "Funciones"
     Public Sub verificarPagina()
         If Me.wizarInscripcion.SelectedPage.Name.Equals("WizardWelcomePage1") Then
@@ -156,14 +170,14 @@ Public Class FrmIncripcion
                 nuevoAlumno.updated_at = Date.Now
                 modelo.students.Add(nuevoAlumno)
                 modelo.SaveChanges()
-
                 Dim idAlumno = nuevoAlumno.id
 
                 Dim nuevoPago As New payment
-                nuevoPago.id_user = 2
+                nuevoPago.id_user = 1
+                nuevoPago.no_document = "a56df"
                 nuevoPago.description = "Inscripcion"
                 nuevoPago.amount = txtMonto.Text
-                nuevoPago.no_document = txtRecibo.Text
+                'nuevoPago.no_document = txtRecibo.Text
                 nuevoPago.state = "activo"
                 nuevoPago.type = 1
                 nuevoPago.created_at = Date.Now
@@ -179,6 +193,7 @@ Public Class FrmIncripcion
                 Else
                     nuevaInscripcion.id_employee = Nothing
                 End If
+                nuevaInscripcion.id_user = 1
                 nuevaInscripcion.id_payment = idPago
                 nuevaInscripcion.id_group = cboGrupo.SelectedValue
                 nuevaInscripcion.type = cboTipoInscripcion.Text
@@ -187,7 +202,9 @@ Public Class FrmIncripcion
                 nuevaInscripcion.updated_at = Date.Now
                 modelo.inscripcions.Add(nuevaInscripcion)
                 modelo.SaveChanges()
-                Dim idInscripcion = nuevaInscripcion.id
+
+                idInscripcion = nuevaInscripcion.id
+                MessageBox.Show(idInscripcion)
 
                 Dim mensualidades As New share
                 For x = 1 To 24
@@ -237,8 +254,23 @@ Public Class FrmIncripcion
         fechaPago = DateTime.Parse("01" & fecha.ToString.Substring(2, 8))
         Return fechaPago
     End Function
-#End Region
+    Public Sub mostrarReporte(ByVal dato As Integer)
+        Dim dato1 As New ParameterValues
+        Dim pvisualizar As New ParameterDiscreteValue
+        Dim cr1 As New ReporteInscripcion
+        pvisualizar.Value = dato
+        dato1.Add(pvisualizar)
+        cr1.DataDefinition.ParameterFields("@idInscripcion").ApplyCurrentValues(dato1)
+        Me.visorInscripcion.ReportSource = cr1
+    End Sub
+    Public Sub cancelar()
+        Dim result As DialogResult = MessageBox.Show("Confirmar cancelacion", "Cancelando registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)
+        If result = DialogResult.OK Then
+            Me.Close()
+        End If
+    End Sub
 
+#End Region
 #Region "Validacion Estudiante"
     Private Sub txtNombre_Validated(sender As Object, e As EventArgs) Handles txtNombre.Validated
         If txtNombre.Text.Trim.Equals("") Then
@@ -278,7 +310,4 @@ Public Class FrmIncripcion
     End Sub
 #End Region
 
-
-  
-   
 End Class

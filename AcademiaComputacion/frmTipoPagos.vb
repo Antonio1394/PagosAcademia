@@ -10,11 +10,11 @@
 #End Region
 
 #Region "Eventos"
-    'carga el formulario'
-    Private Sub FrmTipoEmpleado_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FrmTipoPagos_Load(sender As Object, e As EventArgs) Handles Me.Load
         mdHerramientas.conexion()
-        MostrarTiposEmpleados()
+        MostrarTiposPagos()
     End Sub
+  
 
     'clic en el boton guardar'
 
@@ -44,32 +44,27 @@
                 If resultado = DialogResult.OK Then
                     Try
                         codigoTipo = CInt(tblTipoPagos.Rows(e.RowIndex).Cells("codigo").Value)
-                        Dim eliminarTipo As typeemployee = (From x In modelo.typeemployees Where x.id = codigoTipo Select x).FirstOrDefault
-                        If eliminarTipo.employees.Count > 0 Then
-                            MessageBox.Show("Error al Elimnar el Tipo de Empleado", "Eliminacion Tipo", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
+                        Dim eliminarTipo As payment_types = (From x In modelo.payment_types Where x.id = codigoTipo Select x).FirstOrDefault
+                        If eliminarTipo.payments.Count > 0 Then
+                            eliminarTipo.state = "baja"
                         Else
-                            modelo.typeemployees.Remove(eliminarTipo)
-                            modelo.SaveChanges()
-                            MessageBox.Show("Tipo Empleado Eliminado Exitosamente", "Eliminacion Tipo Empleado", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                            MostrarTiposEmpleados()
+                            modelo.payment_types.Remove(eliminarTipo)
                         End If
-
-
+                        modelo.SaveChanges()
+                        MessageBox.Show("Pago Eliminado Exitosamente", "Eliminacion Tipo Pago", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        MostrarTiposPagos()
                     Catch ex As Exception
                         MessageBox.Show(ex.Message)
                     End Try
-
                 End If
                 estadoTIpo = False
             End If
-
-
             If Me.tblTipoPagos.Columns(e.ColumnIndex).Name.Equals("modificar") And e.RowIndex >= 0 Then
                 Try
                     estadoTIpo = True
                     codigoTipo = CInt(tblTipoPagos.Rows(e.RowIndex).Cells("codigo").Value)
                     txtDescripcion.Text = CStr(tblTipoPagos.Rows(e.RowIndex).Cells("descripcion").Value)
+                    txtMonto.Value = CStr(tblTipoPagos.Rows(e.RowIndex).Cells("monto").Value)
                     btnGuardar.Text = "Modificar"
                 Catch ex As Exception
                     MessageBox.Show(ex.Message)
@@ -78,16 +73,11 @@
         End If
     End Sub
 #End Region
-
-    '******************************************************************fin de los eventos*****************************************************'
-
-
 #Region "Funciones"
-
-    Public Sub MostrarTiposEmpleados()
+    Public Sub MostrarTiposPagos()
         Try
             tblTipoPagos.Rows.Clear()
-            Dim tipoPagos = (From x In modelo.payment_types Select x).ToList
+            Dim tipoPagos = (From x In modelo.payment_types Where x.state = "activo" Select x).ToList
             For Each tipoPago As payment_types In tipoPagos
                 tblTipoPagos.Rows.Add({tipoPago.id, tipoPago.description, tipoPago.amount})
             Next
@@ -96,7 +86,6 @@
             MessageBox.Show(ex.Message)
         End Try
     End Sub
-
     Public Sub guardarTipoPago()
         Try
             estadoTIpo = True
@@ -112,34 +101,32 @@
             modelo.SaveChanges()
             MessageBox.Show("Registro Guardado Exitosamente", "Tipos de Pagos", MessageBoxButtons.OK, MessageBoxIcon.Information)
             limpiar()
-            MostrarTiposEmpleados()
-
+            MostrarTiposPagos()
         Catch ex As Exception
-
+            MessageBox.Show(ex.Message)
         End Try
         estadoTIpo = False
     End Sub
-
     Public Sub limpiar()
         txtDescripcion.Clear()
         txtMonto.Value = 0
+        txtDescripcion.Focus()
     End Sub
-
     Public Sub modificarTipo()
         If validacionTipo() Then
-            Dim modificarTipo As typeemployee = (From x In modelo.typeemployees Where x.id = codigoTipo Select x).FirstOrDefault
+            Dim modificarTipo As payment_types = (From x In modelo.payment_types Where x.id = codigoTipo Select x).FirstOrDefault
             modificarTipo.description = txtDescripcion.Text.Trim
+            modificarTipo.amount = Val(txtMonto.Text)
             modelo.SaveChanges()
-            MessageBox.Show("Modificacion Exitosa", "Modificar Tipo Empleado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Modificacion Exitosa", "Modificar Tipo Pagos", MessageBoxButtons.OK, MessageBoxIcon.Information)
             limpiar()
             btnGuardar.Text = "Guardar"
-            MostrarTiposEmpleados()
+            MostrarTiposPagos()
             estadoTIpo = False
         Else
             MessageBox.Show("Todos los campos son necesarios", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
     End Sub
-
     Public Function validacionTipo()
         If txtDescripcion.Text.Trim.Length = 0 Or txtMonto.Text = "0" Then
             Return False
@@ -148,7 +135,6 @@
 
         End If
     End Function
-
 #End Region
 
 

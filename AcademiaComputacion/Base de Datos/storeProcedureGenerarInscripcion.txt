@@ -1,0 +1,7 @@
+ALTER PROCEDURE [dbo].[spIncripcion]
+@idInscripcion int
+as
+	select CONCAT(e.first_name, ' ', e.last_name) as NombreAlumno ,p.description,p.amount,p.no_document, g.schedule,g.day , CONCAT(em.first_name, ' ', em.last_name) as NombreUsuario from 
+	students e inner join inscripcions i on i.id_student = e.id inner join payments p on i.id_payment = p.id inner join groups g on i.id_group = g.id
+	inner join users u on p.id_user = u.id  inner join employees em on u.id_employee = em.id
+	where i.id = @idInscripcion;

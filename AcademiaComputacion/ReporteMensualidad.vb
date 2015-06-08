@@ -18,7 +18,7 @@ Imports System
 Imports System.ComponentModel
 
 
-Public Class ReporteInscripcion
+Public Class ReporteMensualidad
     Inherits ReportClass
     
     Public Sub New()
@@ -27,7 +27,7 @@ Public Class ReporteInscripcion
     
     Public Overrides Property ResourceName() As String
         Get
-            Return "ReporteInscripcion.rpt"
+            Return "ReporteMensualidad.rpt"
         End Get
         Set
             'Do nothing
@@ -45,7 +45,7 @@ Public Class ReporteInscripcion
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "AcademiaComputacion.ReporteInscripcion.rpt"
+            Return "AcademiaComputacion.ReporteMensualidad.rpt"
         End Get
         Set
             'Do nothing
@@ -94,15 +94,23 @@ Public Class ReporteInscripcion
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_idInscripcion() As CrystalDecisions.[Shared].IParameterField
+    Public ReadOnly Property Parameter_idShare() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(0)
+        End Get
+    End Property
+    
+    <Browsable(false),  _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
+    Public ReadOnly Property Parameter_mes() As CrystalDecisions.[Shared].IParameterField
+        Get
+            Return Me.DataDefinition.ParameterFields(1)
         End Get
     End Property
 End Class
 
 <System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>  _
-Public Class CachedReporteInscripcion
+Public Class CachedReporteMensualidad
     Inherits Component
     Implements ICachedReport
     
@@ -144,7 +152,7 @@ Public Class CachedReporteInscripcion
     End Property
     
     Public Overridable Function CreateReport() As CrystalDecisions.CrystalReports.Engine.ReportDocument Implements CrystalDecisions.ReportSource.ICachedReport.CreateReport
-        Dim rpt As ReporteInscripcion = New ReporteInscripcion()
+        Dim rpt As ReporteMensualidad = New ReporteMensualidad()
         rpt.Site = Me.Site
         Return rpt
     End Function

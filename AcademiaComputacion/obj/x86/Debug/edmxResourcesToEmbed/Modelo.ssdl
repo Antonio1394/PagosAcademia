@@ -167,6 +167,16 @@
     <Property Name="created_at" Type="datetime" />
     <Property Name="updated_at" Type="datetime" />
   </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
   <EntityType Name="tics">
     <Key>
       <PropertyRef Name="id" />
@@ -214,7 +224,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_id_employee_inscripcion">
+  <Association Name="fk_id_employees">
     <End Role="employees" Type="Self.employees" Multiplicity="0..1" />
     <End Role="inscripcions" Type="Self.inscripcions" Multiplicity="*" />
     <ReferentialConstraint>
@@ -454,6 +464,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="prueba" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idInscripcion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spIncripcion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idInscripcion" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="AcademiaModelStoreContainer">
     <EntitySet Name="detailgroups" EntityType="Self.detailgroups" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="employees" EntityType="Self.employees" Schema="dbo" store:Type="Tables" />
@@ -468,6 +484,7 @@
     <EntitySet Name="schedules_practice" EntityType="Self.schedules_practice" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="shares" EntityType="Self.shares" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="students" EntityType="Self.students" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tics" EntityType="Self.tics" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="typeemployees" EntityType="Self.typeemployees" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
@@ -475,7 +492,7 @@
       <End Role="employees" EntitySet="employees" />
       <End Role="groups" EntitySet="groups" />
     </AssociationSet>
-    <AssociationSet Name="fk_id_employee_inscripcion" Association="Self.fk_id_employee_inscripcion">
+    <AssociationSet Name="fk_id_employees" Association="Self.fk_id_employees">
       <End Role="employees" EntitySet="employees" />
       <End Role="inscripcions" EntitySet="inscripcions" />
     </AssociationSet>

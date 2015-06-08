@@ -33,6 +33,8 @@ Partial Class FrmIncripcion
         Me.wizarInscripcion = New Telerik.WinControls.UI.RadWizard()
         Me.WizardCompletionPage1 = New Telerik.WinControls.UI.WizardCompletionPage()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.visorInscripcion = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
+        Me.btnCancelar = New Telerik.WinControls.UI.RadButton()
         Me.btnAtras = New Telerik.WinControls.UI.RadButton()
         Me.btnSiguiente = New Telerik.WinControls.UI.RadButton()
         Me.panelEstudiante = New System.Windows.Forms.Panel()
@@ -51,6 +53,8 @@ Partial Class FrmIncripcion
         Me.txtapellido = New Telerik.WinControls.UI.RadTextBox()
         Me.txtNombre = New Telerik.WinControls.UI.RadTextBox()
         Me.panelGrupo = New System.Windows.Forms.Panel()
+        Me.txtRecibo = New Telerik.WinControls.UI.RadTextBox()
+        Me.lblRecibo = New Telerik.WinControls.UI.RadLabel()
         Me.cboTipoPago = New Telerik.WinControls.UI.RadDropDownList()
         Me.txtMonto = New Telerik.WinControls.UI.RadTextBox()
         Me.RadLabel12 = New Telerik.WinControls.UI.RadLabel()
@@ -65,10 +69,10 @@ Partial Class FrmIncripcion
         Me.WizardPage1 = New Telerik.WinControls.UI.WizardPage()
         Me.TelerikMetroTheme1 = New Telerik.WinControls.Themes.TelerikMetroTheme()
         Me.alertaError = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.txtRecibo = New Telerik.WinControls.UI.RadTextBox()
-        Me.lblRecibo = New Telerik.WinControls.UI.RadLabel()
         CType(Me.wizarInscripcion, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.wizarInscripcion.SuspendLayout()
+        Me.Panel3.SuspendLayout()
+        CType(Me.btnCancelar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAtras, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnSiguiente, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelEstudiante.SuspendLayout()
@@ -86,6 +90,8 @@ Partial Class FrmIncripcion
         CType(Me.txtapellido, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtNombre, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelGrupo.SuspendLayout()
+        CType(Me.txtRecibo, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.lblRecibo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboTipoPago, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtMonto, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel12, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -97,20 +103,20 @@ Partial Class FrmIncripcion
         CType(Me.cboTipoInscripcion, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.alertaError, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtRecibo, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lblRecibo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'wizarInscripcion
         '
         Me.wizarInscripcion.CompletionPage = Me.WizardCompletionPage1
+        Me.wizarInscripcion.Controls.Add(Me.btnCancelar)
         Me.wizarInscripcion.Controls.Add(Me.btnAtras)
         Me.wizarInscripcion.Controls.Add(Me.btnSiguiente)
         Me.wizarInscripcion.Controls.Add(Me.panelEstudiante)
         Me.wizarInscripcion.Controls.Add(Me.panelGrupo)
         Me.wizarInscripcion.Controls.Add(Me.Panel3)
         Me.wizarInscripcion.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.wizarInscripcion.HideCompletionImage = True
         Me.wizarInscripcion.Location = New System.Drawing.Point(0, 0)
         Me.wizarInscripcion.Name = "wizarInscripcion"
         Me.wizarInscripcion.PageHeaderIcon = CType(resources.GetObject("wizarInscripcion.PageHeaderIcon"), System.Drawing.Image)
@@ -128,29 +134,52 @@ Partial Class FrmIncripcion
         Me.WizardCompletionPage1.ContentArea = Me.Panel3
         Me.WizardCompletionPage1.Header = "Page header"
         Me.WizardCompletionPage1.Name = "WizardCompletionPage1"
-        Me.WizardCompletionPage1.Title = "Page title"
+        Me.WizardCompletionPage1.Title = "Boleta de Inscripcion"
         Me.WizardCompletionPage1.Visibility = Telerik.WinControls.ElementVisibility.Visible
         '
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.White
-        Me.Panel3.Location = New System.Drawing.Point(150, 69)
+        Me.Panel3.Controls.Add(Me.visorInscripcion)
+        Me.Panel3.Location = New System.Drawing.Point(0, 69)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(517, 311)
+        Me.Panel3.Size = New System.Drawing.Size(667, 311)
         Me.Panel3.TabIndex = 2
+        '
+        'visorInscripcion
+        '
+        Me.visorInscripcion.ActiveViewIndex = -1
+        Me.visorInscripcion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.visorInscripcion.CachedPageNumberPerDoc = 10
+        Me.visorInscripcion.Cursor = System.Windows.Forms.Cursors.Default
+        Me.visorInscripcion.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.visorInscripcion.Location = New System.Drawing.Point(0, 0)
+        Me.visorInscripcion.Name = "visorInscripcion"
+        Me.visorInscripcion.Size = New System.Drawing.Size(667, 311)
+        Me.visorInscripcion.TabIndex = 0
+        Me.visorInscripcion.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
+        '
+        'btnCancelar
+        '
+        Me.btnCancelar.Location = New System.Drawing.Point(554, 392)
+        Me.btnCancelar.Name = "btnCancelar"
+        Me.btnCancelar.Size = New System.Drawing.Size(101, 24)
+        Me.btnCancelar.TabIndex = 53
+        Me.btnCancelar.Text = "Cancelar"
+        Me.btnCancelar.ThemeName = "TelerikMetro"
         '
         'btnAtras
         '
-        Me.btnAtras.Location = New System.Drawing.Point(119, 392)
+        Me.btnAtras.Location = New System.Drawing.Point(337, 392)
         Me.btnAtras.Name = "btnAtras"
-        Me.btnAtras.Size = New System.Drawing.Size(101, 24)
+        Me.btnAtras.Size = New System.Drawing.Size(104, 24)
         Me.btnAtras.TabIndex = 52
         Me.btnAtras.Text = "Atras"
         Me.btnAtras.ThemeName = "TelerikMetro"
         '
         'btnSiguiente
         '
-        Me.btnSiguiente.Location = New System.Drawing.Point(226, 392)
+        Me.btnSiguiente.Location = New System.Drawing.Point(447, 392)
         Me.btnSiguiente.Name = "btnSiguiente"
         Me.btnSiguiente.Size = New System.Drawing.Size(100, 24)
         Me.btnSiguiente.TabIndex = 52
@@ -327,6 +356,24 @@ Partial Class FrmIncripcion
         Me.panelGrupo.Size = New System.Drawing.Size(667, 303)
         Me.panelGrupo.TabIndex = 1
         '
+        'txtRecibo
+        '
+        Me.txtRecibo.Enabled = False
+        Me.txtRecibo.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtRecibo.Location = New System.Drawing.Point(269, 257)
+        Me.txtRecibo.Name = "txtRecibo"
+        Me.txtRecibo.Size = New System.Drawing.Size(274, 27)
+        Me.txtRecibo.TabIndex = 9
+        '
+        'lblRecibo
+        '
+        Me.lblRecibo.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblRecibo.Location = New System.Drawing.Point(160, 257)
+        Me.lblRecibo.Name = "lblRecibo"
+        Me.lblRecibo.Size = New System.Drawing.Size(87, 25)
+        Me.lblRecibo.TabIndex = 8
+        Me.lblRecibo.Text = "No Recibo:"
+        '
         'cboTipoPago
         '
         Me.cboTipoPago.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
@@ -397,7 +444,6 @@ Partial Class FrmIncripcion
         Me.cboPromotor.Name = "cboPromotor"
         Me.cboPromotor.Size = New System.Drawing.Size(274, 27)
         Me.cboPromotor.TabIndex = 2
-        Me.cboPromotor.Text = "RadDropDownList2"
         Me.cboPromotor.ThemeName = "VisualStudio2012Light"
         '
         'RadLabel8
@@ -459,39 +505,25 @@ Partial Class FrmIncripcion
         '
         Me.alertaError.ContainerControl = Me
         '
-        'txtRecibo
-        '
-        Me.txtRecibo.Enabled = False
-        Me.txtRecibo.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtRecibo.Location = New System.Drawing.Point(269, 257)
-        Me.txtRecibo.Name = "txtRecibo"
-        Me.txtRecibo.Size = New System.Drawing.Size(274, 27)
-        Me.txtRecibo.TabIndex = 9
-        '
-        'lblRecibo
-        '
-        Me.lblRecibo.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblRecibo.Location = New System.Drawing.Point(160, 257)
-        Me.lblRecibo.Name = "lblRecibo"
-        Me.lblRecibo.Size = New System.Drawing.Size(87, 25)
-        Me.lblRecibo.TabIndex = 8
-        Me.lblRecibo.Text = "No Recibo:"
-        '
         'FrmIncripcion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(667, 428)
         Me.Controls.Add(Me.wizarInscripcion)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "FrmIncripcion"
         '
         '
         '
         Me.RootElement.ApplyShapeToControl = True
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Registro Inscripcion"
         Me.ThemeName = "TelerikMetro"
         CType(Me.wizarInscripcion, System.ComponentModel.ISupportInitialize).EndInit()
         Me.wizarInscripcion.ResumeLayout(False)
+        Me.Panel3.ResumeLayout(False)
+        CType(Me.btnCancelar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnAtras, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnSiguiente, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelEstudiante.ResumeLayout(False)
@@ -511,6 +543,8 @@ Partial Class FrmIncripcion
         CType(Me.txtNombre, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelGrupo.ResumeLayout(False)
         Me.panelGrupo.PerformLayout()
+        CType(Me.txtRecibo, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lblRecibo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboTipoPago, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtMonto, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel12, System.ComponentModel.ISupportInitialize).EndInit()
@@ -522,8 +556,6 @@ Partial Class FrmIncripcion
         CType(Me.cboTipoInscripcion, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.alertaError, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtRecibo, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lblRecibo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -565,5 +597,7 @@ Partial Class FrmIncripcion
     Friend WithEvents cboTipoPago As Telerik.WinControls.UI.RadDropDownList
     Friend WithEvents txtRecibo As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents lblRecibo As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents visorInscripcion As CrystalDecisions.Windows.Forms.CrystalReportViewer
+    Friend WithEvents btnCancelar As Telerik.WinControls.UI.RadButton
 End Class
 

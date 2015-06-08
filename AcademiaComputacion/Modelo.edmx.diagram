@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="65b81737d05540eca56955ed4d909d9c" Name="Diagram1">
+      <Diagram DiagramId="8ac401ac9d59410483f1c1d6e60b043e" Name="Diagram1">
         <EntityTypeShape EntityType="AcademiaModel.detailgroup" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="AcademiaModel.employee" Width="1.5" PointX="0.75" PointY="12.375" IsExpanded="true" />
         <EntityTypeShape EntityType="AcademiaModel.extra_payments" Width="1.5" PointX="6" PointY="7.25" IsExpanded="true" />
@@ -18,13 +18,14 @@
         <EntityTypeShape EntityType="AcademiaModel.schedules_practice" Width="1.5" PointX="1.5" PointY="41.25" IsExpanded="true" />
         <EntityTypeShape EntityType="AcademiaModel.share" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="AcademiaModel.student" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="AcademiaModel.sysdiagram" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AcademiaModel.tic" Width="1.5" PointX="3" PointY="19.625" IsExpanded="true" />
         <EntityTypeShape EntityType="AcademiaModel.typeemployee" Width="1.5" PointX="1.5" PointY="23.125" IsExpanded="true" />
         <EntityTypeShape EntityType="AcademiaModel.user" Width="1.5" PointX="1.5" PointY="53.625" IsExpanded="true" />
         <AssociationConnector Association="AcademiaModel.fk_id_group_detail" ManuallyRouted="false" />
         <AssociationConnector Association="AcademiaModel.fk_id_students" ManuallyRouted="false" />
         <AssociationConnector Association="AcademiaModel.fk_id_employee" ManuallyRouted="false" />
-        <AssociationConnector Association="AcademiaModel.fk_id_employee_inscripcion" ManuallyRouted="false" />
+        <AssociationConnector Association="AcademiaModel.fk_id_employees" ManuallyRouted="false" />
         <AssociationConnector Association="AcademiaModel.fk_id_type_employee" ManuallyRouted="false" />
         <AssociationConnector Association="AcademiaModel.fk_idemployee" ManuallyRouted="false" />
         <AssociationConnector Association="AcademiaModel.fk_id_payment_extra" ManuallyRouted="false" />
