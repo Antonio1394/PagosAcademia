@@ -12,14 +12,14 @@
 #End Region
 
 #Region "Eventos"
-    'cuando carga el formulario'
+
     Private Sub FrmEmpleado_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         mdHerramientas.conexion()
         MostrarEmpleado()
         cargarDatos()
     End Sub
 
-    ''clic en el boton Guardar
+
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
         If validacionEmpleado() Then
             If estadoEmpleado Then
@@ -51,6 +51,8 @@
                             Dim modificarUsuario As user = (From x In modelo.users Where x.id_employee = codigoEmpleado Select x).FirstOrDefault
                             modificarUsuario.state = "baja"
                             modificarempleado.state = "baja"
+                            modificarempleado.updated_at = Date.Now
+                            modificarUsuario.updated_at = Date.Now
                             modelo.SaveChanges()
 
                             MessageBox.Show("Empleado Eliminado Exitosamente", "Eliminacion Empleado", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -91,14 +93,14 @@
     End Sub
 
 
-    ''''*****************************************Fin de la region de Eventos**********************************************
+
 #End Region
 
 #Region "Funciones"
     'llena el combo box de tipo de empleado'
     Public Sub cargarDatos()
         Try
-            Dim query = (From tipoEmpleado In modelo.typeemployees Select tipoEmpleado.id, tipoEmpleado.description Order By description).ToList
+            Dim query = (From tipoEmpleado In modelo.type_employees Select tipoEmpleado.id, tipoEmpleado.description Order By description).ToList
             With cboTipoEmpleado
                 .ValueMember = "id"
                 .DisplayMember = "description"
@@ -113,7 +115,7 @@
 
             Dim empleado = (From x In modelo.employees Where x.state = "activo" Select x).ToList
             For Each empleados As employee In empleado
-                tblListadoEmpleados.Rows.Add({empleados.id, empleados.first_name, empleados.last_name, empleados.phone, empleados.addres, empleados.typeemployee.description, empleados.working_day})
+                tblListadoEmpleados.Rows.Add({empleados.id, empleados.first_name, empleados.last_name, empleados.phone, empleados.addres, empleados.type_employees.description, empleados.working_day})
 
             Next
             tblListadoEmpleados.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
@@ -163,6 +165,7 @@
             modificarempleado.addres = txtDireccion.Text.Trim
             modificarempleado.id_type_employee = cboTipoEmpleado.SelectedValue
             modificarempleado.working_day = cboJornada.Text.Trim
+            modificarempleado.updated_at = Date.Now
             modelo.SaveChanges()
             MessageBox.Show("Modificacion Exitosa", "Modificar Empleado", MessageBoxButtons.OK, MessageBoxIcon.Information)
             limpiarEmpleados()

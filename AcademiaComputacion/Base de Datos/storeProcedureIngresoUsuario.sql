@@ -1,4 +1,4 @@
-ALTER procedure [dbo].[IngresoUsuario]
+CREATE procedure [dbo].[IngresoUsuario]
 @user varchar(50),
 @password varchar(50),
 @tipo varchar(25),

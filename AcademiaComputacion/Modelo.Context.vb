@@ -10,17 +10,13 @@
 Imports System
 Imports System.Data.Entity
 Imports System.Data.Entity.Infrastructure
-Imports System.Data.Objects
-Imports System.Data.Objects.DataClasses
-Imports System.Linq
 
-Partial Public Class AcademiaEntities3
+Partial Public Class AcademiaEntities4
     Inherits DbContext
 
     Public Sub New()
-        MyBase.New("name=AcademiaEntities3")
+        MyBase.New("name=AcademiaEntities4")
     End Sub
-
 
     Public Sub New(ByVal conexion As String)
         MyBase.New(conexion)
@@ -36,28 +32,14 @@ Partial Public Class AcademiaEntities3
     Public Property groups() As DbSet(Of group)
     Public Property inscripcions() As DbSet(Of inscripcion)
     Public Property laboratories() As DbSet(Of laboratory)
-    Public Property passwordresets() As DbSet(Of passwordreset)
     Public Property payment_types() As DbSet(Of payment_types)
     Public Property payments() As DbSet(Of payment)
     Public Property programs() As DbSet(Of program)
     Public Property schedules_practice() As DbSet(Of schedules_practice)
     Public Property shares() As DbSet(Of share)
     Public Property students() As DbSet(Of student)
-    Public Property sysdiagrams() As DbSet(Of sysdiagram)
     Public Property tics() As DbSet(Of tic)
-    Public Property typeemployees() As DbSet(Of typeemployee)
+    Public Property type_employees() As DbSet(Of type_employees)
     Public Property users() As DbSet(Of user)
-
-    Public Overridable Function prueba(idInscripcion As Nullable(Of Integer)) As ObjectResult(Of String)
-        Dim idInscripcionParameter As ObjectParameter = If(idInscripcion.HasValue, New ObjectParameter("idInscripcion", idInscripcion), New ObjectParameter("idInscripcion", GetType(Integer)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of String)("prueba", idInscripcionParameter)
-    End Function
-
-    Public Overridable Function spIncripcion(idInscripcion As Nullable(Of Integer)) As ObjectResult(Of spIncripcion_Result)
-        Dim idInscripcionParameter As ObjectParameter = If(idInscripcion.HasValue, New ObjectParameter("idInscripcion", idInscripcion), New ObjectParameter("idInscripcion", GetType(Integer)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of spIncripcion_Result)("spIncripcion", idInscripcionParameter)
-    End Function
 
 End Class

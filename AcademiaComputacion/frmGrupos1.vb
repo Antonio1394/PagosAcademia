@@ -109,7 +109,7 @@
     End Sub
     Public Sub catedraticosDisponibles(ByVal tipoJornada As String, ByVal dia As String)
         listaMaestros.Clear()
-        Dim getMaestrosGrupos = (From x In modelo.groups Where x.day = dia And x.state = "activo" Select x.id_employee Group By id_employee Into total = Count(id_employee) Where total > 2).ToArray
+        Dim getMaestrosGrupos = (From x In modelo.groups Where x.day = dia And x.state = "arriba" Select x.id_employee Group By id_employee Into total = Count(id_employee) Where total > 2).ToArray
         For x = LBound(getMaestrosGrupos) To UBound(getMaestrosGrupos)
             listaMaestros.Add(getMaestrosGrupos(x).id_employee)
         Next
@@ -123,7 +123,7 @@
     End Sub
     Public Sub laboratoriosDisponibles(ByVal dia As String, ByVal limite As Integer)
         listaLaboratorios.Clear()
-        Dim getLaboratoriosGrupos = (From x In modelo.groups Where x.day = dia And x.state = "activo" Select x.id_laboratorie Group By id_laboratorie Into total = Count(id_laboratorie) Where total > limite).ToArray
+        Dim getLaboratoriosGrupos = (From x In modelo.groups Where x.day = dia And x.state = "arriba" Select x.id_laboratorie Group By id_laboratorie Into total = Count(id_laboratorie) Where total > limite).ToArray
         For x = LBound(getLaboratoriosGrupos) To UBound(getLaboratoriosGrupos)
             listaLaboratorios.Add(getLaboratoriosGrupos(x).id_laboratorie)
         Next
@@ -137,11 +137,11 @@
     Public Sub horariosDisponibles(ByVal jornada As String, ByVal dia As String)
         idLaboratorio = cboLaboratorio.SelectedValue
         listaHorarios.Clear()
-        Dim getHorariosDisponibles = (From x In modelo.groups Where x.id_laboratorie = idLaboratorio And x.day = dia And x.state = "activo" Select x.time_practice).ToArray
+        Dim getHorariosDisponibles = (From x In modelo.groups Where x.id_laboratorie = idLaboratorio And x.day = dia And x.state = "arriba" Select x.time_practice).ToArray
         For x = LBound(getHorariosDisponibles) To UBound(getHorariosDisponibles)
             listaHorarios.Add(getHorariosDisponibles(x))
         Next
-        Dim getHorarios = (From x In modelo.schedules_practice Where Not listaHorarios.Contains(x.id) And x.type = jornada And x.state = "activo" Select x.id, x.time).ToList
+        Dim getHorarios = (From x In modelo.schedules_practice Where Not listaHorarios.Contains(x.id) And x.type = jornada And x.state = "arriba" Select x.id, x.time).ToList
         With cboHorarioPractica
             .ValueMember = "id"
             .DisplayMember = "time"
@@ -149,7 +149,7 @@
         End With
     End Sub
     Public Sub programasDisponibles()
-        Dim getProgramas = (From x In modelo.programs Where x.state = "activo" Select x.id, x.description).ToList
+        Dim getProgramas = (From x In modelo.programs Where x.state = "arriba" Select x.id, x.description).ToList
         With cboProgramas
             .ValueMember = "id"
             .DisplayMember = "description"
@@ -157,7 +157,7 @@
         End With
     End Sub
     Public Sub mostrarGrupos()
-        Dim getGrupos = (From x In modelo.groups Where x.state = "activo" Select x).ToList
+        Dim getGrupos = (From x In modelo.groups Where x.state = "arriba" Select x).ToList
 
         For Each grupos As group In getGrupos
             tblGrupos.Rows.Add(grupos.id, grupos.day, grupos.schedules_practice.time, grupos.program.description, grupos.employee.first_name)
@@ -182,6 +182,7 @@
             nuevoGrupo.schedule = txtHorario.Text
             nuevoGrupo.created_at = Date.Now
             nuevoGrupo.updated_at = Date.Now
+            nuevoGrupo.state = "arriba"
             modelo.groups.Add(nuevoGrupo)
             modelo.SaveChanges()
             MessageBox.Show("Registro Guardado Exitosamente ", "Grupos", MessageBoxButtons.OK, MessageBoxIcon.Information)

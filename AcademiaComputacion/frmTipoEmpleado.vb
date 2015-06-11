@@ -43,27 +43,23 @@
                 If resultado = DialogResult.OK Then
                     Try
                         codigoTipo = CInt(tblTipoEmpleados.Rows(e.RowIndex).Cells("codigo").Value)
-                        Dim eliminarTipo As typeemployee = (From x In modelo.typeemployees Where x.id = codigoTipo Select x).FirstOrDefault
+                        Dim eliminarTipo As type_employees = (From x In modelo.type_employees Where x.id = codigoTipo Select x).FirstOrDefault
                         If eliminarTipo.employees.Count > 0 Then
-                            MessageBox.Show("Error al Elimnar el Tipo de Empleado", "Eliminacion Tipo", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
+                            eliminarTipo.state = "abajo"
+                            eliminarTipo.updated_at = Date.Now
+                            modelo.SaveChanges()
                         Else
-                            modelo.typeemployees.Remove(eliminarTipo)
+                            modelo.type_employees.Remove(eliminarTipo)
                             modelo.SaveChanges()
                             MessageBox.Show("Tipo Empleado Eliminado Exitosamente", "Eliminacion Tipo Empleado", MessageBoxButtons.OK, MessageBoxIcon.Information)
                             MostrarTiposEmpleados()
                         End If
-
-
                     Catch ex As Exception
                         MessageBox.Show(ex.Message)
                     End Try
-
                 End If
                 estadoTIpo = False
             End If
-
-
             If Me.tblTipoEmpleados.Columns(e.ColumnIndex).Name.Equals("modificar") And e.RowIndex >= 0 Then
                 Try
                     estadoTIpo = True
@@ -78,16 +74,14 @@
     End Sub
 #End Region
 
-    '******************************************************************fin de los eventos*****************************************************'
-
 
 #Region "Funciones"
 
     Public Sub MostrarTiposEmpleados()
         Try
             tblTipoEmpleados.Rows.Clear()
-            Dim tipoEmpleado = (From x In modelo.typeemployees Select x).ToList
-            For Each tipoEmpleados As typeemployee In tipoEmpleado
+            Dim tipoEmpleado = (From x In modelo.type_employees Where x.state = "arriba" Select x).ToList
+            For Each tipoEmpleados As type_employees In tipoEmpleado
                 tblTipoEmpleados.Rows.Add({"", tipoEmpleados.id, tipoEmpleados.description})
             Next
             tblTipoEmpleados.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
@@ -100,11 +94,12 @@
         Try
             estadoTIpo = True
             descripcion = txtDescripcion.Text.Trim
-            Dim nuevoTipo As New typeemployee
+            Dim nuevoTipo As New type_employees
             nuevoTipo.description = descripcion
             nuevoTipo.created_at = Date.Now
             nuevoTipo.updated_at = Date.Now
-            modelo.typeemployees.Add(nuevoTipo)
+            nuevoTipo.state = "arriba"
+            modelo.type_employees.Add(nuevoTipo)
             modelo.SaveChanges()
             MessageBox.Show("Registro Guardado Exitosamente", "Tipos de Empleados", MessageBoxButtons.OK, MessageBoxIcon.Information)
             limpiar()
@@ -122,8 +117,9 @@
 
     Public Sub modificarTipo()
         If validacionTipo() Then
-            Dim modificarTipo As typeemployee = (From x In modelo.typeemployees Where x.id = codigoTipo Select x).FirstOrDefault
+            Dim modificarTipo As type_employees = (From x In modelo.type_employees Where x.id = codigoTipo Select x).FirstOrDefault
             modificarTipo.description = txtDescripcion.Text.Trim
+            modificarTipo.updated_at = Date.Now
             modelo.SaveChanges()
             MessageBox.Show("Modificacion Exitosa", "Modificar Tipo Empleado", MessageBoxButtons.OK, MessageBoxIcon.Information)
             limpiar()

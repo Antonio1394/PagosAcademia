@@ -1,3 +1,4 @@
+
 create table students(
 id int identity,
 first_name varchar(50),
@@ -17,34 +18,28 @@ id int identity,
 title varchar(255),
 description varchar(255),
 computers int,
-state varchar (50) default 'libre',
+state varchar (50) default 'arriba',
 created_at datetime,
 updated_at datetime,
 constraint pk_id_laboratories primary key(id)
 )
 
-create table passwordresets(
-id int identity,
-email varchar(255),
-token varchar(255),
-created_at datetime,
-updated_at datetime
-constraint pk_id_passwordresets primary key(id)
-)
+
 
 create table programs(
 id int identity,
 description varchar(255),
 shelf_life int,
-state varchar (50) default 'ocupado',
+state varchar (50) default 'arriba',
 created_at datetime,
 updated_at datetime,
 constraint pk_id_programs primary key(id)
 )
 
-create table typeemployees(
+create table type_employees(
 id int identity,
 description varchar(25),
+state varchar(10) default 'arriba',
 created_at datetime,
 updated_at datetime
 constraint pk_id_typeemployees primary key(id)
@@ -62,7 +57,7 @@ state varchar (50) default 'activo',
 created_at datetime,
 updated_at datetime
 constraint pk_id_employees primary key(id)
-constraint fk_id_type_employee foreign key(id_type_employee) references typeemployees(id)
+constraint fk_id_type_employee foreign key(id_type_employee) references type_employees(id)
 )
 
 
@@ -70,7 +65,7 @@ create table schedules_practice(
 id int identity,
 time varchar(255),
 type varchar(50),
-state varchar(50) default 'libre',
+state varchar(50) default 'arriba',
 created_at datetime,
 updated_at datetime
 constraint pk_id_schedules_practice primary key(id)
@@ -83,7 +78,7 @@ username varchar(255),
 password varchar(60),
 type varchar(50),
 id_employee int,
-state varchar(50) default 'activo',
+state varchar(50) default 'arriba',
 created_at datetime,
 updated_at datetime
 constraint pk_id_users primary key(id)
@@ -95,7 +90,7 @@ create table payment_types(
 id int identity,
 description varchar(255),
 amount int,
-state varchar(50) default 'aceptado',
+state varchar(50) default 'arriba',
 created_at datetime,
 updated_at datetime
 constraint pk_id_payment_types primary key(id)
@@ -109,7 +104,7 @@ id_employee int,
 time_practice int,
 day varchar(255),
 schedule varchar(255),
-state varchar(50) default 'activo',
+state varchar(50) default 'arriba',
 created_at datetime,
 updated_at datetime
 constraint pk_id_groups primary key(id),
@@ -117,40 +112,37 @@ constraint fk_id_program foreign key(id_program) references  programs(id),
 constraint fk_id_laboratories foreign key(id_laboratorie) references laboratories(id),
 constraint fk_id_employee foreign key(id_employee) references employees(id),
 constraint fk_id_time_practice foreign key(time_practice) references schedules_practice(id),
-
 )
 
 
 create table payments(
 id int identity,
-id_user int,
+no_document varchar(25),
 description text,
 amount int,
-no_document varchar(25),
-state varchar(50),
-type int,
+state varchar(10) default 'aceptado',
+id_type int,
+id_user int,
+id_student int,
 created_at datetime,
 updated_at datetime,
 constraint pk_id_payments primary key(id),
 constraint fk_id_user_payments foreign key(id_user) references users(id),
-constraint fk_type foreign key(type) references payment_types(id)
+constraint fk_type foreign key(id_type) references payment_types(id),
+constraint fk_studente_payment foreign key(id_student) references students(id)
 )
 
 
 create table inscripcions(
 id int identity,
-id_student int,
-id_user int,
 id_employee int,
 id_payment int,
 id_group int,
 type varchar(25),
-state varchar(25),
+state varchar(25) default 'aceptado',
 created_at datetime,
 updated_at datetime,
 constraint pk_id_inscripcions primary key(id),
-constraint fk_id_student foreign key(id_student) references students(id),
-constraint fk_id_user foreign key(id_user) references users(id),
 constraint fk_id_payment foreign key(id_payment) references payments(id),
 constraint fk_id_group foreign key(id_group) references groups(id),
 constraint fk_id_employees foreign key(id_employee) references employees(id)
@@ -190,6 +182,7 @@ id_payment int,
 id_type_payment int,
 amount int,
 balance int,
+state varchar(10) default 'activo',
 created_at datetime,
 updated_at datetime,
 constraint pk_id_extra_paments primary key(id),

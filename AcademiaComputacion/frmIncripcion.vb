@@ -43,6 +43,7 @@ Public Class FrmIncripcion
         cargarPromotor()
         cargarGrupos()
         MontoInscripcion = (From x In modelo.payment_types Where x.id = 1 Select x.amount).FirstOrDefault
+        mensualidad = (From x In modelo.payment_types Where x.id = 2 Select x.amount).FirstOrDefault
         txtMonto.Text = MontoInscripcion
     End Sub
     Private Sub btnSiguiente_Click(sender As Object, e As EventArgs) Handles btnSiguiente.Click
@@ -148,7 +149,7 @@ Public Class FrmIncripcion
         End With
     End Sub
     Public Sub cargarGrupos()
-        Dim grupos = (From x In modelo.groups Where x.state = "activo" Select x.id, FullName = x.day & " " & x.schedule).ToList
+        Dim grupos = (From x In modelo.groups Where x.state = "arriba" Select x.id, FullName = x.day & " " & x.schedule).ToList
         With cboGrupo
             .ValueMember = "id"
             .DisplayMember = "FullName"
@@ -165,21 +166,22 @@ Public Class FrmIncripcion
                 nuevoAlumno.addres = txtDireccion.Text
                 nuevoAlumno.date_of_birth = FechaNacimiento.Text
                 nuevoAlumno.in_charge = txtEncargado.Text
-                nuevoAlumno.state = "activo"
+                nuevoAlumno.state = "arriba"
                 nuevoAlumno.created_at = Date.Now
                 nuevoAlumno.updated_at = Date.Now
                 modelo.students.Add(nuevoAlumno)
                 modelo.SaveChanges()
+
                 Dim idAlumno = nuevoAlumno.id
 
                 Dim nuevoPago As New payment
-                nuevoPago.id_user = 1
                 nuevoPago.no_document = "a56df"
                 nuevoPago.description = "Inscripcion"
                 nuevoPago.amount = txtMonto.Text
-                'nuevoPago.no_document = txtRecibo.Text
-                nuevoPago.state = "activo"
-                nuevoPago.type = 1
+                nuevoPago.state = "aceptado"
+                nuevoPago.id_type = 1
+                nuevoPago.id_user = 1
+                nuevoPago.id_student = idAlumno
                 nuevoPago.created_at = Date.Now
                 nuevoPago.updated_at = Date.Now
                 modelo.payments.Add(nuevoPago)
@@ -187,26 +189,23 @@ Public Class FrmIncripcion
                 Dim idPago = nuevoPago.id
 
                 Dim nuevaInscripcion As New inscripcion
-                nuevaInscripcion.id_student = idAlumno
+
                 If cboTipoInscripcion.SelectedIndex = 1 Then
                     nuevaInscripcion.id_employee = cboPromotor.SelectedValue
                 Else
                     nuevaInscripcion.id_employee = Nothing
                 End If
-                nuevaInscripcion.id_user = 1
                 nuevaInscripcion.id_payment = idPago
                 nuevaInscripcion.id_group = cboGrupo.SelectedValue
                 nuevaInscripcion.type = cboTipoInscripcion.Text
-                nuevaInscripcion.state = "activo"
+                nuevaInscripcion.state = "aceptado"
                 nuevaInscripcion.created_at = Date.Now
                 nuevaInscripcion.updated_at = Date.Now
                 modelo.inscripcions.Add(nuevaInscripcion)
                 modelo.SaveChanges()
-
                 idInscripcion = nuevaInscripcion.id
-                MessageBox.Show(idInscripcion)
-
                 Dim mensualidades As New share
+
                 For x = 1 To 24
                     mensualidades.id_inscripcion = idInscripcion
                     mensualidades.id_payment = Nothing

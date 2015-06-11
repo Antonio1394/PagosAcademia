@@ -17,6 +17,7 @@ Partial Public Class extra_payments
     Public Property id_type_payment As Nullable(Of Integer)
     Public Property amount As Nullable(Of Integer)
     Public Property balance As Nullable(Of Integer)
+    Public Property state As String
     Public Property created_at As Nullable(Of Date)
     Public Property updated_at As Nullable(Of Date)
 

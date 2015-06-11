@@ -47,6 +47,7 @@
                         Dim eliminarTipo As payment_types = (From x In modelo.payment_types Where x.id = codigoTipo Select x).FirstOrDefault
                         If eliminarTipo.payments.Count > 0 Then
                             eliminarTipo.state = "baja"
+                            eliminarTipo.updated_at = Date.Now
                         Else
                             modelo.payment_types.Remove(eliminarTipo)
                         End If
@@ -77,7 +78,7 @@
     Public Sub MostrarTiposPagos()
         Try
             tblTipoPagos.Rows.Clear()
-            Dim tipoPagos = (From x In modelo.payment_types Where x.state = "activo" Select x).ToList
+            Dim tipoPagos = (From x In modelo.payment_types Where x.state = "arriba" Select x).ToList
             For Each tipoPago As payment_types In tipoPagos
                 tblTipoPagos.Rows.Add({tipoPago.id, tipoPago.description, tipoPago.amount})
             Next
@@ -94,7 +95,7 @@
             Dim nuevoTipo As New payment_types
             nuevoTipo.description = descripcion
             nuevoTipo.amount = monto
-            nuevoTipo.state = "activo"
+            nuevoTipo.state = "arriba"
             nuevoTipo.created_at = Date.Now
             nuevoTipo.updated_at = Date.Now
             modelo.payment_types.Add(nuevoTipo)
@@ -117,6 +118,7 @@
             Dim modificarTipo As payment_types = (From x In modelo.payment_types Where x.id = codigoTipo Select x).FirstOrDefault
             modificarTipo.description = txtDescripcion.Text.Trim
             modificarTipo.amount = Val(txtMonto.Text)
+            modificarTipo.updated_at = Date.Now
             modelo.SaveChanges()
             MessageBox.Show("Modificacion Exitosa", "Modificar Tipo Pagos", MessageBoxButtons.OK, MessageBoxIcon.Information)
             limpiar()

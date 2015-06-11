@@ -52,6 +52,7 @@
                         If eliminarLaboratorio.groups.Count > 0 Then
                             Dim modificarLaboratorio As laboratory = (From x In modelo.laboratories Where x.id = codigoLaboratorio Select x).FirstOrDefault
                             modificarLaboratorio.state = "baja"
+                            modificarLaboratorio.updated_at = Date.Now
                             modelo.SaveChanges()
                             MessageBox.Show("Laboratorio Eliminado Exitosamente", "Eliminacion Laboratorio", MessageBoxButtons.OK, MessageBoxIcon.Information)
                             MostrarLaboratorios()
@@ -95,7 +96,7 @@
     Public Sub MostrarLaboratorios()
         Try
             tblListadoLaboratorios.Rows.Clear()
-            Dim Laboratorio = (From x In modelo.laboratories Where x.state = "activo" Select x).ToList
+            Dim Laboratorio = (From x In modelo.laboratories Where x.state = "arriba" Select x).ToList
             For Each Laboratorios As laboratory In Laboratorio
                 tblListadoLaboratorios.Rows.Add({"", Laboratorios.id, Laboratorios.title, Laboratorios.description, Laboratorios.computers})
             Next
@@ -118,7 +119,7 @@
             nuevoLaboratorio.title = nombreLaboratorio
             nuevoLaboratorio.description = descripcionLaboratorio
             nuevoLaboratorio.computers = numeroComputadoras
-            nuevoLaboratorio.state = "activo"
+            nuevoLaboratorio.state = "arriba"
             nuevoLaboratorio.created_at = Date.Now
             nuevoLaboratorio.updated_at = Date.Now
             modelo.laboratories.Add(nuevoLaboratorio)
@@ -147,11 +148,11 @@
     'modificar Laboratorio'
     Public Sub modificarLaboratorio()
         If validacionLaboratorio() Then
-
             Dim modificarLaboratorio As laboratory = (From x In modelo.laboratories Where x.id = codigoLaboratorio Select x).FirstOrDefault
             modificarLaboratorio.title = txtNombreLaboratorio.Text.Trim
             modificarLaboratorio.description = txtDescripcionLaboratorio.Text.Trim
             modificarLaboratorio.computers = txtComputadoras.Value
+            modificarLaboratorio.updated_at = Date.Now
             modelo.SaveChanges()
             MessageBox.Show("Modificacion Exitosa", "Modificar Laboratorio", MessageBoxButtons.OK, MessageBoxIcon.Information)
             limpiarLaboratorios()

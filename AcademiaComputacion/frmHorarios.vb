@@ -30,6 +30,7 @@
 
                             Dim modificarHorario As schedules_practice = (From x In modelo.schedules_practice Where x.id = codigoHorario Select x).FirstOrDefault
                             modificarHorario.state = "baja"
+                            modificarHorario.updated_at = Date.Now
                             modelo.SaveChanges()
                         Else
                             modelo.schedules_practice.Remove(eliminarHorario)
@@ -86,7 +87,7 @@
     Public Sub MostrarHorarios()
         Try
             tbListadoHorarios.Rows.Clear()
-            Dim horario = (From x In modelo.schedules_practice Where x.state = "activo" Select x).ToList
+            Dim horario = (From x In modelo.schedules_practice Where x.state = "arriba" Select x).ToList
             For Each horarios As schedules_practice In horario
                 tbListadoHorarios.Rows.Add({"", horarios.id, horarios.time, horarios.type})
             Next
@@ -103,7 +104,7 @@
         Dim nuevoHorario As New schedules_practice
         nuevoHorario.time = horario
         nuevoHorario.type = tipo
-        nuevoHorario.state = "activo"
+        nuevoHorario.state = "arriba"
         nuevoHorario.created_at = Date.Now
         nuevoHorario.updated_at = Date.Now
         modelo.schedules_practice.Add(nuevoHorario)
@@ -117,6 +118,7 @@
             Dim modificarHorario As schedules_practice = (From x In modelo.schedules_practice Where x.id = codigoHorario Select x).FirstOrDefault
             modificarHorario.time = txtHorario.Text.Trim
             modificarHorario.type = cboTipo.Text.Trim
+            modificarHorario.updated_at = Date.Now
             modelo.SaveChanges()
             MessageBox.Show("Modificacion Exitosa", "Modificar Horario", MessageBoxButtons.OK, MessageBoxIcon.Information)
             limpiarHorarios()

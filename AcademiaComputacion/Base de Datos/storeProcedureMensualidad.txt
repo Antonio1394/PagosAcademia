@@ -25,7 +25,7 @@ BEGIN
 	from shares s 
 	inner join inscripcions i on s.id_inscripcion = i.id 
 	inner join payments p on s.id_payment = p.id 
-	inner join students e on i.id_student = e.id 
+	inner join students e on p.id_student = e.id 
 	inner join users u on p.id_user = u.id  
 	inner join employees em on u.id_employee = em.id
 	where s.id = @idShare;

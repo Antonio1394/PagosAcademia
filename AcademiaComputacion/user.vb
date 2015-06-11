@@ -14,7 +14,6 @@ Partial Public Class user
     Public Property id As Integer
     Public Property username As String
     Public Property password As String
-    Public Property remember_token As String
     Public Property type As String
     Public Property id_employee As Nullable(Of Integer)
     Public Property state As String
@@ -22,7 +21,6 @@ Partial Public Class user
     Public Property updated_at As Nullable(Of Date)
 
     Public Overridable Property employee As employee
-    Public Overridable Property inscripcions As ICollection(Of inscripcion) = New HashSet(Of inscripcion)
     Public Overridable Property payments As ICollection(Of payment) = New HashSet(Of payment)
 
 End Class

@@ -12,12 +12,13 @@ Imports System.Collections.Generic
 
 Partial Public Class payment
     Public Property id As Integer
-    Public Property id_user As Nullable(Of Integer)
+    Public Property no_document As String
     Public Property description As String
     Public Property amount As Nullable(Of Integer)
-    Public Property no_document As String
     Public Property state As String
-    Public Property type As Nullable(Of Integer)
+    Public Property id_type As Nullable(Of Integer)
+    Public Property id_user As Nullable(Of Integer)
+    Public Property id_student As Nullable(Of Integer)
     Public Property created_at As Nullable(Of Date)
     Public Property updated_at As Nullable(Of Date)
 
@@ -26,5 +27,6 @@ Partial Public Class payment
     Public Overridable Property payment_types As payment_types
     Public Overridable Property shares As ICollection(Of share) = New HashSet(Of share)
     Public Overridable Property user As user
+    Public Overridable Property student As student
 
 End Class

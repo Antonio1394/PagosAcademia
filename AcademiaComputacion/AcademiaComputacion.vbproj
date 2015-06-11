@@ -263,12 +263,6 @@
     <Compile Include="frmIncripcion.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmInicio.Designer.vb">
-      <DependentUpon>FrmInicio.vb</DependentUpon>
-    </Compile>
-    <Compile Include="FrmInicio.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmLaboratorios.Designer.vb">
       <DependentUpon>frmLaboratorios.vb</DependentUpon>
     </Compile>
@@ -279,6 +273,18 @@
       <DependentUpon>FrmLogin.vb</DependentUpon>
     </Compile>
     <Compile Include="FrmLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPagos.Designer.vb">
+      <DependentUpon>frmPagos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPagos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPagosExtras.Designer.vb">
+      <DependentUpon>frmPagosExtras.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPagosExtras.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmPrincipal.Designer.vb">
@@ -354,9 +360,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="passwordreset.vb">
-      <DependentUpon>Modelo.tt</DependentUpon>
-    </Compile>
     <Compile Include="payment.vb">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
@@ -384,25 +387,25 @@
       <DependentUpon>ReporteMensualidad.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ReportePagoExtra.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportePagoExtra.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="schedules_practice.vb">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="share.vb">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
-    <Compile Include="spIncripcion_Result.vb">
-      <DependentUpon>Modelo.tt</DependentUpon>
-    </Compile>
     <Compile Include="student.vb">
-      <DependentUpon>Modelo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagram.vb">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="tic.vb">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
-    <Compile Include="typeemployee.vb">
+    <Compile Include="type_employees.vb">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="user.vb">
@@ -422,20 +425,17 @@
     <EmbeddedResource Include="frmIncripcion.resx">
       <DependentUpon>frmIncripcion.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmInicio.es-GT.resx">
-      <DependentUpon>FrmInicio.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmInicio.es.resx">
-      <DependentUpon>FrmInicio.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmInicio.resx">
-      <DependentUpon>FrmInicio.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmLaboratorios.resx">
       <DependentUpon>frmLaboratorios.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPagos.resx">
+      <DependentUpon>frmPagos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPagosExtras.resx">
+      <DependentUpon>frmPagosExtras.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.vb</DependentUpon>
@@ -468,6 +468,10 @@
     <EmbeddedResource Include="ReporteMensualidad.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteMensualidad.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportePagoExtra.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportePagoExtra.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

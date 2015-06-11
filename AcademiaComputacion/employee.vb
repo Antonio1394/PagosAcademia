@@ -24,7 +24,7 @@ Partial Public Class employee
 
     Public Overridable Property groups As ICollection(Of group) = New HashSet(Of group)
     Public Overridable Property inscripcions As ICollection(Of inscripcion) = New HashSet(Of inscripcion)
-    Public Overridable Property typeemployee As typeemployee
+    Public Overridable Property type_employees As type_employees
     Public Overridable Property users As ICollection(Of user) = New HashSet(Of user)
 
 End Class

@@ -2,8 +2,6 @@ C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaCom
 C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\bin\Debug\AcademiaComputacion.exe
 C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\bin\Debug\AcademiaComputacion.pdb
 C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\bin\Debug\AcademiaComputacion.xml
-C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\bin\Debug\es-GT\AcademiaComputacion.resources.dll
-C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\bin\Debug\es\AcademiaComputacion.resources.dll
 C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\bin\Debug\EntityFramework.dll
 C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\bin\Debug\EQATEC.Analytics.Monitor.dll
 C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\bin\Debug\Telerik.WinControls.ChartView.dll
@@ -57,7 +55,6 @@ C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaCom
 C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmGrupos1.resources
 C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmHorarios.resources
 C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmIncripcion.resources
-C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmInicio.resources
 C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmLaboratorios.resources
 C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmLogin.resources
 C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmPrincipal.resources
@@ -66,12 +63,10 @@ C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaCom
 C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmTipoEmpleado.resources
 C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmUsuarios.resources
 C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.Resources.resources
-C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmInicio.es-GT.resources
-C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmInicio.es.resources
 C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.vbproj.GenerateResource.Cache
-C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\es-GT\AcademiaComputacion.resources.dll
-C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\es\AcademiaComputacion.resources.dll
 C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.exe
 C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.xml
 C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.pdb
 C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.RadForm1.resources
+C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmPagosExtras.resources
+C:\Users\USUARIO\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmPagos.resources

@@ -1,6 +1,0 @@
-ALTER procedure [dbo].[CargarEmpleado]
-as
-select  e.id, CONCAT(e.first_name,' ',e.last_name) as nombre from employees e
-left JOIN	users on
-users.id_employee=e.id 
-where users.id_employee is null

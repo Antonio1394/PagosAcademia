@@ -24,7 +24,7 @@ Partial Public Class student
 
     Public Overridable Property detailgroups As ICollection(Of detailgroup) = New HashSet(Of detailgroup)
     Public Overridable Property extra_payments As ICollection(Of extra_payments) = New HashSet(Of extra_payments)
-    Public Overridable Property inscripcions As ICollection(Of inscripcion) = New HashSet(Of inscripcion)
+    Public Overridable Property payments As ICollection(Of payment) = New HashSet(Of payment)
     Public Overridable Property tics As ICollection(Of tic) = New HashSet(Of tic)
 
 End Class

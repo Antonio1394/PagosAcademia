@@ -1,6 +1,6 @@
 ﻿Module App
     Public Sub Main()
         Application.EnableVisualStyles()
-        Application.Run(New FrmInicio())
+        Application.Run(New FrmLogin())
     End Sub
 End Module

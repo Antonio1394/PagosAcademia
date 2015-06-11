@@ -7,7 +7,7 @@ Module mdHerramientas
     Dim usuario As String = "sa"
     Dim password As String = "Umg2015"
     Dim dirModelo As String = "Modelo"
-    Public modelo As AcademiaEntities3
+    Public modelo As AcademiaEntities4
     Public usuarioLogueado As user
     Public mora As Boolean = False
     Public recibo As Boolean = True
@@ -50,7 +50,7 @@ Module mdHerramientas
         Using conn As New EntityConnection(entityBuilder.ToString())
             conn.Open()
             Console.WriteLine("Just testing the connection.")
-            modelo = New AcademiaEntities3(entityBuilder.ConnectionString)
+            modelo = New AcademiaEntities4(entityBuilder.ConnectionString)
 
             conn.Close()
             Return True

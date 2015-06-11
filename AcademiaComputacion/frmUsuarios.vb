@@ -27,7 +27,6 @@
 
     End Sub
 
-    'evento del grid'
     Private Sub tblListadoUsuarios_CellClick(sender As Object, e As Telerik.WinControls.UI.GridViewCellEventArgs) Handles tblListadoUsuarios.CellClick
         If estadoUsuario Then
             MessageBox.Show("Hay una operacion en proceso !! ", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -45,6 +44,7 @@
                         If eliminarUsuario.payments.Count > 0 Then
                             Dim modificarUsuario As user = (From x In modelo.users Where x.id = codigoUsuario Select x).FirstOrDefault
                             modificarUsuario.state = "baja"
+                            modificarUsuario.updated_at = Date.Now
                             modelo.SaveChanges()
                             MessageBox.Show("Usuario Eliminado Exitosamente", "Eliminacion Laboratorio", MessageBoxButtons.OK, MessageBoxIcon.Information)
                             MostrarUsuario()
@@ -90,6 +90,7 @@
                 miValor = InputBox("Escriba la nueva Contrase;a", "Restablecer")
                 Dim modificarUsuario As user = (From x In modelo.users Where x.id = codigoUsuario Select x).FirstOrDefault
                 modificarUsuario.password = funcion.Encriptar(miValor)
+                modificarUsuario.updated_at = Date.Now
                 modelo.SaveChanges()
                 MessageBox.Show("Contraseña Restablecida Correctamente", "Laboratorio", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
@@ -99,7 +100,7 @@
         End If
 
     End Sub
-    'evento del boton********************************************************************'
+
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
 
         If UsuarioDisponible() Then
@@ -117,10 +118,6 @@
             End If
 
         End If
-
-        
-
-
 
     End Sub
 #End Region
@@ -167,8 +164,8 @@
             tipo = cboTipoUsuario.Text
             empleado = cboEmpleado.SelectedValue
             passwordIncriptada = incriptar.Encriptar(password)
-            '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-            '''''''''''''''''''''''''''''
+
+           
             Dim funcion As New IngresarUsuario
             funcion.insertar(usuario, passwordIncriptada, tipo, empleado)
             If funcion.resultadp > 0 Then
@@ -186,12 +183,13 @@
         End Try
     End Sub
 
-    ''Modificar Usario-*******-*-*
+
     Public Sub ModificarUsuario()
 
         Dim modificarUsuario As user = (From x In modelo.users Where x.id = codigoUsuario Select x).FirstOrDefault
         modificarUsuario.username = txtUser.Text.Trim
         modificarUsuario.type = cboTipoUsuario.Text
+        modificarUsuario.updated_at = Date.Now
         modelo.SaveChanges()
         MessageBox.Show("Modificacion Exitosa", "Modificar Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Modificar = False
@@ -242,10 +240,6 @@
 
 #End Region
 
-   
-
-    
-    
     Private Sub txtUser_Leave(sender As Object, e As EventArgs) Handles txtUser.Leave
         If UsuarioDisponible() Then
             MessageBox.Show("Este Usuario no esta Disponible", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)

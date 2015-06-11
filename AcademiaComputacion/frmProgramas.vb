@@ -48,6 +48,7 @@
                         If eliminarPrograma.groups.Count > 0 Then
                             Dim modificarPrograma As program = (From x In modelo.programs Where x.id = codigoPrograma Select x).FirstOrDefault
                             modificarPrograma.state = "baja"
+                            modificarPrograma.updated_at = Date.Now
                             modelo.SaveChanges()
                             MessageBox.Show("Programa Eliminado Exitosamente", "Eliminacion Progarma", MessageBoxButtons.OK, MessageBoxIcon.Information)
                             MostrarProgramas()
@@ -88,7 +89,7 @@
     Public Sub MostrarProgramas()
         Try
             tblListadoProgramas.Rows.Clear()
-            Dim programa = (From x In modelo.programs Where x.state = "activo" Select x).ToList
+            Dim programa = (From x In modelo.programs Where x.state = "arriba" Select x).ToList
             For Each programas As program In programa
                 tblListadoProgramas.Rows.Add({"", programas.id, programas.description, programas.shelf_life})
             Next
@@ -106,7 +107,7 @@
             Dim nuevoPrograma As New program
             nuevoPrograma.description = descripcionPrograma
             nuevoPrograma.shelf_life = duracionPrograma
-            nuevoPrograma.state = "activo"
+            nuevoPrograma.state = "arriba"
             nuevoPrograma.created_at = Date.Now
             nuevoPrograma.updated_at = Date.Now
             modelo.programs.Add(nuevoPrograma)
@@ -124,12 +125,10 @@
     'Modificar Programa
     Public Sub modificarPrograma()
         If validacionPrograma() Then
-
             Dim modificarPrograma As program = (From x In modelo.programs Where x.id = codigoPrograma Select x).FirstOrDefault
-
-
             modificarPrograma.description = txtDescripcionPagina1.Text.Trim
             modificarPrograma.shelf_life = txtTiempoPagina1.Text.Trim
+            modificarPrograma.updated_at = Date.Now
             modelo.SaveChanges()
             MessageBox.Show("Modificacion Exitosa", "Modificar Programa", MessageBoxButtons.OK, MessageBoxIcon.Information)
             limpiarProgramas()

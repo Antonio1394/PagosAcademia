@@ -31,6 +31,7 @@ Partial Class RadForm1
         Me.btnSiguiente = New Telerik.WinControls.UI.RadButton()
         Me.btnAtras = New Telerik.WinControls.UI.RadButton()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.RadButton1 = New Telerik.WinControls.UI.RadButton()
         Me.txtEncargado = New Telerik.WinControls.UI.RadTextBox()
         Me.txtAlumno = New Telerik.WinControls.UI.RadTextBox()
         Me.RadLabel3 = New Telerik.WinControls.UI.RadLabel()
@@ -48,13 +49,14 @@ Partial Class RadForm1
         Me.WizardPage1 = New Telerik.WinControls.UI.WizardPage()
         Me.VisualStudio2012LightTheme1 = New Telerik.WinControls.Themes.VisualStudio2012LightTheme()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.RadButton1 = New Telerik.WinControls.UI.RadButton()
+        Me.lblResultado2 = New Telerik.WinControls.UI.RadLabel()
         CType(Me.RadWizard1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadWizard1.SuspendLayout()
         CType(Me.btnCancelar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnSiguiente, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAtras, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
+        CType(Me.RadButton1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtEncargado, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtAlumno, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -68,7 +70,7 @@ Partial Class RadForm1
         CType(Me.txtCodigoAlumno, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadButton1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.lblResultado2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -107,9 +109,9 @@ Partial Class RadForm1
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.White
-        Me.Panel3.Location = New System.Drawing.Point(0, 0)
+        Me.Panel3.Location = New System.Drawing.Point(0, 69)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(200, 100)
+        Me.Panel3.Size = New System.Drawing.Size(629, 295)
         Me.Panel3.TabIndex = 2
         '
         'btnCancelar
@@ -143,6 +145,7 @@ Partial Class RadForm1
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
+        Me.Panel1.Controls.Add(Me.lblResultado2)
         Me.Panel1.Controls.Add(Me.RadButton1)
         Me.Panel1.Controls.Add(Me.txtEncargado)
         Me.Panel1.Controls.Add(Me.txtAlumno)
@@ -159,6 +162,17 @@ Partial Class RadForm1
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(629, 295)
         Me.Panel1.TabIndex = 0
+        '
+        'RadButton1
+        '
+        Me.RadButton1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RadButton1.Image = Global.AcademiaComputacion.My.Resources.Resources.write12
+        Me.RadButton1.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.RadButton1.Location = New System.Drawing.Point(469, 178)
+        Me.RadButton1.Name = "RadButton1"
+        Me.RadButton1.Size = New System.Drawing.Size(26, 22)
+        Me.RadButton1.TabIndex = 21
+        Me.RadButton1.ThemeName = "VisualStudio2012Light"
         '
         'txtEncargado
         '
@@ -308,16 +322,15 @@ Partial Class RadForm1
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
-        'RadButton1
+        'lblResultado2
         '
-        Me.RadButton1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadButton1.Image = Global.AcademiaComputacion.My.Resources.Resources.write12
-        Me.RadButton1.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.RadButton1.Location = New System.Drawing.Point(469, 178)
-        Me.RadButton1.Name = "RadButton1"
-        Me.RadButton1.Size = New System.Drawing.Size(26, 22)
-        Me.RadButton1.TabIndex = 21
-        Me.RadButton1.ThemeName = "VisualStudio2012Light"
+        Me.lblResultado2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblResultado2.Location = New System.Drawing.Point(183, 247)
+        Me.lblResultado2.Name = "lblResultado2"
+        Me.lblResultado2.Size = New System.Drawing.Size(312, 25)
+        Me.lblResultado2.TabIndex = 22
+        Me.lblResultado2.Text = "No se encontro mensualidad pendiente"
+        Me.lblResultado2.ThemeName = "VisualStudio2012Light"
         '
         'RadForm1
         '
@@ -340,6 +353,7 @@ Partial Class RadForm1
         CType(Me.btnAtras, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.RadButton1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtEncargado, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtAlumno, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -353,7 +367,7 @@ Partial Class RadForm1
         CType(Me.txtCodigoAlumno, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadButton1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lblResultado2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -384,5 +398,6 @@ Partial Class RadForm1
     Friend WithEvents btnSiguiente As Telerik.WinControls.UI.RadButton
     Friend WithEvents btnAtras As Telerik.WinControls.UI.RadButton
     Friend WithEvents RadButton1 As Telerik.WinControls.UI.RadButton
+    Friend WithEvents lblResultado2 As Telerik.WinControls.UI.RadLabel
 End Class
 
