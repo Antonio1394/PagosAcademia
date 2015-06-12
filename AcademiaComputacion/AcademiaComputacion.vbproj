@@ -228,6 +228,18 @@
   <ItemGroup>
     <Compile Include="App.vb" />
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="ReportePagoExtra.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportePagoExtra.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReporteMensualidad.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteMensualidad.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Datos\Conexion.vb" />
     <Compile Include="Datos\crudController.vb" />
     <Compile Include="detailgroup.vb">
@@ -381,22 +393,19 @@
       <DependentUpon>ReporteInscripcion.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ReporteMensualidad.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ReporteMensualidad.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ReportePagoExtra.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ReportePagoExtra.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="schedules_practice.vb">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="share.vb">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spIncripcion_Result.vb">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spMensualidad_Result.vb">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spPagoExtra_Result.vb">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="student.vb">
@@ -413,6 +422,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ReportePagoExtra.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportePagoExtra.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteMensualidad.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteMensualidad.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEmpleado.resx">
       <DependentUpon>frmEmpleado.vb</DependentUpon>
     </EmbeddedResource>
@@ -464,14 +481,6 @@
     <EmbeddedResource Include="ReporteInscripcion.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteInscripcion.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReporteMensualidad.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ReporteMensualidad.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReportePagoExtra.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ReportePagoExtra.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

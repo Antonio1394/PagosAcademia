@@ -10,6 +10,9 @@
 Imports System
 Imports System.Data.Entity
 Imports System.Data.Entity.Infrastructure
+Imports System.Data.Objects
+Imports System.Data.Objects.DataClasses
+Imports System.Linq
 
 Partial Public Class AcademiaEntities4
     Inherits DbContext
@@ -41,5 +44,39 @@ Partial Public Class AcademiaEntities4
     Public Property tics() As DbSet(Of tic)
     Public Property type_employees() As DbSet(Of type_employees)
     Public Property users() As DbSet(Of user)
+
+    Public Overridable Function IngresoUsuario(user As String, password As String, tipo As String, idEmpleado As Nullable(Of Integer)) As Integer
+        Dim userParameter As ObjectParameter = If(user IsNot Nothing, New ObjectParameter("user", user), New ObjectParameter("user", GetType(String)))
+
+        Dim passwordParameter As ObjectParameter = If(password IsNot Nothing, New ObjectParameter("password", password), New ObjectParameter("password", GetType(String)))
+
+        Dim tipoParameter As ObjectParameter = If(tipo IsNot Nothing, New ObjectParameter("tipo", tipo), New ObjectParameter("tipo", GetType(String)))
+
+        Dim idEmpleadoParameter As ObjectParameter = If(idEmpleado.HasValue, New ObjectParameter("idEmpleado", idEmpleado), New ObjectParameter("idEmpleado", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("IngresoUsuario", userParameter, passwordParameter, tipoParameter, idEmpleadoParameter)
+    End Function
+
+    Public Overridable Function spIncripcion(idInscripcion As Nullable(Of Integer)) As ObjectResult(Of spIncripcion_Result)
+        Dim idInscripcionParameter As ObjectParameter = If(idInscripcion.HasValue, New ObjectParameter("idInscripcion", idInscripcion), New ObjectParameter("idInscripcion", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of spIncripcion_Result)("spIncripcion", idInscripcionParameter)
+    End Function
+
+    Public Overridable Function spMensualidad(idShare As Nullable(Of Integer), mes As String) As ObjectResult(Of spMensualidad_Result)
+        Dim idShareParameter As ObjectParameter = If(idShare.HasValue, New ObjectParameter("idShare", idShare), New ObjectParameter("idShare", GetType(Integer)))
+
+        Dim mesParameter As ObjectParameter = If(mes IsNot Nothing, New ObjectParameter("mes", mes), New ObjectParameter("mes", GetType(String)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of spMensualidad_Result)("spMensualidad", idShareParameter, mesParameter)
+    End Function
+
+    Public Overridable Function spPagoExtra(idPago As Nullable(Of Integer), saldoAnterior As Nullable(Of Integer)) As ObjectResult(Of spPagoExtra_Result)
+        Dim idPagoParameter As ObjectParameter = If(idPago.HasValue, New ObjectParameter("idPago", idPago), New ObjectParameter("idPago", GetType(Integer)))
+
+        Dim saldoAnteriorParameter As ObjectParameter = If(saldoAnterior.HasValue, New ObjectParameter("saldoAnterior", saldoAnterior), New ObjectParameter("saldoAnterior", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of spPagoExtra_Result)("spPagoExtra", idPagoParameter, saldoAnteriorParameter)
+    End Function
 
 End Class

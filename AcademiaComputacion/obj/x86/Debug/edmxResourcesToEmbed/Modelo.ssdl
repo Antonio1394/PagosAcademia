@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="AcademiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+<Schema Namespace="AcademiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityType Name="detailgroups">
     <Key>
       <PropertyRef Name="id" />
@@ -432,6 +432,23 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="IngresoUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="password" Type="varchar" Mode="In" />
+    <Parameter Name="tipo" Type="varchar" Mode="In" />
+    <Parameter Name="idEmpleado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spIncripcion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idInscripcion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spMensualidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idShare" Type="int" Mode="In" />
+    <Parameter Name="mes" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="spPagoExtra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idPago" Type="int" Mode="In" />
+    <Parameter Name="saldoAnterior" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="AcademiaModelStoreContainer">
     <EntitySet Name="detailgroups" EntityType="Self.detailgroups" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="employees" EntityType="Self.employees" Schema="dbo" store:Type="Tables" />

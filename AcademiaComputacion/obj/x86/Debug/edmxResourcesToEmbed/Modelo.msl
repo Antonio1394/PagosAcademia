@@ -208,5 +208,46 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="IngresoUsuario" FunctionName="AcademiaModel.Store.IngresoUsuario" />
+    <FunctionImportMapping FunctionImportName="spIncripcion" FunctionName="AcademiaModel.Store.spIncripcion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AcademiaModel.spIncripcion_Result">
+          <ScalarProperty Name="NombreAlumno" ColumnName="NombreAlumno" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="no_document" ColumnName="no_document" />
+          <ScalarProperty Name="schedule" ColumnName="schedule" />
+          <ScalarProperty Name="day" ColumnName="day" />
+          <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spMensualidad" FunctionName="AcademiaModel.Store.spMensualidad">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AcademiaModel.spMensualidad_Result">
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="date_share" ColumnName="date_share" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="amount1" ColumnName="amount1" />
+          <ScalarProperty Name="no_document" ColumnName="no_document" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+          <ScalarProperty Name="Mespagado" ColumnName="Mespagado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spPagoExtra" FunctionName="AcademiaModel.Store.spPagoExtra">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AcademiaModel.spPagoExtra_Result">
+          <ScalarProperty Name="pagoInicial" ColumnName="pagoInicial" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="pago" ColumnName="pago" />
+          <ScalarProperty Name="no_document" ColumnName="no_document" />
+          <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="saldo" ColumnName="saldo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

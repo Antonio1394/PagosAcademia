@@ -1,6 +1,6 @@
-USE [Academia]
+USE [academia]
 GO
-/****** Object:  StoredProcedure [dbo].[spMensualidad]    Script Date: 08/06/2015 16:17:04 ******/
+/****** Object:  StoredProcedure [dbo].[spMensualidad]    Script Date: 11/06/2015 14:45:45 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -10,7 +10,7 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-ALTER PROCEDURE [dbo].[spMensualidad]
+CREATE PROCEDURE [dbo].[spMensualidad]
 	-- Add the parameters for the stored procedure here
 	@idShare int,
 	@mes varchar(45)

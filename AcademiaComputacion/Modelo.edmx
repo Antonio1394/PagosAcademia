@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AcademiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="AcademiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityType Name="detailgroups">
           <Key>
             <PropertyRef Name="id" />
@@ -437,6 +437,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="IngresoUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+          <Parameter Name="tipo" Type="varchar" Mode="In" />
+          <Parameter Name="idEmpleado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spIncripcion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idInscripcion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spMensualidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idShare" Type="int" Mode="In" />
+          <Parameter Name="mes" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spPagoExtra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPago" Type="int" Mode="In" />
+          <Parameter Name="saldoAnterior" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="AcademiaModelStoreContainer">
           <EntitySet Name="detailgroups" EntityType="Self.detailgroups" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="employees" EntityType="Self.employees" Schema="dbo" store:Type="Tables" />
@@ -534,8 +551,7 @@
             <End Role="payments" EntitySet="payments" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AcademiaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -1107,7 +1123,52 @@
             <End Role="students" EntitySet="students" />
             <End Role="tics" EntitySet="tics" />
           </AssociationSet>
+          <FunctionImport Name="IngresoUsuario">
+            <Parameter Name="user" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="tipo" Mode="In" Type="String" />
+            <Parameter Name="idEmpleado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spIncripcion" ReturnType="Collection(AcademiaModel.spIncripcion_Result)">
+            <Parameter Name="idInscripcion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spMensualidad" ReturnType="Collection(AcademiaModel.spMensualidad_Result)">
+            <Parameter Name="idShare" Mode="In" Type="Int32" />
+            <Parameter Name="mes" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spPagoExtra" ReturnType="Collection(AcademiaModel.spPagoExtra_Result)">
+            <Parameter Name="idPago" Mode="In" Type="Int32" />
+            <Parameter Name="saldoAnterior" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="spIncripcion_Result">
+          <Property Type="String" Name="NombreAlumno" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="description" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="amount" Nullable="true" />
+          <Property Type="String" Name="no_document" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="schedule" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="day" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="101" />
+        </ComplexType>
+        <ComplexType Name="spMensualidad_Result">
+          <Property Type="Int32" Name="amount" Nullable="true" />
+          <Property Type="DateTime" Name="date_share" Nullable="true" />
+          <Property Type="String" Name="description" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="amount1" Nullable="true" />
+          <Property Type="String" Name="no_document" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="fullname" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="Mespagado" Nullable="true" MaxLength="45" />
+        </ComplexType>
+        <ComplexType Name="spPagoExtra_Result">
+          <Property Type="Int32" Name="pagoInicial" Nullable="true" />
+          <Property Type="String" Name="fullname" Nullable="false" MaxLength="101" />
+          <Property Type="Int32" Name="pago" Nullable="true" />
+          <Property Type="String" Name="no_document" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="description" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="saldo" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1321,6 +1382,47 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="IngresoUsuario" FunctionName="AcademiaModel.Store.IngresoUsuario" />
+          <FunctionImportMapping FunctionImportName="spIncripcion" FunctionName="AcademiaModel.Store.spIncripcion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AcademiaModel.spIncripcion_Result">
+                <ScalarProperty Name="NombreAlumno" ColumnName="NombreAlumno" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="no_document" ColumnName="no_document" />
+                <ScalarProperty Name="schedule" ColumnName="schedule" />
+                <ScalarProperty Name="day" ColumnName="day" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spMensualidad" FunctionName="AcademiaModel.Store.spMensualidad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AcademiaModel.spMensualidad_Result">
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="date_share" ColumnName="date_share" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="amount1" ColumnName="amount1" />
+                <ScalarProperty Name="no_document" ColumnName="no_document" />
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="Mespagado" ColumnName="Mespagado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spPagoExtra" FunctionName="AcademiaModel.Store.spPagoExtra">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AcademiaModel.spPagoExtra_Result">
+                <ScalarProperty Name="pagoInicial" ColumnName="pagoInicial" />
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="pago" ColumnName="pago" />
+                <ScalarProperty Name="no_document" ColumnName="no_document" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="saldo" ColumnName="saldo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

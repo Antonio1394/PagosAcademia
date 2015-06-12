@@ -568,5 +568,50 @@
       <End Role="students" EntitySet="students" />
       <End Role="tics" EntitySet="tics" />
     </AssociationSet>
+    <FunctionImport Name="IngresoUsuario">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="tipo" Mode="In" Type="String" />
+      <Parameter Name="idEmpleado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spIncripcion" ReturnType="Collection(AcademiaModel.spIncripcion_Result)">
+      <Parameter Name="idInscripcion" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spMensualidad" ReturnType="Collection(AcademiaModel.spMensualidad_Result)">
+      <Parameter Name="idShare" Mode="In" Type="Int32" />
+      <Parameter Name="mes" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spPagoExtra" ReturnType="Collection(AcademiaModel.spPagoExtra_Result)">
+      <Parameter Name="idPago" Mode="In" Type="Int32" />
+      <Parameter Name="saldoAnterior" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="spIncripcion_Result">
+    <Property Type="String" Name="NombreAlumno" Nullable="false" MaxLength="101" />
+    <Property Type="String" Name="description" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="amount" Nullable="true" />
+    <Property Type="String" Name="no_document" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="schedule" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="day" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="101" />
+  </ComplexType>
+  <ComplexType Name="spMensualidad_Result">
+    <Property Type="Int32" Name="amount" Nullable="true" />
+    <Property Type="DateTime" Name="date_share" Nullable="true" />
+    <Property Type="String" Name="description" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="amount1" Nullable="true" />
+    <Property Type="String" Name="no_document" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="fullname" Nullable="false" MaxLength="101" />
+    <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="101" />
+    <Property Type="String" Name="Mespagado" Nullable="true" MaxLength="45" />
+  </ComplexType>
+  <ComplexType Name="spPagoExtra_Result">
+    <Property Type="Int32" Name="pagoInicial" Nullable="true" />
+    <Property Type="String" Name="fullname" Nullable="false" MaxLength="101" />
+    <Property Type="Int32" Name="pago" Nullable="true" />
+    <Property Type="String" Name="no_document" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="101" />
+    <Property Type="String" Name="description" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="saldo" Nullable="true" />
+  </ComplexType>
 </Schema>
