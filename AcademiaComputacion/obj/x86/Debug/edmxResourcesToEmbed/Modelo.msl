@@ -249,5 +249,16 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="detail_Extra_Payments">
+      <EntityTypeMapping TypeName="AcademiaModel.detail_Extra_Payments">
+        <MappingFragment StoreEntitySet="detail_Extra_Payments">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="id_payment" ColumnName="id_payment" />
+          <ScalarProperty Name="id_extraPayment" ColumnName="id_extraPayment" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

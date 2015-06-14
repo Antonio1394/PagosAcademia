@@ -40,6 +40,9 @@
         <AssociationConnector Association="AcademiaModel.fk_id_user_payments" ManuallyRouted="false" />
         <AssociationConnector Association="AcademiaModel.fk_studente_payment" ManuallyRouted="false" />
         <AssociationConnector Association="AcademiaModel.fk_id_student_tics" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AcademiaModel.detail_Extra_Payments" Width="1.5" PointX="8.25" PointY="7.125" />
+        <AssociationConnector Association="AcademiaModel.fk_detail_extra_payment_extraPayment" />
+        <AssociationConnector Association="AcademiaModel.fk_detail_extra_payment_payment" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

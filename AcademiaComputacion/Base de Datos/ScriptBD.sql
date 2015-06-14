@@ -203,6 +203,16 @@ constraint pk_id_tics primary key(id),
 constraint fk_id_student_tics foreign key(id_student) references students(id)
 )
 
-
+create table detail_Extra_Payments
+(
+	id int not null identity,
+	id_extraPayment int,
+	id_payment int,
+	created_at datetime,
+	updated_at datetime,
+	constraint pk_detail_extra_payment primary key(id),
+	constraint fk_detail_extra_payment_payment foreign key(id_payment) references payments(id),
+	constraint fk_detail_extra_payment_extraPayment foreign key(id_extraPayment) references extra_payments(id) 
+)
 
 

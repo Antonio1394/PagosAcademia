@@ -135,11 +135,20 @@ Public Class FrmPagosExtras
                 modelo.payments.Add(nuevoPago)
                 modelo.SaveChanges()
                 idPago = nuevoPago.id
+
                 Dim getExtraPago = (From x In modelo.extra_payments Where x.id_student = idstudent And x.id_type_payment = idTipoPago).First
                 getExtraPago.balance = getExtraPago.balance - abono
-                getExtraPago.id_payment = idPago
                 getExtraPago.updated_at = Date.Now
                 modelo.SaveChanges()
+
+                Dim nuevoDetalle As New detail_Extra_Payments
+                nuevoDetalle.id_extraPayment = getExtraPago.id
+                nuevoDetalle.id_payment = idPago
+                nuevoDetalle.created_at = Date.Now
+                nuevoDetalle.updated_at = Date.Now
+                modelo.detail_Extra_Payments.Add(nuevoDetalle)
+                modelo.SaveChanges()
+
                 transaction.Complete()
             Catch ex As Exception
                 MessageBox.Show(ex.Message)

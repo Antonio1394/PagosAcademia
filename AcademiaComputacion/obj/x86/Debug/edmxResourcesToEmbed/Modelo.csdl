@@ -48,6 +48,7 @@
     <NavigationProperty Name="payment" Relationship="Self.fk_id_payment_extra" FromRole="extra_payments" ToRole="payments" />
     <NavigationProperty Name="student" Relationship="Self.fk_id_students_extra" FromRole="extra_payments" ToRole="students" />
     <NavigationProperty Name="payment_types" Relationship="Self.fk_id_type_payment_extra" FromRole="extra_payments" ToRole="payment_types" />
+    <NavigationProperty Name="detail_Extra_Payments" Relationship="AcademiaModel.fk_detail_extra_payment_extraPayment" FromRole="extra_payments" ToRole="detail_Extra_Payments" />
   </EntityType>
   <EntityType Name="group">
     <Key>
@@ -133,6 +134,7 @@
     <NavigationProperty Name="shares" Relationship="Self.fk_id_payment_shares" FromRole="payments" ToRole="shares" />
     <NavigationProperty Name="user" Relationship="Self.fk_id_user_payments" FromRole="payments" ToRole="users" />
     <NavigationProperty Name="student" Relationship="Self.fk_studente_payment" FromRole="payments" ToRole="students" />
+    <NavigationProperty Name="detail_Extra_Payments" Relationship="AcademiaModel.fk_detail_extra_payment_payment" FromRole="payment" ToRole="detail_Extra_Payments" />
   </EntityType>
   <EntityType Name="program">
     <Key>
@@ -585,6 +587,15 @@
       <Parameter Name="idPago" Mode="In" Type="Int32" />
       <Parameter Name="saldoAnterior" Mode="In" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="detail_Extra_Payments" EntityType="AcademiaModel.detail_Extra_Payments" />
+    <AssociationSet Name="fk_detail_extra_payment_extraPayment" Association="AcademiaModel.fk_detail_extra_payment_extraPayment">
+      <End Role="extra_payments" EntitySet="extra_payments" />
+      <End Role="detail_Extra_Payments" EntitySet="detail_Extra_Payments" />
+    </AssociationSet>
+    <AssociationSet Name="fk_detail_extra_payment_payment" Association="AcademiaModel.fk_detail_extra_payment_payment">
+      <End Role="payment" EntitySet="payments" />
+      <End Role="detail_Extra_Payments" EntitySet="detail_Extra_Payments" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="spIncripcion_Result">
     <Property Type="String" Name="NombreAlumno" Nullable="false" MaxLength="101" />
@@ -614,4 +625,40 @@
     <Property Type="String" Name="description" Nullable="true" MaxLength="255" />
     <Property Type="Int32" Name="saldo" Nullable="true" />
   </ComplexType>
+  <EntityType Name="detail_Extra_Payments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_extraPayment" Type="Int32" />
+    <Property Name="id_payment" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="extra_payments" Relationship="AcademiaModel.fk_detail_extra_payment_extraPayment" FromRole="detail_Extra_Payments" ToRole="extra_payments" />
+    <NavigationProperty Name="payment" Relationship="AcademiaModel.fk_detail_extra_payment_payment" FromRole="detail_Extra_Payments" ToRole="payment" />
+  </EntityType>
+  <Association Name="fk_detail_extra_payment_extraPayment">
+    <End Type="AcademiaModel.extra_payments" Role="extra_payments" Multiplicity="0..1" />
+    <End Type="AcademiaModel.detail_Extra_Payments" Role="detail_Extra_Payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="extra_payments">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="detail_Extra_Payments">
+        <PropertyRef Name="id_extraPayment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_detail_extra_payment_payment">
+    <End Type="AcademiaModel.payment" Role="payment" Multiplicity="0..1" />
+    <End Type="AcademiaModel.detail_Extra_Payments" Role="detail_Extra_Payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="payment">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="detail_Extra_Payments">
+        <PropertyRef Name="id_payment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

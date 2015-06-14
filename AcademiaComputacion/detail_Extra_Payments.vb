@@ -10,20 +10,14 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class extra_payments
+Partial Public Class detail_Extra_Payments
     Public Property id As Integer
-    Public Property id_student As Nullable(Of Integer)
+    Public Property id_extraPayment As Nullable(Of Integer)
     Public Property id_payment As Nullable(Of Integer)
-    Public Property id_type_payment As Nullable(Of Integer)
-    Public Property amount As Nullable(Of Integer)
-    Public Property balance As Nullable(Of Integer)
-    Public Property state As String
     Public Property created_at As Nullable(Of Date)
     Public Property updated_at As Nullable(Of Date)
 
+    Public Overridable Property extra_payments As extra_payments
     Public Overridable Property payment As payment
-    Public Overridable Property student As student
-    Public Overridable Property payment_types As payment_types
-    Public Overridable Property detail_Extra_Payments As ICollection(Of detail_Extra_Payments) = New HashSet(Of detail_Extra_Payments)
 
 End Class

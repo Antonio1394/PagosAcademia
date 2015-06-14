@@ -28,5 +28,6 @@ Partial Public Class payment
     Public Overridable Property shares As ICollection(Of share) = New HashSet(Of share)
     Public Overridable Property user As user
     Public Overridable Property student As student
+    Public Overridable Property detail_Extra_Payments As ICollection(Of detail_Extra_Payments) = New HashSet(Of detail_Extra_Payments)
 
 End Class

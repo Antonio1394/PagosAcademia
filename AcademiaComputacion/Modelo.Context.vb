@@ -44,6 +44,7 @@ Partial Public Class AcademiaEntities4
     Public Property tics() As DbSet(Of tic)
     Public Property type_employees() As DbSet(Of type_employees)
     Public Property users() As DbSet(Of user)
+    Public Property detail_Extra_Payments() As DbSet(Of detail_Extra_Payments)
 
     Public Overridable Function IngresoUsuario(user As String, password As String, tipo As String, idEmpleado As Nullable(Of Integer)) As Integer
         Dim userParameter As ObjectParameter = If(user IsNot Nothing, New ObjectParameter("user", user), New ObjectParameter("user", GetType(String)))

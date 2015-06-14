@@ -22,117 +22,135 @@ Partial Class FrmPagos
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim GridViewTextBoxColumn1 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim GridViewTextBoxColumn2 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim GridViewTextBoxColumn3 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim GridViewTextBoxColumn4 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim GridViewTextBoxColumn5 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim GridViewTextBoxColumn6 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim GridViewTextBoxColumn7 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim GridViewTextBoxColumn8 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim GridViewTextBoxColumn9 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim SortDescriptor1 As Telerik.WinControls.Data.SortDescriptor = New Telerik.WinControls.Data.SortDescriptor()
-        Me.TelerikMetroTheme1 = New Telerik.WinControls.Themes.TelerikMetroTheme()
+        Dim GridViewTextBoxColumn10 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewTextBoxColumn11 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewTextBoxColumn12 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewTextBoxColumn13 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewTextBoxColumn14 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewTextBoxColumn15 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewTextBoxColumn16 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewTextBoxColumn17 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewTextBoxColumn18 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewCommandColumn2 As Telerik.WinControls.UI.GridViewCommandColumn = New Telerik.WinControls.UI.GridViewCommandColumn()
         Me.VisualStudio2012LightTheme1 = New Telerik.WinControls.Themes.VisualStudio2012LightTheme()
-        Me.RadPanel1 = New Telerik.WinControls.UI.RadPanel()
+        Me.TelerikMetroTheme1 = New Telerik.WinControls.Themes.TelerikMetroTheme()
         Me.listadoPagos = New Telerik.WinControls.UI.RadGridView()
-        CType(Me.RadPanel1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadPanel1.SuspendLayout()
+        Me.RadLabel1 = New Telerik.WinControls.UI.RadLabel()
         CType(Me.listadoPagos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.listadoPagos.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'RadPanel1
-        '
-        Me.RadPanel1.Controls.Add(Me.listadoPagos)
-        Me.RadPanel1.Location = New System.Drawing.Point(28, 12)
-        Me.RadPanel1.Name = "RadPanel1"
-        Me.RadPanel1.Size = New System.Drawing.Size(941, 432)
-        Me.RadPanel1.TabIndex = 0
-        Me.RadPanel1.ThemeName = "VisualStudio2012Light"
         '
         'listadoPagos
         '
         Me.listadoPagos.BackColor = System.Drawing.Color.White
         Me.listadoPagos.Cursor = System.Windows.Forms.Cursors.Default
-        Me.listadoPagos.Dock = System.Windows.Forms.DockStyle.Fill
         Me.listadoPagos.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.listadoPagos.ForeColor = System.Drawing.SystemColors.ControlText
         Me.listadoPagos.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.listadoPagos.Location = New System.Drawing.Point(0, 0)
+        Me.listadoPagos.Location = New System.Drawing.Point(20, 48)
         '
         'listadoPagos
         '
-        GridViewTextBoxColumn1.EnableExpressionEditor = False
-        GridViewTextBoxColumn1.FieldName = "idPago"
-        GridViewTextBoxColumn1.HeaderText = "Id Pago"
-        GridViewTextBoxColumn1.Name = "idPago"
-        GridViewTextBoxColumn1.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending
-        GridViewTextBoxColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        GridViewTextBoxColumn1.Width = 67
-        GridViewTextBoxColumn2.EnableExpressionEditor = False
-        GridViewTextBoxColumn2.FieldName = "fecha_creacion"
-        GridViewTextBoxColumn2.HeaderText = "Fecha"
-        GridViewTextBoxColumn2.Name = "fecha_creacion"
-        GridViewTextBoxColumn2.TextAlignment = System.Drawing.ContentAlignment.TopCenter
-        GridViewTextBoxColumn2.Width = 82
-        GridViewTextBoxColumn3.EnableExpressionEditor = False
-        GridViewTextBoxColumn3.FieldName = "tipoPago"
-        GridViewTextBoxColumn3.HeaderText = "Tipo de pago"
-        GridViewTextBoxColumn3.Name = "tipoPago"
-        GridViewTextBoxColumn3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        GridViewTextBoxColumn3.Width = 119
-        GridViewTextBoxColumn4.EnableExpressionEditor = False
-        GridViewTextBoxColumn4.FieldName = "monto"
-        GridViewTextBoxColumn4.HeaderText = "Cantidad"
-        GridViewTextBoxColumn4.Name = "monto"
-        GridViewTextBoxColumn4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        GridViewTextBoxColumn4.Width = 119
-        GridViewTextBoxColumn5.EnableExpressionEditor = False
-        GridViewTextBoxColumn5.FieldName = "alumno"
-        GridViewTextBoxColumn5.HeaderText = "Alumno"
-        GridViewTextBoxColumn5.Name = "alumno"
-        GridViewTextBoxColumn5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        GridViewTextBoxColumn5.Width = 136
-        GridViewTextBoxColumn6.EnableExpressionEditor = False
-        GridViewTextBoxColumn6.FieldName = "descripcion"
-        GridViewTextBoxColumn6.HeaderText = "Descripcion"
-        GridViewTextBoxColumn6.Name = "descripcion"
-        GridViewTextBoxColumn6.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        GridViewTextBoxColumn6.Width = 121
-        GridViewTextBoxColumn7.EnableExpressionEditor = False
-        GridViewTextBoxColumn7.FieldName = "noDoc"
-        GridViewTextBoxColumn7.HeaderText = "No. documento"
-        GridViewTextBoxColumn7.Name = "noDoc"
-        GridViewTextBoxColumn7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        GridViewTextBoxColumn7.Width = 107
-        GridViewTextBoxColumn8.EnableExpressionEditor = False
-        GridViewTextBoxColumn8.FieldName = "estado"
-        GridViewTextBoxColumn8.HeaderText = "Estado"
-        GridViewTextBoxColumn8.Name = "estado"
-        GridViewTextBoxColumn8.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        GridViewTextBoxColumn9.EnableExpressionEditor = False
-        GridViewTextBoxColumn9.FieldName = "usuario"
-        GridViewTextBoxColumn9.HeaderText = "Usuario"
-        GridViewTextBoxColumn9.Name = "usuario"
-        GridViewTextBoxColumn9.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.listadoPagos.MasterTemplate.Columns.AddRange(New Telerik.WinControls.UI.GridViewDataColumn() {GridViewTextBoxColumn1, GridViewTextBoxColumn2, GridViewTextBoxColumn3, GridViewTextBoxColumn4, GridViewTextBoxColumn5, GridViewTextBoxColumn6, GridViewTextBoxColumn7, GridViewTextBoxColumn8, GridViewTextBoxColumn9})
-        SortDescriptor1.PropertyName = "idPago"
-        Me.listadoPagos.MasterTemplate.SortDescriptors.AddRange(New Telerik.WinControls.Data.SortDescriptor() {SortDescriptor1})
+        Me.listadoPagos.MasterTemplate.AllowAddNewRow = False
+        Me.listadoPagos.MasterTemplate.AllowColumnChooser = False
+        Me.listadoPagos.MasterTemplate.AllowColumnReorder = False
+        Me.listadoPagos.MasterTemplate.AllowColumnResize = False
+        Me.listadoPagos.MasterTemplate.AllowDragToGroup = False
+        Me.listadoPagos.MasterTemplate.AllowRowResize = False
+        Me.listadoPagos.MasterTemplate.AutoGenerateColumns = False
+        GridViewTextBoxColumn10.EnableExpressionEditor = False
+        GridViewTextBoxColumn10.FieldName = "idPago"
+        GridViewTextBoxColumn10.HeaderText = "idPago"
+        GridViewTextBoxColumn10.IsVisible = False
+        GridViewTextBoxColumn10.Name = "idPago"
+        GridViewTextBoxColumn10.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        GridViewTextBoxColumn11.EnableExpressionEditor = False
+        GridViewTextBoxColumn11.FieldName = "noDocumento"
+        GridViewTextBoxColumn11.HeaderText = "No Documento"
+        GridViewTextBoxColumn11.Name = "noDocumento"
+        GridViewTextBoxColumn11.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        GridViewTextBoxColumn11.Width = 96
+        GridViewTextBoxColumn12.EnableExpressionEditor = False
+        GridViewTextBoxColumn12.FieldName = "idTipPago"
+        GridViewTextBoxColumn12.HeaderText = "tipoPago"
+        GridViewTextBoxColumn12.IsVisible = False
+        GridViewTextBoxColumn12.Name = "idTipoPago"
+        GridViewTextBoxColumn12.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        GridViewTextBoxColumn13.EnableExpressionEditor = False
+        GridViewTextBoxColumn13.FieldName = "fecha"
+        GridViewTextBoxColumn13.HeaderText = "Fecha"
+        GridViewTextBoxColumn13.MinWidth = 140
+        GridViewTextBoxColumn13.Name = "fecha"
+        GridViewTextBoxColumn13.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        GridViewTextBoxColumn13.Width = 150
+        GridViewTextBoxColumn14.EnableExpressionEditor = False
+        GridViewTextBoxColumn14.FieldName = "descripcion"
+        GridViewTextBoxColumn14.HeaderText = "Descripcion"
+        GridViewTextBoxColumn14.Name = "descripcion"
+        GridViewTextBoxColumn14.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        GridViewTextBoxColumn14.Width = 161
+        GridViewTextBoxColumn15.EnableExpressionEditor = False
+        GridViewTextBoxColumn15.FieldName = "monto"
+        GridViewTextBoxColumn15.HeaderText = "Monto"
+        GridViewTextBoxColumn15.Name = "monto"
+        GridViewTextBoxColumn15.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        GridViewTextBoxColumn15.Width = 91
+        GridViewTextBoxColumn16.EnableExpressionEditor = False
+        GridViewTextBoxColumn16.FieldName = "alumno"
+        GridViewTextBoxColumn16.HeaderText = "Alumno"
+        GridViewTextBoxColumn16.MinWidth = 200
+        GridViewTextBoxColumn16.Name = "alumno"
+        GridViewTextBoxColumn16.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        GridViewTextBoxColumn16.Width = 264
+        GridViewTextBoxColumn17.EnableExpressionEditor = False
+        GridViewTextBoxColumn17.FieldName = "estado"
+        GridViewTextBoxColumn17.HeaderText = "Estado"
+        GridViewTextBoxColumn17.Name = "estado"
+        GridViewTextBoxColumn17.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        GridViewTextBoxColumn17.Width = 149
+        GridViewTextBoxColumn18.EnableExpressionEditor = False
+        GridViewTextBoxColumn18.FieldName = "usuario"
+        GridViewTextBoxColumn18.HeaderText = "Usuario"
+        GridViewTextBoxColumn18.MinWidth = 175
+        GridViewTextBoxColumn18.Name = "usuario"
+        GridViewTextBoxColumn18.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        GridViewTextBoxColumn18.Width = 244
+        GridViewCommandColumn2.DefaultText = "Eliminar"
+        GridViewCommandColumn2.EnableExpressionEditor = False
+        GridViewCommandColumn2.FieldName = "eliminar"
+        GridViewCommandColumn2.Name = "eliminar"
+        GridViewCommandColumn2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        GridViewCommandColumn2.UseDefaultText = True
+        GridViewCommandColumn2.Width = 122
+        Me.listadoPagos.MasterTemplate.Columns.AddRange(New Telerik.WinControls.UI.GridViewDataColumn() {GridViewTextBoxColumn10, GridViewTextBoxColumn11, GridViewTextBoxColumn12, GridViewTextBoxColumn13, GridViewTextBoxColumn14, GridViewTextBoxColumn15, GridViewTextBoxColumn16, GridViewTextBoxColumn17, GridViewTextBoxColumn18, GridViewCommandColumn2})
+        Me.listadoPagos.MasterTemplate.EnableFiltering = True
+        Me.listadoPagos.MasterTemplate.EnableGrouping = False
+        Me.listadoPagos.MasterTemplate.EnableSorting = False
         Me.listadoPagos.Name = "listadoPagos"
+        Me.listadoPagos.ReadOnly = True
         Me.listadoPagos.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.listadoPagos.Size = New System.Drawing.Size(941, 432)
+        Me.listadoPagos.Size = New System.Drawing.Size(1031, 492)
         Me.listadoPagos.TabIndex = 0
         Me.listadoPagos.Text = "RadGridView1"
-        Me.listadoPagos.ThemeName = "VisualStudio2012Light"
+        '
+        'RadLabel1
+        '
+        Me.RadLabel1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RadLabel1.Location = New System.Drawing.Point(20, 17)
+        Me.RadLabel1.Name = "RadLabel1"
+        Me.RadLabel1.Size = New System.Drawing.Size(209, 25)
+        Me.RadLabel1.TabIndex = 1
+        Me.RadLabel1.Text = "Listado de Pagos realizados"
         '
         'FrmPagos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1000, 473)
-        Me.Controls.Add(Me.RadPanel1)
+        Me.ClientSize = New System.Drawing.Size(1071, 556)
+        Me.Controls.Add(Me.RadLabel1)
+        Me.Controls.Add(Me.listadoPagos)
         Me.Name = "FrmPagos"
         '
         '
@@ -141,17 +159,17 @@ Partial Class FrmPagos
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Registro de Pagos"
         Me.ThemeName = "TelerikMetro"
-        CType(Me.RadPanel1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.RadPanel1.ResumeLayout(False)
         CType(Me.listadoPagos.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.listadoPagos, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
-    Friend WithEvents TelerikMetroTheme1 As Telerik.WinControls.Themes.TelerikMetroTheme
     Friend WithEvents VisualStudio2012LightTheme1 As Telerik.WinControls.Themes.VisualStudio2012LightTheme
-    Friend WithEvents RadPanel1 As Telerik.WinControls.UI.RadPanel
+    Friend WithEvents TelerikMetroTheme1 As Telerik.WinControls.Themes.TelerikMetroTheme
     Friend WithEvents listadoPagos As Telerik.WinControls.UI.RadGridView
+    Friend WithEvents RadLabel1 As Telerik.WinControls.UI.RadLabel
 End Class
 

@@ -1,5 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="AcademiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityType Name="detail_Extra_Payments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_extraPayment" Type="int" />
+    <Property Name="id_payment" Type="int" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
   <EntityType Name="detailgroups">
     <Key>
       <PropertyRef Name="id" />
@@ -117,6 +127,11 @@
     <Property Name="created_at" Type="datetime" />
     <Property Name="updated_at" Type="datetime" />
   </EntityType>
+  <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'academia.dbo.prueba' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="prueba">
+          <Property Name="id" Type="int" />
+        </EntityType>-->
   <EntityType Name="schedules_practice">
     <Key>
       <PropertyRef Name="id" />
@@ -192,6 +207,30 @@
     <Property Name="created_at" Type="datetime" />
     <Property Name="updated_at" Type="datetime" />
   </EntityType>
+  <Association Name="fk_detail_extra_payment_extraPayment">
+    <End Role="extra_payments" Type="Self.extra_payments" Multiplicity="0..1" />
+    <End Role="detail_Extra_Payments" Type="Self.detail_Extra_Payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="extra_payments">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="detail_Extra_Payments">
+        <PropertyRef Name="id_extraPayment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_detail_extra_payment_payment">
+    <End Role="payments" Type="Self.payments" Multiplicity="0..1" />
+    <End Role="detail_Extra_Payments" Type="Self.detail_Extra_Payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="payments">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="detail_Extra_Payments">
+        <PropertyRef Name="id_payment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="fk_id_employee">
     <End Role="employees" Type="Self.employees" Multiplicity="0..1" />
     <End Role="groups" Type="Self.groups" Multiplicity="*" />
@@ -450,6 +489,7 @@
     <Parameter Name="saldoAnterior" Type="int" Mode="In" />
   </Function>
   <EntityContainer Name="AcademiaModelStoreContainer">
+    <EntitySet Name="detail_Extra_Payments" EntityType="Self.detail_Extra_Payments" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="detailgroups" EntityType="Self.detailgroups" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="employees" EntityType="Self.employees" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="extra_payments" EntityType="Self.extra_payments" Schema="dbo" store:Type="Tables" />
@@ -465,6 +505,14 @@
     <EntitySet Name="tics" EntityType="Self.tics" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="type_employees" EntityType="Self.type_employees" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_detail_extra_payment_extraPayment" Association="Self.fk_detail_extra_payment_extraPayment">
+      <End Role="extra_payments" EntitySet="extra_payments" />
+      <End Role="detail_Extra_Payments" EntitySet="detail_Extra_Payments" />
+    </AssociationSet>
+    <AssociationSet Name="fk_detail_extra_payment_payment" Association="Self.fk_detail_extra_payment_payment">
+      <End Role="payments" EntitySet="payments" />
+      <End Role="detail_Extra_Payments" EntitySet="detail_Extra_Payments" />
+    </AssociationSet>
     <AssociationSet Name="fk_id_employee" Association="Self.fk_id_employee">
       <End Role="employees" EntitySet="employees" />
       <End Role="groups" EntitySet="groups" />

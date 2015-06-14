@@ -5,6 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="AcademiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="detail_Extra_Payments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_extraPayment" Type="int" />
+          <Property Name="id_payment" Type="int" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
         <EntityType Name="detailgroups">
           <Key>
             <PropertyRef Name="id" />
@@ -122,6 +132,11 @@
           <Property Name="created_at" Type="datetime" />
           <Property Name="updated_at" Type="datetime" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'academia.dbo.prueba' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="prueba">
+          <Property Name="id" Type="int" />
+        </EntityType>-->
         <EntityType Name="schedules_practice">
           <Key>
             <PropertyRef Name="id" />
@@ -197,6 +212,30 @@
           <Property Name="created_at" Type="datetime" />
           <Property Name="updated_at" Type="datetime" />
         </EntityType>
+        <Association Name="fk_detail_extra_payment_extraPayment">
+          <End Role="extra_payments" Type="Self.extra_payments" Multiplicity="0..1" />
+          <End Role="detail_Extra_Payments" Type="Self.detail_Extra_Payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="extra_payments">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detail_Extra_Payments">
+              <PropertyRef Name="id_extraPayment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_detail_extra_payment_payment">
+          <End Role="payments" Type="Self.payments" Multiplicity="0..1" />
+          <End Role="detail_Extra_Payments" Type="Self.detail_Extra_Payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payments">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detail_Extra_Payments">
+              <PropertyRef Name="id_payment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_id_employee">
           <End Role="employees" Type="Self.employees" Multiplicity="0..1" />
           <End Role="groups" Type="Self.groups" Multiplicity="*" />
@@ -455,6 +494,7 @@
           <Parameter Name="saldoAnterior" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="AcademiaModelStoreContainer">
+          <EntitySet Name="detail_Extra_Payments" EntityType="Self.detail_Extra_Payments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="detailgroups" EntityType="Self.detailgroups" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="employees" EntityType="Self.employees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="extra_payments" EntityType="Self.extra_payments" Schema="dbo" store:Type="Tables" />
@@ -470,6 +510,14 @@
           <EntitySet Name="tics" EntityType="Self.tics" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="type_employees" EntityType="Self.type_employees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_detail_extra_payment_extraPayment" Association="Self.fk_detail_extra_payment_extraPayment">
+            <End Role="extra_payments" EntitySet="extra_payments" />
+            <End Role="detail_Extra_Payments" EntitySet="detail_Extra_Payments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_detail_extra_payment_payment" Association="Self.fk_detail_extra_payment_payment">
+            <End Role="payments" EntitySet="payments" />
+            <End Role="detail_Extra_Payments" EntitySet="detail_Extra_Payments" />
+          </AssociationSet>
           <AssociationSet Name="fk_id_employee" Association="Self.fk_id_employee">
             <End Role="employees" EntitySet="employees" />
             <End Role="groups" EntitySet="groups" />
@@ -603,6 +651,7 @@
           <NavigationProperty Name="payment" Relationship="Self.fk_id_payment_extra" FromRole="extra_payments" ToRole="payments" />
           <NavigationProperty Name="student" Relationship="Self.fk_id_students_extra" FromRole="extra_payments" ToRole="students" />
           <NavigationProperty Name="payment_types" Relationship="Self.fk_id_type_payment_extra" FromRole="extra_payments" ToRole="payment_types" />
+          <NavigationProperty Name="detail_Extra_Payments" Relationship="AcademiaModel.fk_detail_extra_payment_extraPayment" FromRole="extra_payments" ToRole="detail_Extra_Payments" />
         </EntityType>
         <EntityType Name="group">
           <Key>
@@ -688,6 +737,7 @@
           <NavigationProperty Name="shares" Relationship="Self.fk_id_payment_shares" FromRole="payments" ToRole="shares" />
           <NavigationProperty Name="user" Relationship="Self.fk_id_user_payments" FromRole="payments" ToRole="users" />
           <NavigationProperty Name="student" Relationship="Self.fk_studente_payment" FromRole="payments" ToRole="students" />
+          <NavigationProperty Name="detail_Extra_Payments" Relationship="AcademiaModel.fk_detail_extra_payment_payment" FromRole="payment" ToRole="detail_Extra_Payments" />
         </EntityType>
         <EntityType Name="program">
           <Key>
@@ -1130,7 +1180,7 @@
             <Parameter Name="idEmpleado" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spIncripcion" ReturnType="Collection(AcademiaModel.spIncripcion_Result)">
-            <Parameter Name="idInscripcion" Mode="In" Type="Int32" />
+          <Parameter Name="idInscripcion" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spMensualidad" ReturnType="Collection(AcademiaModel.spMensualidad_Result)">
             <Parameter Name="idShare" Mode="In" Type="Int32" />
@@ -1140,6 +1190,15 @@
             <Parameter Name="idPago" Mode="In" Type="Int32" />
             <Parameter Name="saldoAnterior" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="detail_Extra_Payments" EntityType="AcademiaModel.detail_Extra_Payments" />
+          <AssociationSet Name="fk_detail_extra_payment_extraPayment" Association="AcademiaModel.fk_detail_extra_payment_extraPayment">
+            <End Role="extra_payments" EntitySet="extra_payments" />
+            <End Role="detail_Extra_Payments" EntitySet="detail_Extra_Payments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_detail_extra_payment_payment" Association="AcademiaModel.fk_detail_extra_payment_payment">
+            <End Role="payment" EntitySet="payments" />
+            <End Role="detail_Extra_Payments" EntitySet="detail_Extra_Payments" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="spIncripcion_Result">
           <Property Type="String" Name="NombreAlumno" Nullable="false" MaxLength="101" />
@@ -1169,6 +1228,42 @@
           <Property Type="String" Name="description" Nullable="true" MaxLength="255" />
           <Property Type="Int32" Name="saldo" Nullable="true" />
         </ComplexType>
+        <EntityType Name="detail_Extra_Payments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_extraPayment" Type="Int32" />
+          <Property Name="id_payment" Type="Int32" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="extra_payments" Relationship="AcademiaModel.fk_detail_extra_payment_extraPayment" FromRole="detail_Extra_Payments" ToRole="extra_payments" />
+          <NavigationProperty Name="payment" Relationship="AcademiaModel.fk_detail_extra_payment_payment" FromRole="detail_Extra_Payments" ToRole="payment" />
+        </EntityType>
+        <Association Name="fk_detail_extra_payment_extraPayment">
+          <End Type="AcademiaModel.extra_payments" Role="extra_payments" Multiplicity="0..1" />
+          <End Type="AcademiaModel.detail_Extra_Payments" Role="detail_Extra_Payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="extra_payments">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detail_Extra_Payments">
+              <PropertyRef Name="id_extraPayment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_detail_extra_payment_payment">
+          <End Type="AcademiaModel.payment" Role="payment" Multiplicity="0..1" />
+          <End Type="AcademiaModel.detail_Extra_Payments" Role="detail_Extra_Payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detail_Extra_Payments">
+              <PropertyRef Name="id_payment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1423,6 +1518,17 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="detail_Extra_Payments">
+            <EntityTypeMapping TypeName="AcademiaModel.detail_Extra_Payments">
+              <MappingFragment StoreEntitySet="detail_Extra_Payments">
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="id_payment" ColumnName="id_payment" />
+                <ScalarProperty Name="id_extraPayment" ColumnName="id_extraPayment" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

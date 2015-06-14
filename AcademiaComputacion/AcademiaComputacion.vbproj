@@ -228,6 +228,9 @@
   <ItemGroup>
     <Compile Include="App.vb" />
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="detail_Extra_Payments.vb">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="ReportePagoExtra.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
