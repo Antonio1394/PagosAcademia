@@ -142,3 +142,4 @@ C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\Ac
 C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\bin\Debug\Telerik.WinControls.SpellChecker.xml
 C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\bin\Debug\Telerik.WinControls.UI.xml
 C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\bin\Debug\TelerikData.xml
+C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmEstudiantes.resources

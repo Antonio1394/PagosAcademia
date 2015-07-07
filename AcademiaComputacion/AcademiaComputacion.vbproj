@@ -231,6 +231,12 @@
     <Compile Include="detail_Extra_Payments.vb">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="frmEstudiantes.Designer.vb">
+      <DependentUpon>frmEstudiantes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEstudiantes.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ReportePagoExtra.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -425,6 +431,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmEstudiantes.resx">
+      <DependentUpon>frmEstudiantes.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportePagoExtra.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReportePagoExtra.vb</LastGenOutput>

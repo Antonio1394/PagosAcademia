@@ -6,20 +6,39 @@ Imports System.Messaging
 Imports System.Transactions
 
 Public Class FrmPagos
-
 #Region "Variables"
     Dim idPago As Integer
     Dim idTipoPago As Integer
 #End Region
-
 #Region "Eventos"
     Private Sub FrmPagos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         mdHerramientas.conexion()
         mostrarPagos()
     End Sub
+    Private Sub listadoPagos_CellClick(sender As Object, e As Telerik.WinControls.UI.GridViewCellEventArgs) Handles listadoPagos.CellClick
+        If Me.listadoPagos.Columns(e.ColumnIndex).Name.Equals("eliminar") And e.RowIndex >= 0 Then
+            Dim result As DialogResult
+            result = MessageBox.Show("Realmente desea eliminar Pago", "Eliminar Banco", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
+            If result = DialogResult.OK Then
+                Try
+                    idPago = CInt(listadoPagos.Rows(e.RowIndex).Cells("idPago").Value)
+                    If validacion(idPago) Then
+                        idTipoPago = CInt(listadoPagos.Rows(e.RowIndex).Cells("idTipoPago").Value)
+                        deshacerPago(idPago, idTipoPago)
+                        MessageBox.Show("Pago cancelado exitosamente", "Cancelando Pago", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        mostrarPagos()
+                    Else
+                        MessageBox.Show("El pago ya ha sido cancelado", "Cancelando Pago", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    End If
 
+
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message)
+                End Try
+            End If
+        End If
+    End Sub
 #End Region
-
 #Region "Funciones"
     Public Sub mostrarPagos()
         Try
@@ -34,26 +53,6 @@ Public Class FrmPagos
             MessageBox.Show(ex.Message)
         End Try
     End Sub
-#End Region
-
-    Private Sub listadoPagos_CellClick(sender As Object, e As Telerik.WinControls.UI.GridViewCellEventArgs) Handles listadoPagos.CellClick
-        If Me.listadoPagos.Columns(e.ColumnIndex).Name.Equals("eliminar") And e.RowIndex >= 0 Then
-            Dim result As DialogResult
-            result = MessageBox.Show("Realmente desea eliminar Pago", "Eliminar Banco", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
-            If result = DialogResult.OK Then
-                Try
-                    idPago = CInt(listadoPagos.Rows(e.RowIndex).Cells("idPago").Value)
-                    idTipoPago = CInt(listadoPagos.Rows(e.RowIndex).Cells("idTipoPago").Value)
-                    deshacerPago(idPago, idTipoPago)
-                    MessageBox.Show("Pago cancelado exitosamente", "Cancelando Pago", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    mostrarPagos()
-                Catch ex As Exception
-                    MessageBox.Show(ex.Message)
-                End Try
-            End If
-        End If
-    End Sub
-
     Public Sub deshacerPago(ByVal codigoPago As Integer, ByVal tipoPago As Integer)
         MessageBox.Show("El codigo del pago es " & codigoPago)
         MessageBox.Show("El codigo del tipo de pago es  " & tipoPago)
@@ -136,8 +135,6 @@ Public Class FrmPagos
                 'obtenemos el id del pago extra
                 Dim idExtraPayment = (From x In modelo.detail_Extra_Payments Where x.id_payment = idPago Select x).FirstOrDefault
 
-
-
                 'actualizamos el balance
                 Dim getExtraPayment = (From x In modelo.extra_payments Where x.id = idExtraPayment.id_extraPayment Select x).FirstOrDefault
                 getExtraPayment.balance = getExtraPayment.balance + monto
@@ -158,5 +155,15 @@ Public Class FrmPagos
             End Try
         End Using
     End Sub
+    Public Function validacion(ByVal idPago As Integer)
+        Dim resultado = (From x In modelo.payments Where x.id = idPago Select x).FirstOrDefault
 
+        If resultado.state = "aceptado" Then
+            Return True
+        Else
+            Return False
+        End If
+
+    End Function
+#End Region
 End Class
