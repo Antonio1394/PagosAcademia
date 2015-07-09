@@ -23,6 +23,7 @@ Partial Class FrmPrincipal
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmPrincipal))
+        Me.TelerikMetroTheme1 = New Telerik.WinControls.Themes.TelerikMetroTheme()
         Me.RadRibbonBar1 = New Telerik.WinControls.UI.RadRibbonBar()
         Me.RibbonTab1 = New Telerik.WinControls.UI.RibbonTab()
         Me.RadRibbonBarGroup1 = New Telerik.WinControls.UI.RadRibbonBarGroup()
@@ -44,7 +45,6 @@ Partial Class FrmPrincipal
         Me.RadMenuItem2 = New Telerik.WinControls.UI.RadMenuItem()
         Me.RadMenuItem3 = New Telerik.WinControls.UI.RadMenuItem()
         Me.RadRibbonFormBehavior1 = New Telerik.WinControls.UI.RadRibbonFormBehavior()
-        Me.TelerikMetroTheme1 = New Telerik.WinControls.Themes.TelerikMetroTheme()
         CType(Me.RadRibbonBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -54,7 +54,7 @@ Partial Class FrmPrincipal
         Me.RadRibbonBar1.CommandTabs.AddRange(New Telerik.WinControls.RadItem() {Me.RibbonTab1, Me.RibbonTab2})
         Me.RadRibbonBar1.Location = New System.Drawing.Point(0, 4)
         Me.RadRibbonBar1.Name = "RadRibbonBar1"
-        Me.RadRibbonBar1.Size = New System.Drawing.Size(1308, 153)
+        Me.RadRibbonBar1.Size = New System.Drawing.Size(1525, 154)
         Me.RadRibbonBar1.StartButtonImage = CType(resources.GetObject("RadRibbonBar1.StartButtonImage"), System.Drawing.Image)
         Me.RadRibbonBar1.StartMenuItems.AddRange(New Telerik.WinControls.RadItem() {Me.RadMenuItem1, Me.RadMenuItem2, Me.RadMenuItem3})
         Me.RadRibbonBar1.TabIndex = 0
@@ -65,7 +65,7 @@ Partial Class FrmPrincipal
         '
         Me.RibbonTab1.AccessibleDescription = "Inicio"
         Me.RibbonTab1.AccessibleName = "Inicio"
-        Me.RibbonTab1.IsSelected = True
+        Me.RibbonTab1.IsSelected = False
         Me.RibbonTab1.Items.AddRange(New Telerik.WinControls.RadItem() {Me.RadRibbonBarGroup1})
         Me.RibbonTab1.Name = "RibbonTab1"
         Me.RibbonTab1.Text = "Inicio"
@@ -108,7 +108,7 @@ Partial Class FrmPrincipal
         '
         Me.RibbonTab2.AccessibleDescription = "Mantenimientos"
         Me.RibbonTab2.AccessibleName = "Mantenimientos"
-        Me.RibbonTab2.IsSelected = False
+        Me.RibbonTab2.IsSelected = True
         Me.RibbonTab2.Items.AddRange(New Telerik.WinControls.RadItem() {Me.RadRibbonBarGroup2, Me.RadRibbonBarGroup3})
         Me.RibbonTab2.Name = "RibbonTab2"
         Me.RibbonTab2.Text = "Mantenimientos"
@@ -253,7 +253,7 @@ Partial Class FrmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1308, 493)
+        Me.ClientSize = New System.Drawing.Size(1525, 608)
         Me.Controls.Add(Me.RadRibbonBar1)
         Me.FormBehavior = Me.RadRibbonFormBehavior1
         Me.IconScaling = Telerik.WinControls.Enumerations.ImageScaling.None

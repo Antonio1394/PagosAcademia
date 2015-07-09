@@ -25,6 +25,7 @@
         cargarDatos()
         MostrarUsuario()
 
+
     End Sub
 
     Private Sub tblListadoUsuarios_CellClick(sender As Object, e As Telerik.WinControls.UI.GridViewCellEventArgs) Handles tblListadoUsuarios.CellClick
@@ -48,11 +49,13 @@
                             modelo.SaveChanges()
                             MessageBox.Show("Usuario Eliminado Exitosamente", "Eliminacion Laboratorio", MessageBoxButtons.OK, MessageBoxIcon.Information)
                             MostrarUsuario()
+                            cargarDatos()
                         Else
                             modelo.users.Remove(eliminarUsuario)
                             modelo.SaveChanges()
                             MessageBox.Show("Usuario Eliminado Exitosamente", "Eliminacion Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information)
                             MostrarUsuario()
+                            cargarDatos()
                         End If
 
                     Catch ex As Exception
@@ -103,11 +106,13 @@
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
 
-        If UsuarioDisponible() Then
-            MessageBox.Show("Este Usuario no esta Disponible", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-        Else
+       
             If Modificar Then
                 ModificarUsuario()
+        Else
+
+            If UsuarioDisponible() Then
+                MessageBox.Show("Este Usuario no esta Disponible", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Else
 
                 If validacionUsario() Then
@@ -120,18 +125,25 @@
         End If
 
     End Sub
+
+
+    Private Sub txtUser_Leave(sender As Object, e As EventArgs) Handles txtUser.Leave
+        If UsuarioDisponible() Then
+            MessageBox.Show("Este Usuario no esta Disponible", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        End If
+    End Sub
 #End Region
 
 #Region "Funciones"
     Public Sub cargarDatos()
         Try
             listadoEmpleados.Clear()
-            Dim extraerEmpleados = (From x In modelo.users Where x.state = "activo" Select x.id_employee Group By id_employee Into total = Count(id_employee)).ToArray
+            Dim extraerEmpleados = (From x In modelo.users Where x.state = "arriba" Select x.id_employee Group By id_employee Into total = Count(id_employee)).ToArray
 
             For x = LBound(extraerEmpleados) To UBound(extraerEmpleados)
                 listadoEmpleados.Add(extraerEmpleados(x).id_employee)
             Next
-            Dim extraerEmpleadosDos = (From x In modelo.employees Where Not listadoEmpleados.Contains(x.id) And x.state = "activo" Select x.id, FullName = x.first_name & " " & x.last_name).ToList
+            Dim extraerEmpleadosDos = (From x In modelo.employees Where Not listadoEmpleados.Contains(x.id) And x.state = "arriba" Select x.id, FullName = x.first_name & " " & x.last_name).ToList
             With cboEmpleado
                 .ValueMember = "id"
                 .DisplayMember = "FullName"
@@ -144,7 +156,7 @@
     Public Sub MostrarUsuario()
         Try
             tblListadoUsuarios.Rows.Clear()
-            Dim usuario = (From x In modelo.users Where x.state = "activo" Select x).ToList
+            Dim usuario = (From x In modelo.users Where x.state = "arriba" Select x).ToList
 
             For Each usuarios As user In usuario
                 tblListadoUsuarios.Rows.Add({"", "", usuarios.id, usuarios.username, usuarios.type, usuarios.employee.first_name & " " & usuarios.employee.last_name, usuarios.state})
@@ -238,12 +250,11 @@
         End Try
     End Function
 
+
+
+
 #End Region
 
-    Private Sub txtUser_Leave(sender As Object, e As EventArgs) Handles txtUser.Leave
-        If UsuarioDisponible() Then
-            MessageBox.Show("Este Usuario no esta Disponible", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-        End If
-    End Sub
+   
 
 End Class

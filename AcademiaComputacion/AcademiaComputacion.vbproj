@@ -8,11 +8,11 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{29C4DD33-16DF-410E-900E-CC6CF01AEE8F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>AcademiaComputacion.My.MyApplication</StartupObject>
+    <StartupObject>AcademiaComputacion.FrmEmpleado</StartupObject>
     <RootNamespace>AcademiaComputacion</RootNamespace>
     <AssemblyName>AcademiaComputacion</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>WindowsForms</MyType>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>

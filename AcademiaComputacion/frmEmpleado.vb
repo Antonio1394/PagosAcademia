@@ -33,12 +33,11 @@
     End Sub
 
     Private Sub tblListadoEmpleados_CellClick(sender As Object, e As Telerik.WinControls.UI.GridViewCellEventArgs) Handles tblListadoEmpleados.CellClick
-        If estadoEmpleado Then
+        If operacionEmpleados Then
             MessageBox.Show("Hay una operacion en proceso !! ", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
             If Me.tblListadoEmpleados.Columns(e.ColumnIndex).Name.Equals("eliminar") And e.RowIndex >= 0 Then
                 operacionEmpleados = True
-                estadoEmpleado = True
                 Dim resultado As DialogResult
                 resultado = MessageBox.Show("Confirma eliminacion del Empleado", "Eliminacion", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 If resultado = DialogResult.OK Then
@@ -69,7 +68,6 @@
                     End Try
                 End If
                 operacionEmpleados = False
-                estadoEmpleado = False
             End If
 
 
@@ -113,7 +111,7 @@
         Try
             tblListadoEmpleados.Rows.Clear()
 
-            Dim empleado = (From x In modelo.employees Where x.state = "activo" Select x).ToList
+            Dim empleado = (From x In modelo.employees Where x.state = "arriba" Select x).ToList
             For Each empleados As employee In empleado
                 tblListadoEmpleados.Rows.Add({empleados.id, empleados.first_name, empleados.last_name, empleados.phone, empleados.addres, empleados.type_employees.description, empleados.working_day})
 
@@ -141,7 +139,7 @@
             nuevoEmpleado.addres = direccion
             nuevoEmpleado.id_type_employee = tipo
             nuevoEmpleado.working_day = jornada
-            nuevoEmpleado.state = "activo"
+            nuevoEmpleado.state = "arriba"
             nuevoEmpleado.created_at = Date.Now
             nuevoEmpleado.updated_at = Date.Now
             modelo.employees.Add(nuevoEmpleado)
@@ -196,5 +194,6 @@
         End If
     End Function
 #End Region
+
 
 End Class

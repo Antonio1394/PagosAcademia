@@ -22,17 +22,17 @@ Partial Class FrmUsuarios
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim GridViewCommandColumn1 As Telerik.WinControls.UI.GridViewCommandColumn = New Telerik.WinControls.UI.GridViewCommandColumn()
-        Dim GridViewCommandColumn2 As Telerik.WinControls.UI.GridViewCommandColumn = New Telerik.WinControls.UI.GridViewCommandColumn()
-        Dim GridViewTextBoxColumn1 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim GridViewTextBoxColumn2 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim GridViewTextBoxColumn3 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim GridViewTextBoxColumn4 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim GridViewTextBoxColumn5 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim GridViewCommandColumn3 As Telerik.WinControls.UI.GridViewCommandColumn = New Telerik.WinControls.UI.GridViewCommandColumn()
-        Dim RadListDataItem1 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem2 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem3 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim GridViewCommandColumn4 As Telerik.WinControls.UI.GridViewCommandColumn = New Telerik.WinControls.UI.GridViewCommandColumn()
+        Dim GridViewCommandColumn5 As Telerik.WinControls.UI.GridViewCommandColumn = New Telerik.WinControls.UI.GridViewCommandColumn()
+        Dim GridViewTextBoxColumn6 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewTextBoxColumn7 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewTextBoxColumn8 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewTextBoxColumn9 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewTextBoxColumn10 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewCommandColumn6 As Telerik.WinControls.UI.GridViewCommandColumn = New Telerik.WinControls.UI.GridViewCommandColumn()
+        Dim RadListDataItem4 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem5 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem6 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Me.TelerikMetroTheme1 = New Telerik.WinControls.Themes.TelerikMetroTheme()
         Me.VisualStudio2012LightTheme1 = New Telerik.WinControls.Themes.VisualStudio2012LightTheme()
         Me.RadGroupBox6 = New Telerik.WinControls.UI.RadGroupBox()
@@ -105,42 +105,42 @@ Partial Class FrmUsuarios
         Me.tblListadoUsuarios.MasterTemplate.AllowColumnReorder = False
         Me.tblListadoUsuarios.MasterTemplate.AllowDragToGroup = False
         Me.tblListadoUsuarios.MasterTemplate.AutoGenerateColumns = False
-        GridViewCommandColumn1.DefaultText = "Emilimar"
-        GridViewCommandColumn1.EnableExpressionEditor = False
-        GridViewCommandColumn1.FieldName = "eliminar"
-        GridViewCommandColumn1.HeaderText = "Eliminar"
-        GridViewCommandColumn1.Name = "eliminar"
-        GridViewCommandColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        GridViewCommandColumn1.UseDefaultText = True
-        GridViewCommandColumn2.DefaultText = "Modificar"
-        GridViewCommandColumn2.EnableExpressionEditor = False
-        GridViewCommandColumn2.FieldName = "modificar"
-        GridViewCommandColumn2.HeaderText = "Modificar"
-        GridViewCommandColumn2.Name = "modificar"
-        GridViewCommandColumn2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        GridViewCommandColumn2.UseDefaultText = True
-        GridViewTextBoxColumn1.EnableExpressionEditor = False
-        GridViewTextBoxColumn1.HeaderText = "Codigo"
-        GridViewTextBoxColumn1.Name = "codigo"
-        GridViewTextBoxColumn2.EnableExpressionEditor = False
-        GridViewTextBoxColumn2.HeaderText = "Usuario"
-        GridViewTextBoxColumn2.Name = "usuario"
-        GridViewTextBoxColumn3.EnableExpressionEditor = False
-        GridViewTextBoxColumn3.HeaderText = "Permisos"
-        GridViewTextBoxColumn3.Name = "permisos"
-        GridViewTextBoxColumn4.EnableExpressionEditor = False
-        GridViewTextBoxColumn4.HeaderText = "Empleado"
-        GridViewTextBoxColumn4.Name = "empleado"
-        GridViewTextBoxColumn5.EnableExpressionEditor = False
-        GridViewTextBoxColumn5.HeaderText = "Estado"
-        GridViewTextBoxColumn5.Name = "estado"
-        GridViewCommandColumn3.DefaultText = "Restablecer"
-        GridViewCommandColumn3.EnableExpressionEditor = False
-        GridViewCommandColumn3.HeaderText = "Restablecer "
-        GridViewCommandColumn3.Name = "restablecer"
-        GridViewCommandColumn3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        GridViewCommandColumn3.UseDefaultText = True
-        Me.tblListadoUsuarios.MasterTemplate.Columns.AddRange(New Telerik.WinControls.UI.GridViewDataColumn() {GridViewCommandColumn1, GridViewCommandColumn2, GridViewTextBoxColumn1, GridViewTextBoxColumn2, GridViewTextBoxColumn3, GridViewTextBoxColumn4, GridViewTextBoxColumn5, GridViewCommandColumn3})
+        GridViewCommandColumn4.DefaultText = "Emilimar"
+        GridViewCommandColumn4.EnableExpressionEditor = False
+        GridViewCommandColumn4.FieldName = "eliminar"
+        GridViewCommandColumn4.HeaderText = "Eliminar"
+        GridViewCommandColumn4.Name = "eliminar"
+        GridViewCommandColumn4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        GridViewCommandColumn4.UseDefaultText = True
+        GridViewCommandColumn5.DefaultText = "Modificar"
+        GridViewCommandColumn5.EnableExpressionEditor = False
+        GridViewCommandColumn5.FieldName = "modificar"
+        GridViewCommandColumn5.HeaderText = "Modificar"
+        GridViewCommandColumn5.Name = "modificar"
+        GridViewCommandColumn5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        GridViewCommandColumn5.UseDefaultText = True
+        GridViewTextBoxColumn6.EnableExpressionEditor = False
+        GridViewTextBoxColumn6.HeaderText = "Codigo"
+        GridViewTextBoxColumn6.Name = "codigo"
+        GridViewTextBoxColumn7.EnableExpressionEditor = False
+        GridViewTextBoxColumn7.HeaderText = "Usuario"
+        GridViewTextBoxColumn7.Name = "usuario"
+        GridViewTextBoxColumn8.EnableExpressionEditor = False
+        GridViewTextBoxColumn8.HeaderText = "Permisos"
+        GridViewTextBoxColumn8.Name = "permisos"
+        GridViewTextBoxColumn9.EnableExpressionEditor = False
+        GridViewTextBoxColumn9.HeaderText = "Empleado"
+        GridViewTextBoxColumn9.Name = "empleado"
+        GridViewTextBoxColumn10.EnableExpressionEditor = False
+        GridViewTextBoxColumn10.HeaderText = "Estado"
+        GridViewTextBoxColumn10.Name = "estado"
+        GridViewCommandColumn6.DefaultText = "Restablecer"
+        GridViewCommandColumn6.EnableExpressionEditor = False
+        GridViewCommandColumn6.HeaderText = "Restablecer "
+        GridViewCommandColumn6.Name = "restablecer"
+        GridViewCommandColumn6.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        GridViewCommandColumn6.UseDefaultText = True
+        Me.tblListadoUsuarios.MasterTemplate.Columns.AddRange(New Telerik.WinControls.UI.GridViewDataColumn() {GridViewCommandColumn4, GridViewCommandColumn5, GridViewTextBoxColumn6, GridViewTextBoxColumn7, GridViewTextBoxColumn8, GridViewTextBoxColumn9, GridViewTextBoxColumn10, GridViewCommandColumn6})
         Me.tblListadoUsuarios.MasterTemplate.EnableFiltering = True
         Me.tblListadoUsuarios.Name = "tblListadoUsuarios"
         Me.tblListadoUsuarios.ReadOnly = True
@@ -208,15 +208,15 @@ Partial Class FrmUsuarios
         '
         Me.cboTipoUsuario.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
         Me.cboTipoUsuario.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        RadListDataItem1.Text = "Administrador"
-        RadListDataItem1.TextWrap = True
-        RadListDataItem2.Text = "Secretaria"
-        RadListDataItem2.TextWrap = True
-        RadListDataItem3.Text = "Catedrático"
-        RadListDataItem3.TextWrap = True
-        Me.cboTipoUsuario.Items.Add(RadListDataItem1)
-        Me.cboTipoUsuario.Items.Add(RadListDataItem2)
-        Me.cboTipoUsuario.Items.Add(RadListDataItem3)
+        RadListDataItem4.Text = "Administrador"
+        RadListDataItem4.TextWrap = True
+        RadListDataItem5.Text = "Secretaria"
+        RadListDataItem5.TextWrap = True
+        RadListDataItem6.Text = "Catedrático"
+        RadListDataItem6.TextWrap = True
+        Me.cboTipoUsuario.Items.Add(RadListDataItem4)
+        Me.cboTipoUsuario.Items.Add(RadListDataItem5)
+        Me.cboTipoUsuario.Items.Add(RadListDataItem6)
         Me.cboTipoUsuario.Location = New System.Drawing.Point(22, 127)
         Me.cboTipoUsuario.Name = "cboTipoUsuario"
         Me.cboTipoUsuario.NullText = "Seleccione una opcion"
@@ -382,6 +382,7 @@ Partial Class FrmUsuarios
         '
         '
         Me.RootElement.ApplyShapeToControl = True
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FrmUsuarios"
         Me.ThemeName = "TelerikMetro"
         CType(Me.RadGroupBox6, System.ComponentModel.ISupportInitialize).EndInit()

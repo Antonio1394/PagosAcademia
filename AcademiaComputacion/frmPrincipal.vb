@@ -2,53 +2,59 @@
 
     'muestra el formulario Programas'
     Private Sub RadButtonElement5_Click(sender As Object, e As EventArgs) Handles RadButtonElement5.Click
-        Dim programa As New FrmProgramas
-        programa.MdiParent = Me
-        programa.Show()
+
+        FrmProgramas.MdiParent = Me
+        FrmProgramas.Show()
     End Sub
 
     'muestra el formulario de Laboratorio
     Private Sub RadButtonElement6_Click(sender As Object, e As EventArgs) Handles RadButtonElement6.Click
-        Dim laboratorio As New FrmLaboratorios
-        laboratorio.MdiParent = Me
-        laboratorio.Show()
+
+        FrmLaboratorios.MdiParent = Me
+        FrmLaboratorios.Show()
 
     End Sub
 
     
     'Muestra al Formulario Horarios'
     Private Sub RadButtonElement4_Click(sender As Object, e As EventArgs) Handles RadButtonElement4.Click
-        Dim horario As New FrmHorarios
-        horario.MdiParent = Me
-        horario.Show()
+
+        FrmHorarios.MdiParent = Me
+        FrmHorarios.Show()
 
     End Sub
 
     Private Sub RadButtonElement8_Click(sender As Object, e As EventArgs) Handles RadButtonElement8.Click
-        Dim tipoEmpleado As New FrmTipoEmpleado
-        tipoEmpleado.MdiParent = Me
-        tipoEmpleado.Show()
+
+        FrmTipoEmpleado.MdiParent = Me
+        FrmTipoEmpleado.Show()
 
     End Sub
 
     Private Sub RadButtonElement7_Click(sender As Object, e As EventArgs) Handles RadButtonElement7.Click
-        Dim empleado As New FrmEmpleado
-        empleado.MdiParent = Me
-        empleado.Show()
+
+        FrmEmpleado.MdiParent = Me
+        FrmEmpleado.Show()
 
     End Sub
 
     Private Sub RadButtonElement11_Click(sender As Object, e As EventArgs) Handles RadButtonElement11.Click
-        Dim grupos As New FrmGrupos1
-        grupos.MdiParent = Me
-        grupos.Show()
+
+        FrmGrupos1.MdiParent = Me
+        FrmGrupos1.Show()
 
     End Sub
 
-    Private Sub RadButtonElement10_Click(sender As Object, e As EventArgs) Handles RadButtonElement10.Click
-        Dim usuarios As New FrmUsuarios
-        usuarios.MdiParent = Me
-        usuarios.Show()
+    Private Sub RadButtonElement10_Click(ByVal sender As Object, e As EventArgs) Handles RadButtonElement10.Click
 
+        FrmUsuarios.MdiParent = Me
+        FrmUsuarios.Show()
+
+       
     End Sub
+
+
+
+
+   
 End Class

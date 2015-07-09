@@ -38,7 +38,7 @@ Public Class FrmLogin
             user = txtUser.Text.Trim
             password = txtPass.Text.Trim
     
-            Dim obtenerUsuario = (From x In modelo.users Where x.state = "activo" Select x).ToList
+            Dim obtenerUsuario = (From x In modelo.users Where x.state = "arriba" Select x).ToList
 
             For Each usuarios As user In obtenerUsuario
                 If usuarios.username.Equals(user) Then
