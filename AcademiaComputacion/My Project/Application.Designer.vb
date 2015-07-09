@@ -11,3 +11,31 @@
 Option Strict On
 Option Explicit On
 
+<<<<<<< HEAD
+=======
+
+Namespace My
+    
+    'NOTA: este archivo se genera de forma automática; no lo modifique directamente. Para realizar cambios,
+    ' o si detecta errores de compilación en este archivo, vaya al Diseñador de proyectos
+    ' (vaya a Propiedades del proyecto o haga doble clic en el nodo My Project en el
+    ' Explorador de soluciones) y realice cambios en la pestaña Aplicación.
+    '
+    Partial Friend Class MyApplication
+        
+        <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
+        Public Sub New()
+            MyBase.New(Global.Microsoft.VisualBasic.ApplicationServices.AuthenticationMode.Windows)
+            Me.IsSingleInstance = false
+            Me.EnableVisualStyles = false
+            Me.SaveMySettingsOnExit = true
+            Me.ShutDownStyle = Global.Microsoft.VisualBasic.ApplicationServices.ShutdownMode.AfterMainFormCloses
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
+        Protected Overrides Sub OnCreateMainForm()
+            Me.MainForm = Global.AcademiaComputacion.FrmPagosExtras
+        End Sub
+    End Class
+End Namespace
+>>>>>>> a5f2a13726899d1b724c44a278c5ed363b422da4
