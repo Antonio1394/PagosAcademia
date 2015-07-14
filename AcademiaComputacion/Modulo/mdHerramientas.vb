@@ -2,7 +2,7 @@
 Imports System.Data.EntityClient
 Module mdHerramientas
 
-    Dim servidor As String = "server"
+    Dim servidor As String = "ANTONIO"
     Dim baseDatos As String = "academia"
     Dim usuario As String = "sa"
     Dim password As String = "Umg2015"

@@ -21,8 +21,8 @@
             If Me.tbListadoHorarios.Columns(e.ColumnIndex).Name.Equals("eliminar") And e.RowIndex >= 0 Then
                 operacionHorarios = True
                 Dim resultado As DialogResult
-                resultado = MessageBox.Show("Confirma eliminacion del Horario", "Eliminacion", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                If resultado = DialogResult.OK Then
+                resultado = MessageBox.Show("Confirma eliminacion del Horario", "Eliminacion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+                If resultado = DialogResult.Yes Then
                     Try
                         codigoHorario = CInt(tbListadoHorarios.Rows(e.RowIndex).Cells("codigo").Value)
                         Dim eliminarHorario As schedules_practice = (From x In modelo.schedules_practice Where x.id = codigoHorario Select x).FirstOrDefault
@@ -54,6 +54,7 @@
                     txtHorario.Text = CStr(tbListadoHorarios.Rows(e.RowIndex).Cells("horario").Value)
                     cboTipo.Text = CStr(tbListadoHorarios.Rows(e.RowIndex).Cells("jornada").Value)
                     btnGuardar.Text = "Modificar"
+
                 Catch ex As Exception
                     MessageBox.Show(ex.Message)
                 End Try
@@ -87,7 +88,7 @@
     Public Sub MostrarHorarios()
         Try
             tbListadoHorarios.Rows.Clear()
-            Dim horario = (From x In modelo.schedules_practice Where x.state = "arriba" Select x).ToList
+            Dim horario = (From x In modelo.schedules_practice Where x.state = "activo" Select x).ToList
             For Each horarios As schedules_practice In horario
                 tbListadoHorarios.Rows.Add({"", horarios.id, horarios.time, horarios.type})
             Next
@@ -104,7 +105,7 @@
         Dim nuevoHorario As New schedules_practice
         nuevoHorario.time = horario
         nuevoHorario.type = tipo
-        nuevoHorario.state = "arriba"
+        nuevoHorario.state = "activo"
         nuevoHorario.created_at = Date.Now
         nuevoHorario.updated_at = Date.Now
         modelo.schedules_practice.Add(nuevoHorario)
@@ -147,4 +148,6 @@
    
 
     
+   
+
 End Class

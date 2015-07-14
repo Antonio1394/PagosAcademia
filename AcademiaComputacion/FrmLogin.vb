@@ -38,17 +38,19 @@ Public Class FrmLogin
             user = txtUser.Text.Trim
             password = txtPass.Text.Trim
     
-            Dim obtenerUsuario = (From x In modelo.users Where x.state = "arriba" Select x).ToList
+            Dim obtenerUsuario = (From x In modelo.users Where x.state = "activo" Select x).ToList
 
             For Each usuarios As user In obtenerUsuario
-                If usuarios.username.Equals(user) Then
+
+                If usuarios.username.Equals(user) And usuarios.state = "activo" Then
                     passObtenida = usuarios.password
                     passDesincriptada = funcion.Desencriptar(passObtenida)
 
                     If (passDesincriptada.Equals(password)) Then
                         usuarioLogueado = (From x In modelo.users Where x.username = user).FirstOrDefault
-                        Me.Hide()
+                        limpiar()
                         FrmPrincipal.Show()
+                        Me.Hide()
                     Else
                         MessageBox.Show("Datos Incorrectos, Intente de Nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         limpiar()
@@ -57,8 +59,7 @@ Public Class FrmLogin
                     Exit For
                 Else
                     MessageBox.Show("El Usuario No existe intente de Nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    txtUser.Clear()
-                    txtUser.Focus()
+                    limpiar()
                     Exit For
                 End If
             Next
@@ -69,6 +70,7 @@ Public Class FrmLogin
             MsgBox(ex.Message)
         End Try
     End Sub
+
     Public Sub limpiar()
         txtUser.Clear()
         txtPass.Clear()

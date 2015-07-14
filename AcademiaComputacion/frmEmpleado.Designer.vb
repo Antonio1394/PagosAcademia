@@ -31,6 +31,8 @@ Partial Class FrmEmpleado
         Dim GridViewTextBoxColumn7 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
         Dim GridViewCommandColumn1 As Telerik.WinControls.UI.GridViewCommandColumn = New Telerik.WinControls.UI.GridViewCommandColumn()
         Dim GridViewCommandColumn2 As Telerik.WinControls.UI.GridViewCommandColumn = New Telerik.WinControls.UI.GridViewCommandColumn()
+        Dim GridViewTextBoxColumn8 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim SortDescriptor1 As Telerik.WinControls.Data.SortDescriptor = New Telerik.WinControls.Data.SortDescriptor()
         Dim RadListDataItem1 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem2 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Me.tblListadoEmpleados = New Telerik.WinControls.UI.RadGridView()
@@ -43,7 +45,6 @@ Partial Class FrmEmpleado
         Me.RadLabel2 = New Telerik.WinControls.UI.RadLabel()
         Me.txtDireccion = New Telerik.WinControls.UI.RadTextBox()
         Me.RadLabel1 = New Telerik.WinControls.UI.RadLabel()
-        Me.txtTelefono = New Telerik.WinControls.UI.RadTextBox()
         Me.RadLabel10 = New Telerik.WinControls.UI.RadLabel()
         Me.txtApellido = New Telerik.WinControls.UI.RadTextBox()
         Me.txtNombre = New Telerik.WinControls.UI.RadTextBox()
@@ -51,6 +52,7 @@ Partial Class FrmEmpleado
         Me.RadLabel9 = New Telerik.WinControls.UI.RadLabel()
         Me.TelerikMetroTheme1 = New Telerik.WinControls.Themes.TelerikMetroTheme()
         Me.RadGroupBox5 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.txtTelefono = New Telerik.WinControls.UI.RadTextBox()
         Me.VisualStudio2012DarkTheme1 = New Telerik.WinControls.Themes.VisualStudio2012DarkTheme()
         CType(Me.tblListadoEmpleados, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tblListadoEmpleados.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -63,7 +65,6 @@ Partial Class FrmEmpleado
         CType(Me.RadLabel2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtDireccion, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtTelefono, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel10, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtApellido, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtNombre, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -71,6 +72,7 @@ Partial Class FrmEmpleado
         CType(Me.RadLabel9, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox5.SuspendLayout()
+        CType(Me.txtTelefono, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -149,8 +151,15 @@ Partial Class FrmEmpleado
         GridViewCommandColumn2.Name = "modificar"
         GridViewCommandColumn2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
         GridViewCommandColumn2.UseDefaultText = True
-        Me.tblListadoEmpleados.MasterTemplate.Columns.AddRange(New Telerik.WinControls.UI.GridViewDataColumn() {GridViewTextBoxColumn1, GridViewTextBoxColumn2, GridViewTextBoxColumn3, GridViewTextBoxColumn4, GridViewTextBoxColumn5, GridViewTextBoxColumn6, GridViewTextBoxColumn7, GridViewCommandColumn1, GridViewCommandColumn2})
+        GridViewTextBoxColumn8.EnableExpressionEditor = False
+        GridViewTextBoxColumn8.HeaderText = "column1"
+        GridViewTextBoxColumn8.IsVisible = False
+        GridViewTextBoxColumn8.Name = "idTipoEmpleado"
+        Me.tblListadoEmpleados.MasterTemplate.Columns.AddRange(New Telerik.WinControls.UI.GridViewDataColumn() {GridViewTextBoxColumn1, GridViewTextBoxColumn2, GridViewTextBoxColumn3, GridViewTextBoxColumn4, GridViewTextBoxColumn5, GridViewTextBoxColumn6, GridViewTextBoxColumn7, GridViewCommandColumn1, GridViewCommandColumn2, GridViewTextBoxColumn8})
         Me.tblListadoEmpleados.MasterTemplate.EnableFiltering = True
+        SortDescriptor1.Direction = System.ComponentModel.ListSortDirection.Descending
+        SortDescriptor1.PropertyName = "column1"
+        Me.tblListadoEmpleados.MasterTemplate.SortDescriptors.AddRange(New Telerik.WinControls.Data.SortDescriptor() {SortDescriptor1})
         Me.tblListadoEmpleados.Name = "tblListadoEmpleados"
         Me.tblListadoEmpleados.ReadOnly = True
         Me.tblListadoEmpleados.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -203,11 +212,11 @@ Partial Class FrmEmpleado
         RadListDataItem2.TextWrap = True
         Me.cboJornada.Items.Add(RadListDataItem1)
         Me.cboJornada.Items.Add(RadListDataItem2)
-        Me.cboJornada.Location = New System.Drawing.Point(583, 192)
+        Me.cboJornada.Location = New System.Drawing.Point(590, 192)
         Me.cboJornada.Name = "cboJornada"
         Me.cboJornada.NullText = "Seleccione una opcion"
-        Me.cboJornada.Size = New System.Drawing.Size(396, 27)
-        Me.cboJornada.TabIndex = 15
+        Me.cboJornada.Size = New System.Drawing.Size(389, 27)
+        Me.cboJornada.TabIndex = 5
         Me.cboJornada.ThemeName = "VisualStudio2012Light"
         '
         'cboTipoEmpleado
@@ -218,7 +227,7 @@ Partial Class FrmEmpleado
         Me.cboTipoEmpleado.Name = "cboTipoEmpleado"
         Me.cboTipoEmpleado.NullText = "Seleccione una opcion"
         Me.cboTipoEmpleado.Size = New System.Drawing.Size(443, 27)
-        Me.cboTipoEmpleado.TabIndex = 13
+        Me.cboTipoEmpleado.TabIndex = 4
         Me.cboTipoEmpleado.ThemeName = "VisualStudio2012Light"
         '
         'btnGuardar
@@ -238,7 +247,7 @@ Partial Class FrmEmpleado
         Me.btnGuardar.RootElement.Text = Nothing
         Me.btnGuardar.RootElement.TextOrientation = System.Windows.Forms.Orientation.Horizontal
         Me.btnGuardar.Size = New System.Drawing.Size(121, 31)
-        Me.btnGuardar.TabIndex = 4
+        Me.btnGuardar.TabIndex = 6
         Me.btnGuardar.Text = "Guardar"
         Me.btnGuardar.ThemeName = "VisualStudio2012Light"
         '
@@ -285,7 +294,7 @@ Partial Class FrmEmpleado
         'txtDireccion
         '
         Me.txtDireccion.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.txtDireccion.Location = New System.Drawing.Point(583, 128)
+        Me.txtDireccion.Location = New System.Drawing.Point(590, 128)
         Me.txtDireccion.Name = "txtDireccion"
         Me.txtDireccion.NullText = "Direccion del Empleado"
         '
@@ -299,8 +308,8 @@ Partial Class FrmEmpleado
         Me.txtDireccion.RootElement.Margin = New System.Windows.Forms.Padding(0)
         Me.txtDireccion.RootElement.Text = Nothing
         Me.txtDireccion.RootElement.TextOrientation = System.Windows.Forms.Orientation.Horizontal
-        Me.txtDireccion.Size = New System.Drawing.Size(396, 27)
-        Me.txtDireccion.TabIndex = 11
+        Me.txtDireccion.Size = New System.Drawing.Size(389, 27)
+        Me.txtDireccion.TabIndex = 3
         Me.txtDireccion.ThemeName = "VisualStudio2012Light"
         '
         'RadLabel1
@@ -322,27 +331,6 @@ Partial Class FrmEmpleado
         Me.RadLabel1.Size = New System.Drawing.Size(79, 25)
         Me.RadLabel1.TabIndex = 10
         Me.RadLabel1.Text = "Direccion:"
-        '
-        'txtTelefono
-        '
-        Me.txtTelefono.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.txtTelefono.Location = New System.Drawing.Point(40, 128)
-        Me.txtTelefono.Name = "txtTelefono"
-        Me.txtTelefono.NullText = "Telefono del Empleado"
-        '
-        '
-        '
-        Me.txtTelefono.RootElement.AccessibleDescription = Nothing
-        Me.txtTelefono.RootElement.AccessibleName = Nothing
-        Me.txtTelefono.RootElement.Alignment = System.Drawing.ContentAlignment.TopLeft
-        Me.txtTelefono.RootElement.AngleTransform = 0.0!
-        Me.txtTelefono.RootElement.FlipText = False
-        Me.txtTelefono.RootElement.Margin = New System.Windows.Forms.Padding(0)
-        Me.txtTelefono.RootElement.Text = Nothing
-        Me.txtTelefono.RootElement.TextOrientation = System.Windows.Forms.Orientation.Horizontal
-        Me.txtTelefono.Size = New System.Drawing.Size(443, 27)
-        Me.txtTelefono.TabIndex = 9
-        Me.txtTelefono.ThemeName = "VisualStudio2012Light"
         '
         'RadLabel10
         '
@@ -382,7 +370,7 @@ Partial Class FrmEmpleado
         Me.txtApellido.RootElement.Text = Nothing
         Me.txtApellido.RootElement.TextOrientation = System.Windows.Forms.Orientation.Horizontal
         Me.txtApellido.Size = New System.Drawing.Size(389, 27)
-        Me.txtApellido.TabIndex = 5
+        Me.txtApellido.TabIndex = 1
         Me.txtApellido.ThemeName = "VisualStudio2012Light"
         '
         'txtNombre
@@ -403,7 +391,7 @@ Partial Class FrmEmpleado
         Me.txtNombre.RootElement.Text = Nothing
         Me.txtNombre.RootElement.TextOrientation = System.Windows.Forms.Orientation.Horizontal
         Me.txtNombre.Size = New System.Drawing.Size(443, 27)
-        Me.txtNombre.TabIndex = 2
+        Me.txtNombre.TabIndex = 0
         Me.txtNombre.ThemeName = "VisualStudio2012Light"
         '
         'RadLabel8
@@ -451,6 +439,7 @@ Partial Class FrmEmpleado
         'RadGroupBox5
         '
         Me.RadGroupBox5.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox5.Controls.Add(Me.txtTelefono)
         Me.RadGroupBox5.Controls.Add(Me.cboJornada)
         Me.RadGroupBox5.Controls.Add(Me.cboTipoEmpleado)
         Me.RadGroupBox5.Controls.Add(Me.btnGuardar)
@@ -458,7 +447,6 @@ Partial Class FrmEmpleado
         Me.RadGroupBox5.Controls.Add(Me.RadLabel2)
         Me.RadGroupBox5.Controls.Add(Me.txtDireccion)
         Me.RadGroupBox5.Controls.Add(Me.RadLabel1)
-        Me.RadGroupBox5.Controls.Add(Me.txtTelefono)
         Me.RadGroupBox5.Controls.Add(Me.RadLabel10)
         Me.RadGroupBox5.Controls.Add(Me.txtApellido)
         Me.RadGroupBox5.Controls.Add(Me.txtNombre)
@@ -483,6 +471,15 @@ Partial Class FrmEmpleado
         Me.RadGroupBox5.TabIndex = 10
         Me.RadGroupBox5.Text = "Nuevo Empledo"
         Me.RadGroupBox5.ThemeName = "VisualStudio2012Light"
+        '
+        'txtTelefono
+        '
+        Me.txtTelefono.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTelefono.Location = New System.Drawing.Point(40, 128)
+        Me.txtTelefono.Name = "txtTelefono"
+        Me.txtTelefono.Size = New System.Drawing.Size(443, 27)
+        Me.txtTelefono.TabIndex = 2
+        Me.txtTelefono.ThemeName = "VisualStudio2012Light"
         '
         'FrmEmpleado
         '
@@ -510,7 +507,6 @@ Partial Class FrmEmpleado
         CType(Me.RadLabel2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtDireccion, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtTelefono, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel10, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtApellido, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtNombre, System.ComponentModel.ISupportInitialize).EndInit()
@@ -519,6 +515,7 @@ Partial Class FrmEmpleado
         CType(Me.RadGroupBox5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox5.ResumeLayout(False)
         Me.RadGroupBox5.PerformLayout()
+        CType(Me.txtTelefono, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -533,7 +530,6 @@ Partial Class FrmEmpleado
     Friend WithEvents RadLabel2 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents txtDireccion As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents RadLabel1 As Telerik.WinControls.UI.RadLabel
-    Friend WithEvents txtTelefono As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents RadLabel10 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents txtApellido As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents txtNombre As Telerik.WinControls.UI.RadTextBox
@@ -542,5 +538,6 @@ Partial Class FrmEmpleado
     Friend WithEvents TelerikMetroTheme1 As Telerik.WinControls.Themes.TelerikMetroTheme
     Friend WithEvents RadGroupBox5 As Telerik.WinControls.UI.RadGroupBox
     Friend WithEvents VisualStudio2012DarkTheme1 As Telerik.WinControls.Themes.VisualStudio2012DarkTheme
+    Friend WithEvents txtTelefono As Telerik.WinControls.UI.RadTextBox
 End Class
 

@@ -89,7 +89,7 @@
     Public Sub MostrarProgramas()
         Try
             tblListadoProgramas.Rows.Clear()
-            Dim programa = (From x In modelo.programs Where x.state = "arriba" Select x).ToList
+            Dim programa = (From x In modelo.programs Where x.state = "activo" Select x).ToList
             For Each programas As program In programa
                 tblListadoProgramas.Rows.Add({"", programas.id, programas.description, programas.shelf_life})
             Next
@@ -107,7 +107,7 @@
             Dim nuevoPrograma As New program
             nuevoPrograma.description = descripcionPrograma
             nuevoPrograma.shelf_life = duracionPrograma
-            nuevoPrograma.state = "arriba"
+            nuevoPrograma.state = "activo"
             nuevoPrograma.created_at = Date.Now
             nuevoPrograma.updated_at = Date.Now
             modelo.programs.Add(nuevoPrograma)

@@ -57,4 +57,15 @@
 
 
    
+    Private Sub RadMenuItem2_Click(sender As Object, e As EventArgs) Handles RadMenuItem2.Click
+        Dim resultado As DialogResult
+        resultado = MessageBox.Show("Desea cerrar Sesion??", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+        If resultado = DialogResult.Yes Then
+            Me.Close()
+            FrmLogin.Show()
+
+        Else
+            MessageBox.Show("Noooo")
+        End If
+    End Sub
 End Class

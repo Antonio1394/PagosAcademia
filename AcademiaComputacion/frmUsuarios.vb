@@ -138,12 +138,12 @@
     Public Sub cargarDatos()
         Try
             listadoEmpleados.Clear()
-            Dim extraerEmpleados = (From x In modelo.users Where x.state = "arriba" Select x.id_employee Group By id_employee Into total = Count(id_employee)).ToArray
+            Dim extraerEmpleados = (From x In modelo.users Where x.state = "activo" Select x.id_employee Group By id_employee Into total = Count(id_employee)).ToArray
 
             For x = LBound(extraerEmpleados) To UBound(extraerEmpleados)
                 listadoEmpleados.Add(extraerEmpleados(x).id_employee)
             Next
-            Dim extraerEmpleadosDos = (From x In modelo.employees Where Not listadoEmpleados.Contains(x.id) And x.state = "arriba" Select x.id, FullName = x.first_name & " " & x.last_name).ToList
+            Dim extraerEmpleadosDos = (From x In modelo.employees Where Not listadoEmpleados.Contains(x.id) And x.state = "activo" Select x.id, FullName = x.first_name & " " & x.last_name).ToList
             With cboEmpleado
                 .ValueMember = "id"
                 .DisplayMember = "FullName"
@@ -156,7 +156,7 @@
     Public Sub MostrarUsuario()
         Try
             tblListadoUsuarios.Rows.Clear()
-            Dim usuario = (From x In modelo.users Where x.state = "arriba" Select x).ToList
+            Dim usuario = (From x In modelo.users Where x.state = "activo" Select x).ToList
 
             For Each usuarios As user In usuario
                 tblListadoUsuarios.Rows.Add({"", "", usuarios.id, usuarios.username, usuarios.type, usuarios.employee.first_name & " " & usuarios.employee.last_name, usuarios.state})
@@ -232,7 +232,7 @@
     Public Function UsuarioDisponible()
         Try
             Dim UsuarioTexto As String = txtUser.Text.Trim
-            Dim usuario = (From x In modelo.users Select x).ToList
+            Dim usuario = (From x In modelo.users Where x.state = "activo" Select x).ToList
 
             For Each Usuarios As user In usuario
                 If Usuarios.username.Equals(UsuarioTexto) Then

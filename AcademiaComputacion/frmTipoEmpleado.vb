@@ -80,7 +80,7 @@
     Public Sub MostrarTiposEmpleados()
         Try
             tblTipoEmpleados.Rows.Clear()
-            Dim tipoEmpleado = (From x In modelo.type_employees Where x.state = "arriba" Select x).ToList
+            Dim tipoEmpleado = (From x In modelo.type_employees Where x.state = "activo" Select x).ToList
             For Each tipoEmpleados As type_employees In tipoEmpleado
                 tblTipoEmpleados.Rows.Add({"", tipoEmpleados.id, tipoEmpleados.description})
             Next
@@ -98,7 +98,7 @@
             nuevoTipo.description = descripcion
             nuevoTipo.created_at = Date.Now
             nuevoTipo.updated_at = Date.Now
-            nuevoTipo.state = "arriba"
+            nuevoTipo.state = "activo"
             modelo.type_employees.Add(nuevoTipo)
             modelo.SaveChanges()
             MessageBox.Show("Registro Guardado Exitosamente", "Tipos de Empleados", MessageBoxButtons.OK, MessageBoxIcon.Information)

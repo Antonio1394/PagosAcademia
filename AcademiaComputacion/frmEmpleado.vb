@@ -9,6 +9,7 @@
     Dim jornada As String
     Dim estadoEmpleado As Boolean = False
     Dim codigoEmpleado As Integer
+    Dim idTipoEmpleado As Integer
 #End Region
 
 #Region "Eventos"
@@ -17,6 +18,9 @@
         mdHerramientas.conexion()
         MostrarEmpleado()
         cargarDatos()
+
+
+
     End Sub
 
 
@@ -26,6 +30,7 @@
                 modificarEmpleado()
             Else
                 GuardarEmpleado()
+                MostrarEmpleado()
             End If
         Else
             MessageBox.Show("Todos los campos son necesarios", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -39,11 +44,12 @@
             If Me.tblListadoEmpleados.Columns(e.ColumnIndex).Name.Equals("eliminar") And e.RowIndex >= 0 Then
                 operacionEmpleados = True
                 Dim resultado As DialogResult
-                resultado = MessageBox.Show("Confirma eliminacion del Empleado", "Eliminacion", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                If resultado = DialogResult.OK Then
+                resultado = MessageBox.Show("Confirma eliminacion del Empleado", "Eliminacion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+                If resultado = DialogResult.Yes Then
                     Try
                         codigoEmpleado = CInt(tblListadoEmpleados.Rows(e.RowIndex).Cells("codigo").Value)
                         Dim eliminarEmpleado As employee = (From x In modelo.employees Where x.id = codigoEmpleado Select x).FirstOrDefault
+
                         If eliminarEmpleado.groups.Count > 0 Or eliminarEmpleado.users.Count > 0 Then
                             codigoEmpleado = CInt(tblListadoEmpleados.Rows(e.RowIndex).Cells("codigo").Value)
                             Dim modificarempleado As employee = (From x In modelo.employees Where x.id = codigoEmpleado Select x).FirstOrDefault
@@ -59,9 +65,9 @@
                             modelo.employees.Remove(eliminarEmpleado)
                             modelo.SaveChanges()
 
-                            MessageBox.Show("Empleado Eliminado Exitosamente", "Eliminacion Empleado", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                            MostrarEmpleado()
                         End If
+                        MessageBox.Show("Empleado Eliminado Exitosamente", "Eliminacion Empleado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        MostrarEmpleado()
 
                     Catch ex As Exception
                         MessageBox.Show(ex.Message)
@@ -73,16 +79,19 @@
 
             If Me.tblListadoEmpleados.Columns(e.ColumnIndex).Name.Equals("modificar") And e.RowIndex >= 0 Then
                 Try
-                    operacionEmpleados = True
-                    estadoEmpleado = True
+                    cargarDatos()
+                    operacionEmpleados = True 'operacion en proceso
+                    estadoEmpleado = True 'se esta modificando
                     codigoEmpleado = CInt(tblListadoEmpleados.Rows(e.RowIndex).Cells("codigo").Value)
                     txtApellido.Text = CStr(tblListadoEmpleados.Rows(e.RowIndex).Cells("apellido").Value)
                     txtNombre.Text = CStr(tblListadoEmpleados.Rows(e.RowIndex).Cells("nombre").Value)
-                    txtTelefono.Text = CInt(tblListadoEmpleados.Rows(e.RowIndex).Cells("telefono").Value)
+                    txtTelefono.Text = CStr(tblListadoEmpleados.Rows(e.RowIndex).Cells("telefono").Value)
                     txtDireccion.Text = CStr(tblListadoEmpleados.Rows(e.RowIndex).Cells("direccion").Value)
                     cboJornada.Text = CStr(tblListadoEmpleados.Rows(e.RowIndex).Cells("jornada").Value)
                     cboTipoEmpleado.Text = CStr(tblListadoEmpleados.Rows(e.RowIndex).Cells("tipo").Value)
+                    idTipoEmpleado = CInt(tblListadoEmpleados.Rows(e.RowIndex).Cells("idTipoEmpleado").Value)
                     btnGuardar.Text = "Modificar"
+
                 Catch ex As Exception
                     MessageBox.Show(ex.Message)
                 End Try
@@ -111,10 +120,10 @@
         Try
             tblListadoEmpleados.Rows.Clear()
 
-            Dim empleado = (From x In modelo.employees Where x.state = "arriba" Select x).ToList
-            For Each empleados As employee In empleado
-                tblListadoEmpleados.Rows.Add({empleados.id, empleados.first_name, empleados.last_name, empleados.phone, empleados.addres, empleados.type_employees.description, empleados.working_day})
+            Dim empleados = (From x In modelo.employees Where x.state = "activo" Select x).ToList
 
+            For Each empleado As employee In empleados
+                tblListadoEmpleados.Rows.Add(empleado.id, empleado.first_name, empleado.last_name, empleado.phone, empleado.addres, empleado.type_employees.description, empleado.working_day, "", "", empleado.id_type_employee)
             Next
             tblListadoEmpleados.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
 
@@ -123,31 +132,27 @@
         End Try
     End Sub
 
+
     Public Sub GuardarEmpleado()
         Try
-            estadoEmpleado = True
-            nombre = txtNombre.Text.Trim
-            apellido = txtApellido.Text.Trim
-            telefono = Val(txtTelefono.Text.Trim)
-            direccion = txtDireccion.Text.Trim
-            tipo = cboTipoEmpleado.SelectedValue
-            jornada = cboJornada.Text
+
             Dim nuevoEmpleado As New employee
-            nuevoEmpleado.first_name = nombre
-            nuevoEmpleado.last_name = apellido
-            nuevoEmpleado.phone = telefono
-            nuevoEmpleado.addres = direccion
-            nuevoEmpleado.id_type_employee = tipo
-            nuevoEmpleado.working_day = jornada
-            nuevoEmpleado.state = "arriba"
+            idTipoEmpleado = cboTipoEmpleado.SelectedValue
+            nuevoEmpleado.first_name = txtNombre.Text.Trim
+            nuevoEmpleado.last_name = txtApellido.Text.Trim
+            nuevoEmpleado.phone = txtTelefono.Text.Trim
+            nuevoEmpleado.addres = txtDireccion.Text.Trim
+            nuevoEmpleado.id_type_employee = idTipoEmpleado
+            nuevoEmpleado.working_day = cboJornada.Text
+            nuevoEmpleado.state = "activo"
             nuevoEmpleado.created_at = Date.Now
             nuevoEmpleado.updated_at = Date.Now
             modelo.employees.Add(nuevoEmpleado)
             modelo.SaveChanges()
             MessageBox.Show("Registro Guardado Exitosamente", "Empleados", MessageBoxButtons.OK, MessageBoxIcon.Information)
             limpiarEmpleados()
-            MostrarEmpleado()
-            operacionEmpleados = False
+
+
 
         Catch ex As Exception
             MessageBox.Show(ex.Message)
@@ -161,7 +166,7 @@
             modificarempleado.last_name = txtApellido.Text.Trim
             modificarempleado.phone = txtTelefono.Text.Trim
             modificarempleado.addres = txtDireccion.Text.Trim
-            modificarempleado.id_type_employee = cboTipoEmpleado.SelectedValue
+            modificarempleado.id_type_employee = idTipoEmpleado
             modificarempleado.working_day = cboJornada.Text.Trim
             modificarempleado.updated_at = Date.Now
             modelo.SaveChanges()
@@ -187,7 +192,7 @@
     End Sub
 
     Public Function validacionEmpleado()
-        If txtApellido.Text.Trim.Length = 0 Or txtDireccion.Text.Trim.Length = 0 Or txtNombre.Text.Trim.Length = 0 Or cboJornada.Text.Trim.Length = 0 Or cboTipoEmpleado.Text.Trim.Length = 0 Then
+        If txtApellido.Text.Trim.Length = 0 Or txtDireccion.Text.Trim.Length = 0 Or txtNombre.Text.Trim.Length = 0 Or cboJornada.Text.Trim.Length = 0 Or cboTipoEmpleado.Text.Trim.Length = 0 Or txtTelefono.Text.Trim.Length > 8 Then
             Return False
         Else
             Return True
@@ -195,5 +200,19 @@
     End Function
 #End Region
 
+   
 
+
+ 
+    Private Sub cboTipoEmpleado_SelectedIndexChanged(sender As Object, e As Telerik.WinControls.UI.Data.PositionChangedEventArgs) Handles cboTipoEmpleado.SelectedIndexChanged
+      
+
+    End Sub
+
+
+    Private Sub cboTipoEmpleado_SelectedValueChanged(sender As Object, e As EventArgs) Handles cboTipoEmpleado.SelectedValueChanged
+        idTipoEmpleado = cboTipoEmpleado.SelectedValue
+        MessageBox.Show(idTipoEmpleado)
+
+    End Sub
 End Class

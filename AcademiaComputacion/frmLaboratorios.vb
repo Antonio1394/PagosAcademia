@@ -44,8 +44,8 @@
             If Me.tblListadoLaboratorios.Columns(e.ColumnIndex).Name.Equals("eliminar") And e.RowIndex >= 0 Then
                 estadoLaboratorio = True
                 Dim resultado As DialogResult
-                resultado = MessageBox.Show("Confirma eliminacion de el Laboratorio", "Eliminacion", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                If resultado = DialogResult.OK Then
+                resultado = MessageBox.Show("Confirma eliminacion de el Laboratorio", "Eliminacion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+                If resultado = DialogResult.Yes Then
                     Try
                         codigoLaboratorio = CInt(tblListadoLaboratorios.Rows(e.RowIndex).Cells("codigo").Value)
                         Dim eliminarLaboratorio As laboratory = (From x In modelo.laboratories Where x.id = codigoLaboratorio Select x).FirstOrDefault
@@ -96,7 +96,7 @@
     Public Sub MostrarLaboratorios()
         Try
             tblListadoLaboratorios.Rows.Clear()
-            Dim Laboratorio = (From x In modelo.laboratories Where x.state = "arriba" Select x).ToList
+            Dim Laboratorio = (From x In modelo.laboratories Where x.state = "activo" Select x).ToList
             For Each Laboratorios As laboratory In Laboratorio
                 tblListadoLaboratorios.Rows.Add({"", Laboratorios.id, Laboratorios.title, Laboratorios.description, Laboratorios.computers})
             Next
@@ -119,7 +119,7 @@
             nuevoLaboratorio.title = nombreLaboratorio
             nuevoLaboratorio.description = descripcionLaboratorio
             nuevoLaboratorio.computers = numeroComputadoras
-            nuevoLaboratorio.state = "arriba"
+            nuevoLaboratorio.state = "activo"
             nuevoLaboratorio.created_at = Date.Now
             nuevoLaboratorio.updated_at = Date.Now
             modelo.laboratories.Add(nuevoLaboratorio)
