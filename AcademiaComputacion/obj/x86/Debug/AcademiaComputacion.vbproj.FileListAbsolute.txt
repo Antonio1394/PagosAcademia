@@ -222,7 +222,6 @@ C:\Users\Antonio\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaCom
 C:\Users\Antonio\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.pdb
 C:\Users\Antonio\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.vbprojResolveAssemblyReference.cache
 C:\Users\Antonio\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmEstudiantes.resources
-C:\Users\Antonio\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmEmpleado.resources
 C:\Users\Antonio\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmGrupos1.resources
 C:\Users\Antonio\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmHorarios.resources
 C:\Users\Antonio\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmIncripcion.resources

@@ -33,9 +33,6 @@
 
     Private Sub RadButtonElement7_Click(sender As Object, e As EventArgs) Handles RadButtonElement7.Click
 
-        FrmEmpleado.MdiParent = Me
-        FrmEmpleado.Show()
-
     End Sub
 
     Private Sub RadButtonElement11_Click(sender As Object, e As EventArgs) Handles RadButtonElement11.Click
