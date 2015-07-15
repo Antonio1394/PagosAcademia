@@ -24,9 +24,11 @@ Public Class FrmIncripcion
     Dim validarMonto = True
     'Variables para reporte
     Dim idInscripcion As Integer
+    Dim paymentList As List(Of Integer)
 #End Region
 #Region "Eventos"
     Private Sub FrmIncripcion_Load(sender As Object, e As EventArgs) Handles Me.Load
+        btnAtrasFalso.Visible = False
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.SizableToolWindow
         mdHerramientas.conexion()
         If recibo Then
@@ -56,9 +58,10 @@ Public Class FrmIncripcion
             End If
         ElseIf paginaSeleccionada = 2 Then
             If validacionDos() Then
-                btnSiguiente.Enabled = False
-                btnAtras.Enabled = False
-                btnCancelar.Enabled = False
+                btnSiguiente.Visible = False
+                btnAtras.Visible = False
+                btnCancelar.Visible = False
+                btnAtrasFalso.Visible = True
                 transaccionInscripcion()
                 mostrarReporte(idInscripcion)
                 Me.wizarInscripcion.SelectedPage = Me.WizardCompletionPage1
@@ -224,6 +227,34 @@ Public Class FrmIncripcion
                     modelo.shares.Add(mensualidades)
                     modelo.SaveChanges()
                 Next
+
+                'asignale los pagos extras
+                Dim getExtraPayments = (From x In modelo.payment_types Where x.state = "arriba" Select x.id, x.amount).ToArray
+
+                For x = LBound(getExtraPayments) To UBound(getExtraPayments)
+                    paymentList.Add(getExtraPayments(x).id)
+                Next
+
+                Dim totalPayments As Integer
+
+
+                totalPayments = getExtraPayments.Count
+
+                For x = 0 To totalPayments - 1
+
+                    Dim newPaymentExtra As New extra_payments
+                    newPaymentExtra.id_student = idAlumno
+                    newPaymentExtra.id_payment = Nothing
+                    newPaymentExtra.id_type_payment = 
+
+
+                Next
+
+
+
+
+
+
                 transaction.Complete()
             Catch ex As Exception
                 MessageBox.Show(ex.Message)
@@ -261,6 +292,7 @@ Public Class FrmIncripcion
         dato1.Add(pvisualizar)
         cr1.DataDefinition.ParameterFields("@idInscripcion").ApplyCurrentValues(dato1)
         Me.visorInscripcion.ReportSource = cr1
+        Me.visorInscripcion.Zoom(75)
     End Sub
     Public Sub cancelar()
         Dim result As DialogResult = MessageBox.Show("Confirmar cancelacion", "Cancelando registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)

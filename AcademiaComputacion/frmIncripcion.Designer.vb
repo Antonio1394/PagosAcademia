@@ -23,13 +23,14 @@ Partial Class FrmIncripcion
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmIncripcion))
+        Dim RadListDataItem7 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem8 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem1 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem2 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem3 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem4 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem5 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem6 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Me.TelerikMetroTheme1 = New Telerik.WinControls.Themes.TelerikMetroTheme()
+        Me.alertaError = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.wizarInscripcion = New Telerik.WinControls.UI.RadWizard()
         Me.WizardCompletionPage1 = New Telerik.WinControls.UI.WizardCompletionPage()
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -67,8 +68,8 @@ Partial Class FrmIncripcion
         Me.RadLabel2 = New Telerik.WinControls.UI.RadLabel()
         Me.WizardWelcomePage1 = New Telerik.WinControls.UI.WizardWelcomePage()
         Me.WizardPage1 = New Telerik.WinControls.UI.WizardPage()
-        Me.TelerikMetroTheme1 = New Telerik.WinControls.Themes.TelerikMetroTheme()
-        Me.alertaError = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.btnAtrasFalso = New Telerik.WinControls.UI.RadButton()
+        CType(Me.alertaError, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.wizarInscripcion, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.wizarInscripcion.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -102,13 +103,18 @@ Partial Class FrmIncripcion
         CType(Me.RadLabel8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboTipoInscripcion, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.alertaError, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btnAtrasFalso, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'alertaError
+        '
+        Me.alertaError.ContainerControl = Me
         '
         'wizarInscripcion
         '
         Me.wizarInscripcion.CompletionPage = Me.WizardCompletionPage1
+        Me.wizarInscripcion.Controls.Add(Me.btnAtrasFalso)
         Me.wizarInscripcion.Controls.Add(Me.btnCancelar)
         Me.wizarInscripcion.Controls.Add(Me.btnAtras)
         Me.wizarInscripcion.Controls.Add(Me.btnSiguiente)
@@ -119,7 +125,7 @@ Partial Class FrmIncripcion
         Me.wizarInscripcion.HideCompletionImage = True
         Me.wizarInscripcion.Location = New System.Drawing.Point(0, 0)
         Me.wizarInscripcion.Name = "wizarInscripcion"
-        Me.wizarInscripcion.PageHeaderIcon = CType(resources.GetObject("wizarInscripcion.PageHeaderIcon"), System.Drawing.Image)
+        Me.wizarInscripcion.PageHeaderIcon = Global.AcademiaComputacion.My.Resources.Resources._1436577133_about_us
         Me.wizarInscripcion.Pages.Add(Me.WizardWelcomePage1)
         Me.wizarInscripcion.Pages.Add(Me.WizardPage1)
         Me.wizarInscripcion.Pages.Add(Me.WizardCompletionPage1)
@@ -133,6 +139,7 @@ Partial Class FrmIncripcion
         '
         Me.WizardCompletionPage1.ContentArea = Me.Panel3
         Me.WizardCompletionPage1.Header = "Page header"
+        Me.WizardCompletionPage1.HeaderVisibility = Telerik.WinControls.ElementVisibility.Visible
         Me.WizardCompletionPage1.Name = "WizardCompletionPage1"
         Me.WizardCompletionPage1.Title = "Boleta de Inscripcion"
         Me.WizardCompletionPage1.Visibility = Telerik.WinControls.ElementVisibility.Visible
@@ -161,6 +168,7 @@ Partial Class FrmIncripcion
         '
         'btnCancelar
         '
+        Me.btnCancelar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnCancelar.Location = New System.Drawing.Point(554, 392)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(101, 24)
@@ -170,7 +178,8 @@ Partial Class FrmIncripcion
         '
         'btnAtras
         '
-        Me.btnAtras.Location = New System.Drawing.Point(337, 392)
+        Me.btnAtras.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnAtras.Location = New System.Drawing.Point(339, 392)
         Me.btnAtras.Name = "btnAtras"
         Me.btnAtras.Size = New System.Drawing.Size(104, 24)
         Me.btnAtras.TabIndex = 52
@@ -179,6 +188,7 @@ Partial Class FrmIncripcion
         '
         'btnSiguiente
         '
+        Me.btnSiguiente.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSiguiente.Location = New System.Drawing.Point(447, 392)
         Me.btnSiguiente.Name = "btnSiguiente"
         Me.btnSiguiente.Size = New System.Drawing.Size(100, 24)
@@ -237,12 +247,12 @@ Partial Class FrmIncripcion
         'cboSexo
         '
         Me.cboSexo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        RadListDataItem1.Text = "Masculino"
-        RadListDataItem1.TextWrap = True
-        RadListDataItem2.Text = "Femenino"
-        RadListDataItem2.TextWrap = True
-        Me.cboSexo.Items.Add(RadListDataItem1)
-        Me.cboSexo.Items.Add(RadListDataItem2)
+        RadListDataItem7.Text = "Masculino"
+        RadListDataItem7.TextWrap = True
+        RadListDataItem8.Text = "Femenino"
+        RadListDataItem8.TextWrap = True
+        Me.cboSexo.Items.Add(RadListDataItem7)
+        Me.cboSexo.Items.Add(RadListDataItem8)
         Me.cboSexo.Location = New System.Drawing.Point(173, 226)
         Me.cboSexo.Name = "cboSexo"
         Me.cboSexo.Size = New System.Drawing.Size(290, 20)
@@ -378,12 +388,12 @@ Partial Class FrmIncripcion
         '
         Me.cboTipoPago.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
         Me.cboTipoPago.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        RadListDataItem3.Text = "Normal"
-        RadListDataItem3.TextWrap = True
-        RadListDataItem4.Text = "Personalizada"
-        RadListDataItem4.TextWrap = True
-        Me.cboTipoPago.Items.Add(RadListDataItem3)
-        Me.cboTipoPago.Items.Add(RadListDataItem4)
+        RadListDataItem1.Text = "Normal"
+        RadListDataItem1.TextWrap = True
+        RadListDataItem2.Text = "Personalizada"
+        RadListDataItem2.TextWrap = True
+        Me.cboTipoPago.Items.Add(RadListDataItem1)
+        Me.cboTipoPago.Items.Add(RadListDataItem2)
         Me.cboTipoPago.Location = New System.Drawing.Point(269, 165)
         Me.cboTipoPago.Name = "cboTipoPago"
         Me.cboTipoPago.Size = New System.Drawing.Size(274, 27)
@@ -459,12 +469,12 @@ Partial Class FrmIncripcion
         '
         Me.cboTipoInscripcion.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
         Me.cboTipoInscripcion.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        RadListDataItem5.Text = "Personal"
-        RadListDataItem5.TextWrap = True
-        RadListDataItem6.Text = "Promotor"
-        RadListDataItem6.TextWrap = True
-        Me.cboTipoInscripcion.Items.Add(RadListDataItem5)
-        Me.cboTipoInscripcion.Items.Add(RadListDataItem6)
+        RadListDataItem3.Text = "Personal"
+        RadListDataItem3.TextWrap = True
+        RadListDataItem4.Text = "Promotor"
+        RadListDataItem4.TextWrap = True
+        Me.cboTipoInscripcion.Items.Add(RadListDataItem3)
+        Me.cboTipoInscripcion.Items.Add(RadListDataItem4)
         Me.cboTipoInscripcion.Location = New System.Drawing.Point(269, 17)
         Me.cboTipoInscripcion.Name = "cboTipoInscripcion"
         Me.cboTipoInscripcion.Size = New System.Drawing.Size(274, 27)
@@ -501,9 +511,15 @@ Partial Class FrmIncripcion
         Me.WizardPage1.Title = "Asignacion de Grupo"
         Me.WizardPage1.Visibility = Telerik.WinControls.ElementVisibility.Visible
         '
-        'alertaError
+        'btnAtrasFalso
         '
-        Me.alertaError.ContainerControl = Me
+        Me.btnAtrasFalso.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnAtrasFalso.Location = New System.Drawing.Point(339, 392)
+        Me.btnAtrasFalso.Name = "btnAtrasFalso"
+        Me.btnAtrasFalso.Size = New System.Drawing.Size(104, 24)
+        Me.btnAtrasFalso.TabIndex = 54
+        Me.btnAtrasFalso.Text = "Atras"
+        Me.btnAtrasFalso.ThemeName = "TelerikMetro"
         '
         'FrmIncripcion
         '
@@ -520,6 +536,7 @@ Partial Class FrmIncripcion
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Registro Inscripcion"
         Me.ThemeName = "TelerikMetro"
+        CType(Me.alertaError, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.wizarInscripcion, System.ComponentModel.ISupportInitialize).EndInit()
         Me.wizarInscripcion.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
@@ -555,7 +572,7 @@ Partial Class FrmIncripcion
         CType(Me.RadLabel8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboTipoInscripcion, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.alertaError, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btnAtrasFalso, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -599,5 +616,6 @@ Partial Class FrmIncripcion
     Friend WithEvents lblRecibo As Telerik.WinControls.UI.RadLabel
     Friend WithEvents visorInscripcion As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Friend WithEvents btnCancelar As Telerik.WinControls.UI.RadButton
+    Friend WithEvents btnAtrasFalso As Telerik.WinControls.UI.RadButton
 End Class
 
