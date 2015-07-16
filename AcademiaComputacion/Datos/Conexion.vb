@@ -7,7 +7,7 @@ Public Class Conexion
     Protected Function conectado()
         Try
             'cadena de conexion
-            cnn = New SqlConnection("data source = ANTONIO; initial catalog = academia; integrated security = true")
+            cnn = New SqlConnection("data source = LAPTOPJULIAN\SERVER; initial catalog = academia; integrated security = true")
             'abrimos la conexion
             cnn.Open()
             'retornamos true si la cadena de conexion se abrio correctamente

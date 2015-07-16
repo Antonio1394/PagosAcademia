@@ -1,3 +1,5 @@
+create database academia;
+use academia;
 
 create table students(
 id int identity,

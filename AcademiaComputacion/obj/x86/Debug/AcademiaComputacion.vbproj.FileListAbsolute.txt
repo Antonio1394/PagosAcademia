@@ -75,7 +75,6 @@ C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\Ac
 C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.xml
 C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.pdb
 C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.vbprojResolveAssemblyReference.cache
-C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmEmpleado.resources
 C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmGrupos1.resources
 C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmHorarios.resources
 C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmIncripcion.resources
@@ -361,3 +360,4 @@ C:\Users\Julian_Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\Ac
 C:\Users\Julian_Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.exe
 C:\Users\Julian_Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.xml
 C:\Users\Julian_Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.pdb
+C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmEmpleados.resources

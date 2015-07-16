@@ -245,7 +245,7 @@ Public Class FrmIncripcion
                     Dim newPaymentExtra As New extra_payments
                     newPaymentExtra.id_student = idAlumno
                     newPaymentExtra.id_payment = Nothing
-                    newPaymentExtra.id_type_payment = 
+                    'newPaymentExtra.id_type_payment = 
 
 
                 Next

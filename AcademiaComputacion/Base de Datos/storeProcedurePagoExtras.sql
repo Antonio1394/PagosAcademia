@@ -5,7 +5,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-ALTER PROCEDURE [dbo].[spPagoExtra]
+CREATE PROCEDURE [dbo].[spPagoExtra]
 	-- Add the parameters for the stored procedure here
 	@idPago int,
 	@saldoAnterior int	

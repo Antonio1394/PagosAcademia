@@ -15,6 +15,14 @@ AcademiaComputacion
   Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
 </summary>
+</member><member name="P:AcademiaComputacion.My.Resources.Resources._1436576995_about_us">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:AcademiaComputacion.My.Resources.Resources._1436577133_about_us">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
 </member><member name="P:AcademiaComputacion.My.Resources.Resources._class">
 	<summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.

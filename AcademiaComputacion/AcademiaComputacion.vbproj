@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{29C4DD33-16DF-410E-900E-CC6CF01AEE8F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>AcademiaComputacion.FrmLogin</StartupObject>
+    <StartupObject>AcademiaComputacion.FrmEmpleados</StartupObject>
     <RootNamespace>AcademiaComputacion</RootNamespace>
     <AssemblyName>AcademiaComputacion</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -234,6 +234,12 @@
     <Compile Include="detail_Extra_Payments.vb">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="FrmEmpleados.Designer.vb">
+      <DependentUpon>FrmEmpleados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEmpleados.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmEstudiantes.Designer.vb">
       <DependentUpon>frmEstudiantes.vb</DependentUpon>
     </Compile>
@@ -428,6 +434,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmEmpleados.resx">
+      <DependentUpon>FrmEmpleados.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEstudiantes.resx">
       <DependentUpon>frmEstudiantes.vb</DependentUpon>
     </EmbeddedResource>
