@@ -361,3 +361,5 @@ C:\Users\Julian_Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\Ac
 C:\Users\Julian_Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.xml
 C:\Users\Julian_Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.pdb
 C:\Users\Julian Hernandez\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmEmpleados.resources
+C:\Users\Antonio\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmEmpleados.resources
+C:\Users\Antonio\Documents\Visual Studio 2013\Projects\PagosAcademia\AcademiaComputacion\obj\x86\Debug\AcademiaComputacion.FrmPrueba.resources
