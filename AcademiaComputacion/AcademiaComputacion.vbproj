@@ -246,6 +246,12 @@
     <Compile Include="frmEstudiantes.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmPrueba.Designer.vb">
+      <DependentUpon>frmPrueba.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrueba.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ReportePagoExtra.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -439,6 +445,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEstudiantes.resx">
       <DependentUpon>frmEstudiantes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrueba.resx">
+      <DependentUpon>frmPrueba.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportePagoExtra.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
