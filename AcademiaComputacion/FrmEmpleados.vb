@@ -2,6 +2,7 @@
 
     Dim idTipoEmpleado As Integer = Nothing
     Dim idEmpleado As Integer
+    Dim operacionEnProceso As Boolean = False
 
 
     Private Sub FrmEmpleados_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -29,10 +30,11 @@
     End Sub
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
-        guardarEmpleado()
-        limpiar()
-        cargarEmpleados()
-
+        If validarCampos() Then
+            guardarEmpleado()
+            limpiar()
+            cargarEmpleados()
+        End If
     End Sub
 
     Public Sub guardarEmpleado()
@@ -80,7 +82,13 @@
     Public Sub eliminarEmpleado(ByVal idEmpleado As Integer)
         Try
             Dim empleadoBuscado = (From x In modelo.employees Where x.id = idEmpleado Select x).FirstOrDefault
-            modelo.employees.Remove(empleadoBuscado)
+
+            If empleadoBuscado.groups.Count > 0 Or empleadoBuscado.inscripcions.Count > 0 Or empleadoBuscado.users.Count > 0 Then
+                empleadoBuscado.state = "baja"
+                empleadoBuscado.updated_at = Date.Now
+            Else
+                modelo.employees.Remove(empleadoBuscado)
+            End If
             modelo.SaveChanges()
             MessageBox.Show("Empleado eliminado exitosamente", "Eliminacion de empleados", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
@@ -90,37 +98,51 @@
 
 
     Private Sub tblEmpleados_CellClick(sender As Object, e As Telerik.WinControls.UI.GridViewCellEventArgs) Handles tblEmpleados.CellClick
-        If tblEmpleados.Columns(e.ColumnIndex).Name.Equals("eliminar") And e.RowIndex >= 0 Then
-            Try
-                Dim idEmpleado = CInt(tblEmpleados.Rows(e.RowIndex).Cells("codigo").Value)
-                eliminarEmpleado(idEmpleado)
-                cargarEmpleados()
-                txtNombre.Focus()
-            Catch ex As Exception
-                MessageBox.Show(ex.Message)
-            End Try
+
+        If operacionEnProceso Then
+            MessageBox.Show("Hay una operacion en proceso !! ", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            If e.ColumnIndex > 0 Then
+                If e.ColumnIndex >= 0 And Me.tblEmpleados.Columns(e.ColumnIndex).Name.Equals("eliminar") And e.RowIndex >= 0 Then
+                    operacionEnProceso = True
+                    Dim resultado As DialogResult
+                    resultado = MessageBox.Show("Confirma la eliminacion del empleado", "Eliminacion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+
+                    If resultado = DialogResult.Yes Then
+
+                        Dim idEmpleado = CInt(tblEmpleados.Rows(e.RowIndex).Cells("codigo").Value)
+
+                        If idEmpleado = 1 Then
+                            MessageBox.Show("No se puede eliminar al administrador del sistema", "Error en la eliminacion", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        Else
+                            eliminarEmpleado(idEmpleado)
+                            cargarEmpleados()
+                            txtNombre.Focus()
+                        End If
+                    End If
+                    operacionEnProceso = False
+                End If
+                If tblEmpleados.Columns(e.ColumnIndex).Name.Equals("modificar") And e.RowIndex >= 0 Then
+                    Try
+                        operacionEnProceso = True
+                        idTipoEmpleado = CInt(tblEmpleados.Rows(e.RowIndex).Cells("id_tipo_empleado").Value)
+                        MessageBox.Show(idTipoEmpleado)
+                        idEmpleado = CInt(tblEmpleados.Rows(e.RowIndex).Cells("codigo").Value)
+                        txtNombre.Text = CStr(tblEmpleados.Rows(e.RowIndex).Cells("nombre").Value)
+                        txtApellido.Text = CStr(tblEmpleados.Rows(e.RowIndex).Cells("apellido").Value)
+                        txtDireccion.Text = CStr(tblEmpleados.Rows(e.RowIndex).Cells("direccion").Value)
+                        txtTelefono.Text = CStr(tblEmpleados.Rows(e.RowIndex).Cells("telefono").Value)
+                        cboJornada.Text = CStr(tblEmpleados.Rows(e.RowIndex).Cells("jornada").Value)
+                        cboTipoEmpleados.Text = CStr(tblEmpleados.Rows(e.RowIndex).Cells("tipo_empleado").Value)
+                        btnGuardar.Visible = False
+                        btnModificar.Visible = True
+                        txtNombre.Focus()
+                    Catch ex As Exception
+                        MessageBox.Show(ex.Message)
+                    End Try
+                End If
+            End If
         End If
-
-        If tblEmpleados.Columns(e.ColumnIndex).Name.Equals("modificar") And e.RowIndex >= 0 Then
-            Try
-                idTipoEmpleado = CInt(tblEmpleados.Rows(e.RowIndex).Cells("id_tipo_empleado").Value)
-                MessageBox.Show(idTipoEmpleado)
-                idEmpleado = CInt(tblEmpleados.Rows(e.RowIndex).Cells("codigo").Value)
-                txtNombre.Text = CStr(tblEmpleados.Rows(e.RowIndex).Cells("nombre").Value)
-                txtApellido.Text = CStr(tblEmpleados.Rows(e.RowIndex).Cells("apellido").Value)
-                txtDireccion.Text = CStr(tblEmpleados.Rows(e.RowIndex).Cells("direccion").Value)
-                txtTelefono.Text = CStr(tblEmpleados.Rows(e.RowIndex).Cells("telefono").Value)
-                cboJornada.Text = CStr(tblEmpleados.Rows(e.RowIndex).Cells("jornada").Value)
-                cboTipoEmpleados.Text = CStr(tblEmpleados.Rows(e.RowIndex).Cells("tipo_empleado").Value)
-                txtNombre.Focus()
-               
-            Catch ex As Exception
-                MessageBox.Show(ex.Message)
-            End Try
-        End If
-
-
-
     End Sub
 
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
@@ -152,4 +174,32 @@
             MessageBox.Show(ex.Message)
         End Try
     End Sub
+
+
+    Private Sub txtTelefono_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTelefono.KeyPress
+        If Asc(e.KeyChar) <> 8 Then
+            If Asc(e.KeyChar) < 48 Or Asc(e.KeyChar) > 57 Then
+                e.Handled = True
+                Me.ErrorProvider1.SetError(sender, "Solamente numeros se aceptan")
+            Else
+                Me.ErrorProvider1.SetError(sender, "")
+            End If
+        End If
+    End Sub
+
+
+    Public Function validarCampos()
+        If txtNombre.Text.Trim.Length.Equals("") Or txtApellido.Text.Trim.Length.Equals("") Or txtDireccion.Text.Trim.Length.Equals("") Or cboJornada.Text.Trim.Length = 0 Or cboTipoEmpleados.Text.Trim.Length = 0 Then
+            MessageBox.Show("Hay campos vacios", "Validacion de campos", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return False
+        Else
+            If txtTelefono.Text.Trim.Length > 8 Then
+                MessageBox.Show("Su numero de telefono es incorrecto", "Validacion de campos", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return False
+            Else
+                Return True
+            End If
+        End If
+    End Function
+
 End Class
